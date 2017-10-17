@@ -106,6 +106,7 @@ fabric.properties
 
 # Secret files
 secrets.json
+.env
 venv/*
 myvenv/*
 */migrations/*
