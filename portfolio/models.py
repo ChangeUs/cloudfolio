@@ -44,6 +44,15 @@ class Portfolio(TimeStampedModel):
         tab.save()
         return tab
 
+    def get_all_tabs(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all tabs
+        """
+        if 'privacy' in kwargs:
+            return self.tabs.all()
+
+        return self.tabs.filter(privacy=kwargs['privacy'])
+
 
 ################################################################################
 
@@ -95,6 +104,15 @@ class Tab(TimeStampedModel):
 
         activity.save()
         return activity
+
+    def get_all_activities(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all activities
+        """
+        if 'privacy' in kwargs:
+            return self.activities.all()
+
+        return self.activities.filter(privacy=kwargs['privacy'])
 
 
 ################################################################################
@@ -148,6 +166,15 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
         story.save()
         return story
+
+    def get_all_stories(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all stories
+        """
+        if 'privacy' in kwargs:
+            return self.stories.all()
+
+        return self.stories.filter(privacy=kwargs['privacy'])
 
 
 ################################################################################
