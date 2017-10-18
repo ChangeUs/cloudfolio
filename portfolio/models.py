@@ -1,6 +1,7 @@
 
 from account.models import Account
 from core.models import *
+from django.contrib.postgres.fields import ArrayField
 
 ################################################################################
 
@@ -9,7 +10,11 @@ class Portfolio(TimeStampedModel):
 
     # Attributes of Portfolio model #
 
-    account = models.ForeignKey(Account, related_name="portfolios")
+    account = models.ForeignKey(
+        Account,
+        related_name="portfolios",
+        on_delete=models.CASCADE
+    )
 
     # Meta information #
 
@@ -39,6 +44,15 @@ class Portfolio(TimeStampedModel):
         tab.save()
         return tab
 
+    def get_all_tabs(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all tabs
+        """
+        if 'privacy' in kwargs:
+            return self.tabs.all()
+
+        return self.tabs.filter(privacy=kwargs['privacy'])
+
 
 ################################################################################
 
@@ -51,7 +65,11 @@ class Tab(TimeStampedModel):
 
     # Attributes of Tab model #
 
-    portfolio = models.ForeignKey(Portfolio, related_name="tabs")
+    portfolio = models.ForeignKey(
+        Portfolio,
+        related_name="tabs",
+        on_delete=models.CASCADE
+    )
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH)
     privacy = models.IntegerField(default=0)
@@ -87,6 +105,15 @@ class Tab(TimeStampedModel):
         activity.save()
         return activity
 
+    def get_all_activities(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all activities
+        """
+        if 'privacy' in kwargs:
+            return self.activities.all()
+
+        return self.activities.filter(privacy=kwargs['privacy'])
+
 
 ################################################################################
 
@@ -100,7 +127,11 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     # Attributes of Activity model #
 
-    tab = models.ForeignKey(Tab, related_name="activities")
+    tab = models.ForeignKey(
+        Tab,
+        related_name="activities",
+        on_delete=models.CASCADE
+    )
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
     summary = models.CharField(max_length=MAX_SUMMARY_LENGTH)
@@ -136,6 +167,15 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
         story.save()
         return story
 
+    def get_all_stories(self, **kwargs):
+        """
+        If privacy does not exist in the parameter, return all stories
+        """
+        if 'privacy' in kwargs:
+            return self.stories.all()
+
+        return self.stories.filter(privacy=kwargs['privacy'])
+
 
 ################################################################################
 
@@ -144,19 +184,21 @@ class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
     # Model constants #
 
     MAX_TITLE_LENGTH = 100
+    MAX_PATH_LENGTH = 255
 
     # Attributes of Story model #
 
-    activity = models.ForeignKey(Activity, related_name="stories")
+    activity = models.ForeignKey(
+        Activity,
+        related_name="stories",
+        on_delete=models.CASCADE
+    )
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
     content = models.TextField()
 
-    # TODO: make a storage for images and uploaded files and add array fields to Story model for files
-    """
-        image_files
-        uploaded_files
-    """
+    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH))
+    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH))
 
     # Meta information #
 
