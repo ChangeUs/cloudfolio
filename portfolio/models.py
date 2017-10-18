@@ -8,6 +8,10 @@ from django.contrib.postgres.fields import ArrayField
 
 class Portfolio(TimeStampedModel):
 
+    # Model constants #
+
+    MAX_TITLE_LENGTH = 100
+
     # Attributes of Portfolio model #
 
     account = models.ForeignKey(
@@ -15,6 +19,8 @@ class Portfolio(TimeStampedModel):
         related_name="portfolios",
         on_delete=models.CASCADE
     )
+
+    title = models.CharField(max_length=MAX_TITLE_LENGTH)
 
     # Meta information #
 
@@ -24,6 +30,9 @@ class Portfolio(TimeStampedModel):
         ordering = ('account', 'created_time',)
 
     # Methods #
+
+    def __str__(self):
+        return self.title
 
     def make_tab(self, title):
         tab = Tab(
@@ -72,7 +81,6 @@ class Tab(TimeStampedModel):
     )
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH)
-    privacy = models.IntegerField(default=0)
 
     # Meta information #
 
@@ -133,7 +141,7 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
         on_delete=models.CASCADE
     )
 
-    title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
+    title = models.CharField(max_length=MAX_TITLE_LENGTH)
     summary = models.CharField(max_length=MAX_SUMMARY_LENGTH)
 
     # Meta information #
@@ -194,11 +202,11 @@ class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
         on_delete=models.CASCADE
     )
 
-    title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
+    title = models.CharField(max_length=MAX_TITLE_LENGTH, blank=True, default="")
     content = models.TextField()
 
-    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH))
-    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH))
+    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True)
+    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True)
 
     # Meta information #
 
