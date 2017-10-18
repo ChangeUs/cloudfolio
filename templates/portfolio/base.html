@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,16 +17,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/jquery-menuclipper/jquery.menuclipper.css" rel="stylesheet" type="text/css" />
-    <link href="pages/css/pages-icons.css" rel="stylesheet" type="text/css">
-    <link class="main-stylesheet" href="pages/css/themes/light.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/pace/pace-theme-flash.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/font-awesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/jquery-scrollbar/jquery.scrollbar.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/switchery/css/switchery.min.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/jquery-menuclipper/jquery.menuclipper.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'pages/css/pages-icons.css' %}" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="pages/css/themes/light.css' %}" rel="stylesheet" type="text/css" />
   </head>
   <body class="fixed-header menu-pin">
     <!-- BEGIN SIDEBPANEL-->
