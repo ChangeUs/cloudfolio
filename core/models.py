@@ -9,9 +9,26 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-class FormatOfPeriod(models.Model):
+class FormatOfPeriodModel(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+
+    class Meta:
+        abstract = True
+
+
+class PrivacyModel(models.Model):
+
+    # Model constants #
+
+    PRIVATE = 0
+    PUBLIC_ALL = 1
+
+    # Attributes of Privacy model
+
+    privacy = models.IntegerField(default=PUBLIC_ALL)
+
+    # Meta information
 
     class Meta:
         abstract = True
