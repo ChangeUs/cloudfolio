@@ -1,3 +1,4 @@
+
 from django.db import models
 
 
@@ -10,8 +11,8 @@ class TimeStampedModel(models.Model):
 
 
 class FormatOfPeriodModel(models.Model):
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    start_time = models.DateTimeField(null=True)
+    end_time = models.DateTimeField(null=True)
 
     class Meta:
         abstract = True
