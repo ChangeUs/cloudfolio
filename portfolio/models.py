@@ -1,11 +1,11 @@
 
-from django.db import models
 from account.models import Account
+from core.models import *
 
 ################################################################################
 
 
-class Portfolio(models.Model):
+class Portfolio(TimeStampedModel):
 
     # Attributes of Portfolio model #
 
@@ -16,11 +16,7 @@ class Portfolio(models.Model):
     class Meta:
         verbose_name = "portfolio"
         verbose_name_plural = "portfolios"
-
-        # TODO: ordering by created_at
-        """
-            ordering = ('created_at')
-        """
+        ordering = ('account', 'created_time',)
 
     # Methods #
 
@@ -47,7 +43,7 @@ class Portfolio(models.Model):
 ################################################################################
 
 
-class Tab(models.Model):
+class Tab(TimeStampedModel):
 
     # Model constants #
 
@@ -65,11 +61,7 @@ class Tab(models.Model):
     class Meta:
         verbose_name = "tab"
         verbose_name_plural = "tabs"
-
-        # TODO: ordering by created_at
-        """
-            ordering = ('created_at')
-        """
+        ordering = ('portfolio', 'created_time',)
 
     # Methods #
 
@@ -99,7 +91,7 @@ class Tab(models.Model):
 ################################################################################
 
 
-class Activity(models.Model):
+class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     # Model constants #
 
@@ -112,18 +104,13 @@ class Activity(models.Model):
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
     summary = models.CharField(max_length=MAX_SUMMARY_LENGTH)
-    privacy = models.IntegerField(default=0)
 
     # Meta information #
 
     class Meta:
         verbose_name = "activity"
         verbose_name_plural = "activities"
-
-        # TODO: ordering by created_at
-        """
-            ordering = ('created_at')
-        """
+        ordering = ('tab', 'created_time', )
 
     # Methods #
 
@@ -152,7 +139,7 @@ class Activity(models.Model):
 
 ################################################################################
 
-class Story(models.Model):
+class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     # Model constants #
 
@@ -164,7 +151,6 @@ class Story(models.Model):
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH, default="")
     content = models.TextField()
-    privacy = models.IntegerField(default=0)
 
     # TODO: make a storage for images and uploaded files and add array fields to Story model for files
     """
@@ -177,11 +163,7 @@ class Story(models.Model):
     class Meta:
         verbose_name = "story"
         verbose_name_plural = "stories"
-
-        # TODO: ordering by created_at
-        """
-            ordering = ('created_at')
-        """
+        ordering = ('activity', 'created_time',)
 
     # Methods #
 
