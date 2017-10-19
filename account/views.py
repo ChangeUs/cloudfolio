@@ -13,7 +13,7 @@ def signup(request):
     elif request.user:
         return HttpResponseRedirect('/portfolios/')
 
-    template = 'account/signup.html'
+    template = 'registration/signup.html'
     signupForm = UserCreationForm()
     message = ""
 

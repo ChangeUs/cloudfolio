@@ -6,7 +6,7 @@
 </head>
 <body>
     <div>
-        <form method="post">
+    <form method="post">
             {% csrf_token %}
             {{ signupForm.as_p }}
             <button type="submit">Sign up</button>

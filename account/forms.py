@@ -33,20 +33,20 @@ class UserCreationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs.update({
-          'class' : '',
-            'id' : 'email'
+          'class' : 'form-control',
+          'placeholder' : '이메일은 로그인 아이디로 사용됩니다',
         })
         self.fields['name'].widget.attrs.update({
-          'class' : '',
-            'id' : 'name'
+          'class' : 'form-control',
+          'placeholder' : '이름을 입력하세요',
         })
         self.fields['password1'].widget.attrs.update({
-          'class' : '',
-            'id' : 'password1'
+          'class' : 'form-control',
+            'placeholder' : '패스워드를 입력하세요',
         })
         self.fields['password2'].widget.attrs.update({
-          'class' : '',
-            'id' : 'password2'
+          'class' : 'form-control',
+            'placeholder' : '패스워드를 확인해주세요',
         })
 
     # form을 통해 받은 데이터를 저장

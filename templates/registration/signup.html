@@ -1,0 +1,91 @@
+{% extends 'registration/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>회원가입 | Portfolium</title>
+{% endblock %}
+
+{% block content %}
+    <div class="register-container full-height sm-p-t-30">
+      <div class="d-flex justify-content-center flex-column full-height ">
+        <img src="{% static 'assets/img/logo_blue.png' %}" alt="logo" data-src="{% static 'assets/img/logo_blue.png' %}" data-src-retina="{% static 'assets/img/logo_blue_2x.png' %}" width="127" height="22">
+        <h3><b>Portfolium</b>으로 당신이 쌓아온 가치를 더 빛나게 표현할 수 있습니다.</h3>
+        <p>
+          portfolium은 더욱 간편한 소셜로그인 기능을 제공합니다. 소셜회원가입을 원하시는 경우 다음을 클릭하세요. <a href="#" class="text-info">Facebook</a> or <a href="#" class="text-info">Google</a>
+        </p>
+        <form method="POST" id="form-register" class="p-t-15" role="form">
+            {% csrf_token %}
+            <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label>Email</label>
+                  {{ signupForm.email }}
+{#                <input type="email" name="email" placeholder="We will send loging details to you" class="form-control" required>#}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group form-group-default">
+                <label>Name</label>
+                  {{ signupForm.name }}
+              </div>
+            </div>
+{#            <div class="col-md-6">#}
+{#              <div class="form-group form-group-default">#}
+{#                <label>Last Names</label>#}
+{#                <input type="text" name="lname" placeholder="Smith" class="form-control" required>#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+{#          <div class="row">#}
+{#            <div class="col-md-12">#}
+{#              <div class="form-group form-group-default">#}
+{#                <label>Pages User name(기능x)</label>#}
+{#                <input type="text" name="uname" placeholder="yourname.pages.com (this can be changed later)" class="form-control" required>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label>Password</label>
+                  {{ signupForm.password1 }}
+
+              </div>
+            </div>
+              </div>
+            <div class="row">
+          <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label>Password confirm</label>
+                  {{ signupForm.password2 }}
+
+              </div>
+            </div>
+            </div>
+
+          <div class="row m-t-10">
+            <div class="col-lg-6">
+            {# TODO: term 작성, 선택하도록 #}
+              <p><small>회원가입과 동시에 <a href="#" class="text-info">Portfolium 약관</a>과 &nbsp;<a href="#" class="text-info">Privacy</a>을 읽고 약관에 동합니다.</small></p>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-cons m-t-10" type="submit">회원가입하기</button>
+        </form>
+      </div>
+    </div>
+    <div class=" full-width">
+      <div class="register-container m-b-10 clearfix">
+        <div class="m-b-30 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix d-flex-md-up">
+          <div class="col-md-2 no-padding d-flex align-items-center">
+            <img src="assets/img/demo/pages_icon.png" alt="" class="" data-src="assets/img/demo/pages_icon.png" data-src-retina="assets/img/demo/pages_icon_2x.png" width="60" height="60">
+          </div>
+          <div class="col-md-9 no-padding d-flex align-items-center">
+            <p class="hinted-text small inline sm-p-t-10">No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
