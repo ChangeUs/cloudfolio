@@ -9,7 +9,7 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = Account
         # html 상에서 form 태그의 input들이 가질 name
-        fields = ("name","email", "password1", "password2")
+        fields = ("name", "email", "password1", "password2")
 
     # 에러메세지 설정
     error_messages = {
@@ -84,9 +84,3 @@ class UserChangeForm(forms.ModelForm):
 
     def save(self, user):
         user.save()
-
-
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = ['email', 'password']

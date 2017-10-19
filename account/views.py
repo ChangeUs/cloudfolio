@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-from account.forms import UserCreationForm, LoginForm
+from account.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 
 # 회원가입
@@ -37,16 +37,14 @@ def signup(request):
 #로그인
 def signin(request):
     template = 'registration/login.html'
-    loginForm = LoginForm()
     message = ""
 
     # form 작성 후 post 액션 시
     if request.method == "POST":
-        form = LoginForm(request.POST)
         email = request.POST['email']
         password = request.POST['password']
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(request, username=email, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
@@ -56,5 +54,5 @@ def signin(request):
         else:
             return HttpResponse("로그인 실패 : Your username and/or password were incorrect")
     else:
-        context = {"loginForm": loginForm, "message": message}
+        context = {"message": message}
         return render(request, template, context)
