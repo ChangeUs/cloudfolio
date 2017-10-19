@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
+from portfolio.models import Portfolio
 
 # Create your views here.
 
@@ -10,3 +11,8 @@ def portfolioIndexView(request):
     return render(request, 'portfolio/index.html')
 def portfolioBaseView(request):
     return render(request, 'portfolio/base.html')
+
+
+def portfolio_main_view(request, pk):
+    portfolio = Portfolio.objects.get(id=pk)
+    return render(request, 'portfolio/index.html', {'user': request.user, 'portfolio': portfolio})

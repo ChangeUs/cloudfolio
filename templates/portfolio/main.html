@@ -1,0 +1,23 @@
+
+{{ user }}
+
+<br>
+{{ portfolio }}
+
+<br>
+
+{% for tab in portfolio.get_all_tabs %}
+    <li>{{ tab }}
+        <ul>
+        {% for activity in tab.get_all_activities %}
+            <li>{{ activity }}
+                <ul>
+                    {% for story in activity.get_all_stories %}
+                    <li>{{ story }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
