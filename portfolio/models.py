@@ -34,6 +34,17 @@ class Portfolio(TimeStampedModel):
     def __str__(self):
         return self.title
 
+    @staticmethod
+    def make_portfolio(account, title=None):
+        if title:
+            portfolio = Account(title=title)
+        else:
+            # the default title is "[Name] Portfolio"
+            portfolio = Account(title=account.__str__() + " Portfolio")
+
+        portfolio.save()
+        return portfolio
+
     def make_tab(self, title):
         tab = Tab(
             portfolio=self.id,
