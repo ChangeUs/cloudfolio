@@ -42,7 +42,7 @@ class Account(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
     REQUIRED_FIELDS = ['name']
 
     def __str__(self):
-        return "name: " + self.name
+        return self.name
 
     def get_short_name(self):
         return self.name

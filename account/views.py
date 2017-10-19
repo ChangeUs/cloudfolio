@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from account.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 
+
 # 회원가입
 def signup(request):
 
@@ -10,7 +11,7 @@ def signup(request):
     if request.user.is_anonymous:
         pass
     elif request.user:
-        return redirect('/')
+        return HttpResponseRedirect('/portfolios/')
 
     template = 'account/signup.html'
     signupForm = UserCreationForm()
@@ -30,7 +31,7 @@ def signup(request):
     elif request.method == "GET":
         pass
 
-    context = {"signupForm" : signupForm, "message": message}
+    context = {"signupForm": signupForm, "message": message}
     return render(request, template, context)
 
 
@@ -56,3 +57,9 @@ def signin(request):
     else:
         context = {"message": message}
         return render(request, template, context)
+
+
+#로그아웃
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
