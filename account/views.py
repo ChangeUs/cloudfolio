@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from account.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 # 회원가입
 def signup(request):
@@ -31,3 +32,27 @@ def signup(request):
 
     context = {"signupForm" : signupForm, "message": message}
     return render(request, template, context)
+
+
+#로그인
+def signin(request):
+    template = 'registration/login.html'
+    message = ""
+
+    # form 작성 후 post 액션 시
+    if request.method == "POST":
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponse('로그인 성공 ' + email + " " + password)
+            else:
+                return HttpResponse("Your account is not active, please contact the site admin")
+        else:
+            return HttpResponse("로그인 실패 : Your username and/or password were incorrect")
+    else:
+        context = {"message": message}
+        return render(request, template, context)
