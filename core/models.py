@@ -11,8 +11,8 @@ class TimeStampedModel(models.Model):
 
 
 class FormatOfPeriodModel(models.Model):
-    start_time = models.DateTimeField(null=True)
-    end_time = models.DateTimeField(null=True)
+    start_time = models.DateTimeField(null=True, blank=True)
+    end_time = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         abstract = True

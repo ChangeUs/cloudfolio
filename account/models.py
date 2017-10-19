@@ -49,3 +49,4 @@ class Account(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
     def get_full_name(self):
         return self.name
+
