@@ -84,3 +84,9 @@ class UserChangeForm(forms.ModelForm):
 
     def save(self, user):
         user.save()
+
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['email', 'password']
