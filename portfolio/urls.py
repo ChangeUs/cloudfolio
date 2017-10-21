@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^index/$', portfolioIndexView, name='index'),
     url(r'^base/$', portfolioBaseView, name='base'),
     url(r'^(?P<pk>[0-9]+)/$', portfolio_main_view, name='portfolio_main_view'),
+
+    # 임시
+    url(r'^activity/$', activity, name='activity'),
 ]
