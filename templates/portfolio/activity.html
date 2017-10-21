@@ -9,7 +9,7 @@
         <!-- END MOBILE SIDEBAR TOGGLE -->
         <div class="">
           <div class="brand inline">
-            <img src="assets/img/logo_blue.png" alt="logo" data-src="assets/img/logo_blue.png" data-src-retina="assets/img/logo_blue_2x.png" height="22">
+            <img src="{% static 'assets/img/logo_blue.png' %}" alt="logo" data-src="{% static 'assets/img/logo_blue.png' %}" data-src-retina="{% static 'assets/img/logo_blue_2x.png' %}" height="22">
           </div>
             
             <a href="#" class="btn btn-link text-primary m-l-20 hidden-md-down"><i class="fa fa-edit"></i> &nbsp;New Activity</a>
@@ -26,7 +26,7 @@
           <div class="dropdown pull-right hidden-md-down">
             <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="thumbnail-wrapper d32 circular inline">
-              <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+              <img src="{% static 'assets/img/profiles/avatar.jpg' %}" alt="" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" data-src-retina="{% static 'assets/img/profiles/avatar_small2x.jpg' %}" width="32" height="32">
               </span>
             </button>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
@@ -70,7 +70,7 @@
                                 <!-- 액티비티 단위 -->
                                 <li class="item padding-15 active">
                                     <div class="thumbnail-wrapper d32 circular">
-                                        <img width="40" height="40" alt="" data-src-retina="assets/img/profiles/avatar2x.jpg" data-src="assets/img/profiles/avatar.jpg" src="assets/img/profiles/avatar2x.jpg">
+                                        <img width="40" height="40" alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
                                     </div>
                                     <!-- picutre / normal -->
                                     <div class="inline m-l-15 picture">
@@ -162,7 +162,7 @@
                       <div class="upper-header">
                           <p class="datetime m-b-15"><span>포트폴리오 > 카테고리</span></p>
                         <!-- editable -->
-                        <div class="title" id="title-editable">
+                        <div class="title">
                             <p class="bold">제목을 입력하시오.</p> 
                         </div>
                         
@@ -173,7 +173,7 @@
                         
                       </div>
                       <div class="clearfix"></div>
-                      <div class="abstract m-t-15 m-b-20 semi-bold" id="abstract-editable">
+                      <div class="abstract m-t-15 m-b-20 semi-bold">
                           <p>
                               150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글
                               </p>

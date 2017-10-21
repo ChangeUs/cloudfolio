@@ -63,3 +63,5 @@ def signin(request):
 def logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
