@@ -2,6 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from account.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from account.models import Account
+from django.contrib import messages
 
 
 # 회원가입
@@ -11,7 +13,8 @@ def signup(request):
     if request.user.is_anonymous:
         pass
     elif request.user:
-        return HttpResponseRedirect('/portfolios/')
+        # return HttpResponseRedirect('/portfolios/')
+        return HttpResponseRedirect('/')
 
     template = 'registration/signup.html'
     signupForm = UserCreationForm()
@@ -62,4 +65,14 @@ def signin(request):
 #로그아웃
 def logout(request):
     logout(request)
+    return HttpResponseRedirect('/')
+
+
+#회원탈퇴
+def delete_user(request):
+    user = Account.objects.get(email=request.user.email)
+    user.delete()
+    # user.is_active = False
+    # user.save(update_fields=['is_active'])
+
     return HttpResponseRedirect('/')

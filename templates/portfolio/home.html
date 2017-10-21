@@ -23,5 +23,8 @@
     <form method="GET" action="{% url 'accounts:logout' %}" role="form">
         <button type="submit" >로그아웃</button>
     </form>
+    <form method="GET" action="{% url 'accounts:delete_user' %}" role="form">
+        <button type="submit" >회원탈퇴</button>
+    </form>
 </body>
 </html>
