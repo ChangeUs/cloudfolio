@@ -49,3 +49,7 @@ class Account(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
     def get_full_name(self):
         return self.name
+
+    def get_user_portfolio(self):
+        """User portfolio is always index 0"""
+        return self.portfolios.all()[0]

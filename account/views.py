@@ -13,6 +13,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import EmailMessage
+from portfolio.models import Portfolio
 
 
 # 회원가입
@@ -34,6 +35,9 @@ def signup(request):
         if signupForm.is_valid():
             user = signupForm.save(commit=False)
             user.save()
+
+            """Create a portfolio for this user"""
+            Portfolio.make_portfolio(user)
 
             # 계정 활성화를 위한 이메일 인증
             current_site = get_current_site(request)
