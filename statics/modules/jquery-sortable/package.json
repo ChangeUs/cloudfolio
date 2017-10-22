@@ -1,0 +1,54 @@
+{
+  "_from": "jquery-sortable@~0.9.12",
+  "_id": "jquery-sortable@0.9.13",
+  "_inBundle": false,
+  "_integrity": "sha1-HL+2VQE6B0c3BXHwbiL1JKAP+6I=",
+  "_location": "/jquery-sortable",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "jquery-sortable@~0.9.12",
+    "name": "jquery-sortable",
+    "escapedName": "jquery-sortable",
+    "rawSpec": "~0.9.12",
+    "saveSpec": null,
+    "fetchSpec": "~0.9.12"
+  },
+  "_requiredBy": [
+    "/medium-editor-insert-plugin"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-sortable/-/jquery-sortable-0.9.13.tgz",
+  "_shasum": "1cbfb655013a0747370571f06e22f524a00ffba2",
+  "_spec": "jquery-sortable@~0.9.12",
+  "_where": "/Users/hyunseo/dev/soma/customPage/node_modules/medium-editor-insert-plugin",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/johnny/jquery-sortable/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "jquery": "^2.1.2"
+  },
+  "deprecated": false,
+  "description": "jquery plugin for sortable, nestable lists",
+  "homepage": "https://github.com/johnny/jquery-sortable",
+  "keywords": [
+    "sortable",
+    "sort",
+    "sorting",
+    "drag",
+    "dragging"
+  ],
+  "license": "BSD-3",
+  "main": "./source/js/jquery-sortable.js",
+  "name": "jquery-sortable",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnny/jquery-sortable.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.9.13"
+}

@@ -24,7 +24,7 @@ def portfolioBaseView(request):
 
 def portfolio_main_view(request, pk):
     portfolio = Portfolio.objects.get(id=pk)
-    return render(request, 'portfolio/main.html', {'user': request.user, 'portfolio': portfolio})
+return render(request, 'portfolio/index.html', {'user': request.user, 'portfolio': portfolio})
 
 
 class ProfileView(View):
@@ -159,3 +159,10 @@ class ProfileEditView(View):
             return True
         return False
 
+# 임시
+def activity(request):
+    return render(request, 'portfolio/activity.html')
+def activity_edit(request):
+    return render(request, 'portfolio/activity_edit.html')
+def tab(request):
+    return render(request, 'portfolio/tab.html')
