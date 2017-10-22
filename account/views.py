@@ -11,10 +11,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import EmailMessage
 from portfolio.models import Portfolio
-
+from django.contrib.auth.forms import PasswordChangeForm
 
 # 회원가입
 def signup(request):
@@ -110,6 +109,9 @@ def logout(request):
 
 #계정 활성화 승인
 def activate(request, uidb64, token):
+    template1 = 'registration/activation_complete.html'
+    template2 = 'registration/activation.html'
+
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = Account.objects.get(pk=uid)
@@ -119,12 +121,11 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return render(request, 'registration/activation_complete.html')
+        return render(request, template1)
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
-        return render(request, 'registration/activation.html')
+        return render(request, template2)
         # return HttpResponse('Activation link is invalid!')
-
 
 #회원탈퇴
 def delete_user(request):
@@ -134,3 +135,26 @@ def delete_user(request):
     # user.save(update_fields=['is_active'])
 
     return HttpResponseRedirect('/')
+
+#비밀번호 변경
+def change_password(request):
+    template1 = 'registration/password_change_form.html'
+    template2 = 'registration/password_change_done.html'
+
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return render(request, template2)
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, template1, {
+        'form': form
+    })
+
+
