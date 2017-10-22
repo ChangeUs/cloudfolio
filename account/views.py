@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from account.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from portfolio.models import Portfolio
 
 
 # 회원가입
@@ -24,6 +25,10 @@ def signup(request):
             user = signupForm.save(commit=False)
             user.save()
             # TODO: 이메일 인증 기능 추가 필요
+
+            """Create a portfolio for this user"""
+            Portfolio.make_portfolio(user)
+
             return HttpResponse('회원가입 완료')
         else:
             message="패스워드 미일치"

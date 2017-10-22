@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from django.contrib.auth.views import login, logout, password_change, password_reset
 from portfolio.views import *
 
 urlpatterns = [
@@ -8,4 +7,6 @@ urlpatterns = [
     url(r'^index/$', portfolioIndexView, name='index'),
     url(r'^base/$', portfolioBaseView, name='base'),
     url(r'^(?P<pk>[0-9]+)/$', portfolio_main_view, name='portfolio_main_view'),
+    url(r'^profile/$', ProfileView.as_view(), name='portfolio_profile'),
+    url(r'^profile/edit$', ProfileEditView.as_view()),
 ]
