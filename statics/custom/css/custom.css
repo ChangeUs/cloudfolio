@@ -14,6 +14,21 @@ pages.css 수정항목
 리스트뷰 공통 스타일
  - 탭 글씨 크기 상향
 ------------------------------------------------------------------ */
+/* 텍스트 한줄압축 */
+.line-1 {
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+/* 텍스트 두줄압축 */
+.line-2 {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
 /* 리스트뷰 - 탭 글씨 */
 .split-view .split-list .list-view-fake-header, .split-view .split-list .list-view-group-header {
     font-size: 13px !important;
@@ -118,7 +133,20 @@ pages.css 수정항목
     }
 }
 
-
+/*------------------------------------------------------------------
+탭뷰
+------------------------------------------------------------------ */
+/* 탭뷰 카드 액티비티 날짜표시 */
+.tab .card .card-header {
+    padding: 20px 20px 5px 20px;
+    min-height: 25px;
+    color: #7a8994;
+    opacity: 07;
+}
+/* 탭뷰 카드 액티비티 제목 */
+.tab .card .card-block h3 {
+    margin-top: 0px;
+}
 
 
 
