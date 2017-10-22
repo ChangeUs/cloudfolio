@@ -36,7 +36,12 @@ pages.css 수정항목
 }
 /* 리스트뷰 - 탭 보조 아이콘(액티비티 쓰기) */
 
-
+/* 떠있는 버튼 */
+.btn-floating {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
 
 /*------------------------------------------------------------------
 리스트뷰 프로필 항목
@@ -300,3 +305,55 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 .activity-content-wrapper .social-card {
   width: 100%;
 }
+
+
+/*------------------------------------------------------------------
+스토리 작성 뷰
+------------------------------------------------------------------ */
+/* 스토리 뷰 하단까지 길이 확대 */
+.activity-content-wrapper.story_edit {
+  overflow: hidden !important;
+}
+/* 스토리 뷰 카드 위치 가운데 */
+.activity-content-wrapper.story_edit .card.social-card{
+  height: 100vh;
+  margin: 0 auto;
+  float: none;
+  width: 636px;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+  /* 카드 수정 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header {
+    border-bottom: 0px;
+  }
+  /* 유저이미지 크기조정 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header .user-pic {
+    height: 32px;
+    width: 32px;
+    margin-right: 20px;
+  }
+  .activity-content-wrapper.story_edit .card.social-card .card-header .user-pic img {
+    height: 32px;
+    width: 32px;
+  }
+  /* 제목 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header h5 {
+      font-size: 24px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+  }
+  /* 제목 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header h6 {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    margin-top:20px;
+  }
+  /* 내용 */
+  .activity-content-wrapper.story_edit .card.social-card .card-description p {
+    font-size: 15px !important;
+    line-height: 30px !important;
+  }
