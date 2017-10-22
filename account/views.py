@@ -1,7 +1,18 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.contrib.sites.shortcuts import get_current_site
+
+from account.models import Account
+from portfolium import settings
+from .tokens import account_activation_token
 from account.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.template.loader import render_to_string
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth.forms import PasswordChangeForm
+from django.core.mail import EmailMessage
 
 
 # 회원가입
@@ -11,7 +22,7 @@ def signup(request):
     if request.user.is_anonymous:
         pass
     elif request.user:
-        return HttpResponseRedirect('/portfolios/')
+        return HttpResponseRedirect('/')
 
     template = 'registration/signup.html'
     signupForm = UserCreationForm()
@@ -23,8 +34,25 @@ def signup(request):
         if signupForm.is_valid():
             user = signupForm.save(commit=False)
             user.save()
-            # TODO: 이메일 인증 기능 추가 필요
-            return HttpResponse('회원가입 완료')
+
+            # 계정 활성화를 위한 이메일 인증
+            current_site = get_current_site(request)
+
+            mail_subject = render_to_string('registration/activation_email_subject.txt')
+            mail_message = render_to_string('registration/activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+                'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
+            })
+            to_email = signupForm.cleaned_data.get('email')
+
+            email = EmailMessage(
+                mail_subject, mail_message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
         else:
             message="패스워드 미일치"
 
@@ -63,3 +91,21 @@ def signin(request):
 def logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+#계정 활성화 승인
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = Account.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return render(request, 'registration/activation_complete.html')
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return render(request, 'registration/activation.html')
+        # return HttpResponse('Activation link is invalid!')

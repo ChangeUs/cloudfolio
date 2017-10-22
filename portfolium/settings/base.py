@@ -117,3 +117,15 @@ AUTH_USER_MODEL = 'account.Account'
 # When Login success, go to main page.
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+# Email Activation
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'changeus00@gmail.com'
+# Google App Password
+EMAIL_HOST_PASSWORD = 'xzddkopyhqjmgywz'
+DEFAULT_FROM_EMAIL = 'ChangeUs Team <changeus00@gmail.com>'
