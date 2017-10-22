@@ -20,5 +20,8 @@ def portfolio_main_view(request, pk):
 # 임시
 def activity(request):
     return render(request, 'portfolio/activity.html')
+def activity_edit(request):
+    return render(request, 'portfolio/activity_edit.html')
 def tab(request):
     return render(request, 'portfolio/tab.html')
+

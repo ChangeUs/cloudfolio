@@ -132,12 +132,6 @@ pages.css 수정항목
         width: 329px;
     }
 }
-/*------------------------------------------------------------------
-액티비티 뷰
------------------------------------------------------------------- */
-.activity-content-wrapper {
-      background-color: #f6f9fa;
-}
 
 /*------------------------------------------------------------------
 탭뷰
@@ -153,6 +147,10 @@ pages.css 수정항목
 .tab .card .card-block h3 {
     margin-top: 0px;
 }
+
+
+
+
 
 
 
@@ -185,7 +183,7 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 .split-view .split-details .activity-content-wrapper .activity-content-background {
   background: #fff;
   border-bottom: 1px solid rgba(234, 236, 238, 0.7);
-  height: 100%;
+  height: auto;
 }
 
 .split-view .split-details .activity-content-wrapper .activity-content {
@@ -259,3 +257,46 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 /* Responsive Handler : Email App
 --------------------------------------------------
 */
+
+
+
+
+/*------------------------------------------------------------------
+액티비티 뷰
+------------------------------------------------------------------ */
+.activity-content-wrapper {
+      background-color: #f6f9fa;
+}
+/* 액티비티 편집화면 */
+.activity-content-background.edit .abstract{
+  /* 요약 단락 하단 border 제거 */
+  border-bottom: 0px;
+}
+  .activity-content-background.edit .activity-content {
+    width: auto !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+  }
+  /* 카테고리 */
+  .activity-content-background.edit .activity-content .datetitle p{
+  }
+  /* 제목 */
+  .activity-content-background.edit .activity-content .title p{
+    font-size: 25px !important;
+    line-height: 30px !important;
+  }
+  /* 요약 */
+  .activity-content-background.edit .activity-content .abstract p{
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+
+/* 액티비티 편집 화면에서는 액티비티 정보가 container에 담긴다.*/
+.activity-content-background.edit {
+
+}
+
+/**/
+.activity-content-wrapper .social-card {
+  width: 100%;
+}
