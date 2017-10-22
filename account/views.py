@@ -67,6 +67,16 @@ def signup(request):
     return render(request, template, context)
 
 
+#회원탈퇴
+def delete_user(request):
+    user = Account.objects.get(email=request.user.email)
+    user.delete()
+    # user.is_active = False
+    # user.save(update_fields=['is_active'])
+
+    return redirect('/')
+
+
 #로그인
 def signin(request):
     template = 'registration/login.html'
