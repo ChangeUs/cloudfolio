@@ -11,4 +11,5 @@ urlpatterns = [
 
     # 임시
     url(r'^activity/$', activity, name='activity'),
+    url(r'^tab/$', tab, name='tab'),
 ]

@@ -17,5 +17,8 @@ def portfolio_main_view(request, pk):
     portfolio = Portfolio.objects.get(id=pk)
     return render(request, 'portfolio/index.html', {'user': request.user, 'portfolio': portfolio})
 
+# 임시
 def activity(request):
     return render(request, 'portfolio/activity.html')
+def tab(request):
+    return render(request, 'portfolio/tab.html')
