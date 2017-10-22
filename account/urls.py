@@ -1,10 +1,12 @@
 from django.conf.urls import url
 from django.contrib.auth.views import login, logout
-from django.contrib.auth.views import password_change_done, password_reset, password_reset_done, password_reset_confirm, password_reset_complete
-from account.views import signup, signin, activate, change_password
+from django.contrib.auth.views import password_change, password_change_done, password_reset, password_reset_done, password_reset_confirm, password_reset_complete
+from account.views import signup, signin, activate, change_password, delete_user
 
 urlpatterns = [
     url(r'^signup/$', signup, name='signup'),
+    url(r'^delete/$', delete_user, name='delete_user'),
+
     # default로 registration/login.html(logout.html)을 render
     url(r'^login/$', signin, name='login'),
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),

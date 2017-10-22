@@ -23,9 +23,15 @@
     <form method="GET" action="{% url 'accounts:logout' %}" role="form">
         <button type="submit" >로그아웃</button>
     </form>
+
+    <form method="GET" action="{% url 'accounts:delete_user' %}" role="form">
+        <button type="submit" >회원탈퇴</button>
+    </form>
+
     <form method="GET" action="{% url 'accounts:password_change' %}" role="form">
         <button type="submit" >비밀번호 변경</button>
     </form>
+  
     <form method="GET" action="{% url 'accounts:password_reset' %}" role="form">
         <button type="submit" >비밀번호 초기화</button>
     </form>

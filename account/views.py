@@ -22,6 +22,7 @@ def signup(request):
     if request.user.is_anonymous:
         pass
     elif request.user:
+        # return HttpResponseRedirect('/portfolios/')
         return HttpResponseRedirect('/')
 
     template = 'registration/signup.html'
@@ -64,6 +65,16 @@ def signup(request):
 
     context = {"signupForm": signupForm, "message": message}
     return render(request, template, context)
+
+
+#회원탈퇴
+def delete_user(request):
+    user = Account.objects.get(email=request.user.email)
+    user.delete()
+    # user.is_active = False
+    # user.save(update_fields=['is_active'])
+
+    return redirect('/')
 
 
 #로그인
@@ -116,6 +127,14 @@ def activate(request, uidb64, token):
         return render(request, template2)
         # return HttpResponse('Activation link is invalid!')
 
+#회원탈퇴
+def delete_user(request):
+    user = Account.objects.get(email=request.user.email)
+    user.delete()
+    # user.is_active = False
+    # user.save(update_fields=['is_active'])
+
+    return HttpResponseRedirect('/')
 
 #비밀번호 변경
 def change_password(request):
@@ -137,4 +156,5 @@ def change_password(request):
     return render(request, template1, {
         'form': form
     })
+
 
