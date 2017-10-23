@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^activity_edit/$', activity_edit, name='activity_edit'),
     url(r'^tab/$', tab, name='tab'),
     url(r'^story_edit/$', story_edit, name='story_edit'),
+    url(r'^profile_temp/$', profile_temp, name='profile_temp'),
 
 ]

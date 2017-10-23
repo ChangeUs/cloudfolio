@@ -168,3 +168,5 @@ def tab(request):
     return render(request, 'portfolio/tab.html')
 def story_edit(request):
     return render(request, 'portfolio/story_edit.html')
+def profile_temp(request):
+    return render(request, 'portfolio/profile_temp.html')

@@ -10,6 +10,7 @@ pages.css 수정항목
     margin-left: 0;
 }
 
+
 /*------------------------------------------------------------------
 리스트뷰 공통 스타일
  - 탭 글씨 크기 상향
@@ -59,6 +60,7 @@ pages.css 수정항목
 .split-view .split-list .list-profile .item .body {
     height: auto;
 }
+
 
 /*------------------------------------------------------------------
 리스트뷰 일반 항목
@@ -153,7 +155,29 @@ pages.css 수정항목
     margin-top: 0px;
 }
 
+/*------------------------------------------------------------------
+프로필
+------------------------------------------------------------------ */
 
+.email-content-header {
+  position: relative;
+}
+.content-left .thumbnail-wrapper {
+  float: none;
+}
+.content-left {
+  width: 50px;
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
+.content-right {
+  padding-left: 60px;
+  margin: 0;
+}
 
 
 

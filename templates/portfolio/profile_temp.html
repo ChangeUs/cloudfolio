@@ -1,0 +1,47 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+
+
+
+    <div class="email-content-wrapper" style="">
+                  <div class="email-content">
+                    <div class="email-content-header">
+
+                        <div class="content-left">
+                            <div class="thumbnail-wrapper d50 circular">
+                                <img width="40" height="40" alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
+                            </div>
+                        </div>
+
+                        <div class="content-right">
+                            <div class="sender inline m-l-10">
+                                <p class="name no-margin p-t-5 bold">홍길동</p>
+
+                                <p class="datetime no-margin">프로그래머</p>
+                                <p class="datetime m-t-20">한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필</p>
+                                <p class="datetime no-margin"># 태그</p>
+                            </div>
+                        </div>
+
+                        <hr>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="email-content-body m-t-20">
+                        <div class="semi-bold">선택프로필</div>
+                        <div class="semi-bold">교육사항
+                        </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+{% endblock %}
