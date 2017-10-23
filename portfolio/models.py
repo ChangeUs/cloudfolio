@@ -264,17 +264,20 @@ class Profile(TimeStampedModel):
     def get_public_profile(self):
         profile = {}
 
-        for field, info in self.profile.items:
+        for field, info in self.profile.items():
             if isinstance(info, list):
                 arr = []
                 for profile_info in info:
                     if profile_info.get('public'):
                         arr.insert(profile_info)
 
-                profile.update({field: arr})
+                if len(arr) > 0:
+                    profile.update({field: arr})
 
             else:
                 if info.get('public'):
                     profile.update({field: info})
+
+        return profile
 
 ################################################################################
