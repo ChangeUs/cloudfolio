@@ -12,6 +12,13 @@ class ProfileInfo:
         'introduction': IntroductionForm,
         'birthday': BirthdayForm,
         'education': EducationForm,
+        'contact': ContactForm,
+        'address': AddressForm,
+        'interest_keyword': InterestKeywordsForm,
+        'homepage': HomepageForm,
+        'certificate': CertificateForm,
+        'language': LanguageForm,
+        'technology': TechnologyForm,
     }
 
     @classmethod
