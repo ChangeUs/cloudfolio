@@ -161,6 +161,61 @@ class StoryDeleteView(View):
 ################################################################################
 
 
+class TabCreateView(View):
+
+    def get(self, request):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        form = TabCreationForm()
+
+        context = {
+            'form': form,
+        }
+
+        return render(request, 'portfolio/tab-create.html', context)
+
+    def post(self, request):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        form = TabCreationForm(request.POST)
+
+        if form.is_valid():
+            tab = form.save(commit=False)
+            tab.portfolio = portfolio
+            tab.save()
+
+            return HttpResponse(status=200)
+
+        else:
+            return HttpResponse(status=400)
+
+
+class TabDeleteView(View):
+
+    def get(self, request, tab_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            tab = portfolio.tabs.get(pk=tab_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        tab.delete()
+        return HttpResponse(status=200)
+
+
+################################################################################
+
+
 class ProfileView(View):
 
     """
