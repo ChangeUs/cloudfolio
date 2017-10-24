@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^activity/create/(?P<tab_id>[0-9]+)/$', ActivityCreateView.as_view(), name='activity_create'),
     url(r'^tab/$', tab, name='tab'),
     url(r'^story_edit/$', story_edit, name='story_edit'),
+    url(r'^profile_temp/$', profile_temp, name='profile_temp'),
 
 ]
