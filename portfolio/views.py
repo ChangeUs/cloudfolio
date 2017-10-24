@@ -247,4 +247,5 @@ def tab(request):
 
 
 def story_edit(request):
-    return render(request, 'portfolio/story_edit.html')
+    context = { 'portfolio':request.user.get_user_portfolio() }
+    return render(request, 'portfolio/story_edit.html', context)
