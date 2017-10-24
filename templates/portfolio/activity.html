@@ -5,37 +5,17 @@
 
 
     <div class="activity-content-wrapper" style="">
-<!-- 콘텐츠페이지 상단 버튼 -->
-                    <!-- 
-              <div class="actions-wrapper menuclipper bg-master-lightest">
-                    <ul class="actions menuclipper-menu no-margin p-l-20 ">
-                      <li class="hidden-lg-up">
-                        <a href="#" class="split-list-toggle"><i class="fa fa-angle-left"></i> All Inboxes</a>
-                      </li>
-                      <li class="no-padding "><a href="#" class="text-info">Reply</a>
-                      </li>
-                      <li class="no-padding "><a href="#">Reply all</a>
-                      </li>
-                      <li class="no-padding "><a href="#">Forward</a>
-                      </li>
-                      <li class="no-padding "><a href="#">Mark as read</a>
-                      </li>
-                      <li class="no-padding "><a href="#" class="text-danger">Delete</a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
--->
+
                 <div class="activity-content-background">
                     <div class="activity-content">
 
 
                 <div class="activity-content-header">
                   <div class="upper-header">
-                      <p class="datetime m-b-15"><span>포트폴리오 > 카테고리</span></p>
+                      <p class="datetime m-b-15"><span>포트폴리오 > {{ tab.title }}</span></p>
                     <!-- editable -->
                     <div class="title">
-                        <p class="bold">제목을 입력하시오.</p>
+                        <p class="bold">{{ activity.title }}</p>
                     </div>
 
                     <p class="datetime m-t-15 ">
@@ -47,7 +27,7 @@
                   <div class="clearfix"></div>
                   <div class="abstract m-t-15 m-b-20 semi-bold">
                       <p>
-                          150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글
+                          {{ activity.summary }}
                           </p>
                     </div>
 
