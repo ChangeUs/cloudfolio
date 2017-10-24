@@ -13,6 +13,12 @@ class TabCreationForm(forms.ModelForm):
         model = Tab
         fields = ('title',)
 
+    def __init__(self, *args, **kwargs):
+        super(TabCreationForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({
+          'class' : 'form-control',
+        })
+
 
 ################################################################################
 

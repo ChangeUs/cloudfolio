@@ -1,3 +1,7 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
 
 
 <!-- json 형태로 프로필 전부 가져오기 -->
@@ -38,3 +42,5 @@
 
     {% endif %}
 {% endfor %}
+
+{% endblock %}

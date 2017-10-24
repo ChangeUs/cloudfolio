@@ -229,6 +229,74 @@
                                 </li>
                             </ul>
                         </div>
+
+{{ request.portfolio }}
+{#                        {{ request.user.portfolio.tabs }}#}
+{#                        {{ request.user.portfolios.tab }}#}
+{#                        {{ portfolio }}#}
+                        {{ portfolio }}
+                        {% for tab in portfolio.get_all_tabs %}
+                            {{ tab.title }}
+                        {% endfor %}
+{#                        {{ profile }}#}
+
+
+                        {# 탭추가 #}
+                        <a class="tab-creation" id="btnTabCreation" href="#"><i class="fa fa-plus"></i>&nbsp;탭추가</a>
+
+                        {# 추가될 모달 #}
+                        <div class="modal fade slide-up disable-scroll" id="modalTapCreation" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog ">
+              <div class="modal-content-wrapper">
+                <div class="modal-content">
+                  <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                    </button>
+                    <h5>탭 <span class="semi-bold">추가하기</span></h5>
+                    <p class="p-b-10">포트폴리오 내에 다양한 탭을 추가해보세요.</p>
+                  </div>
+                  <div class="modal-body">
+                      {# TODO: action에 url 추가하기 #}
+                    <form method="post" role="form" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                      <div class="form-group-attached">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group form-group-default">
+                              <label>탭제목</label>
+{#                              <input type="email" class="form-control">#}
+                                {{ tabCreationForm.title }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="row">
+                      <div class="col-md-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                          <div class="pull-left">
+                            <p class="bold font-montserrat text-uppercase"></p>
+                          </div>
+                          <div class="pull-right">
+                            <p class="bold font-montserrat text-uppercase"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 m-t-10 sm-m-t-10">
+                        <button type="submit" class="btn btn-primary btn-block m-t-5">탭 생성하기</button>
+                      </div>
+                    </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+          </div>
+
+
+
                     </div>
                 </div>
               </div>
@@ -287,6 +355,7 @@
     <!-- END CORE TEMPLATE JS -->
     <!-- BEGIN PAGE LEVEL JS -->
     <script src="{% static 'assets/js/scripts_alt.js' %}" type="text/javascript"></script>
+      <script src="{% static 'custom/js/custom.js' %}" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS -->
 
     <!-- medium editor JS -->
@@ -298,6 +367,7 @@
     <script src="{% static 'modules/blueimp-file-upload/js/jquery.iframe-transport.js' %}"></script>
     <script src="{% static 'modules/blueimp-file-upload/js/jquery.fileupload.js' %}"></script>
     <script src="{% static 'modules/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js' %}"></script>
+
 
 
     <!-- medium editor script -->

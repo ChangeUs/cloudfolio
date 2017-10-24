@@ -44,14 +44,26 @@ pages.css 수정항목
   right: 30px;
 }
 
+/* 탭에서 액티비티 추가 버튼 */
 .split-view .split-list .list-refresh {
   opacity: 0.8;
   right: 10px;
   font-weight: normal !important;
 }
+
 .split-view .split-list .list-refresh:hover {
   color: #007be8 ;
 }
+
+/* 리스트뷰에 탭추가버튼 */
+.tab-creation {
+  padding: 15px;
+  font-size: 15px;
+  display: block;
+  color: rgba(122, 137, 148, 0.7);
+}
+
+
 /*------------------------------------------------------------------
 리스트뷰 프로필 항목
  - 이름(recipients): 고정 1줄 (non-edit)

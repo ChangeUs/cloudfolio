@@ -79,7 +79,10 @@ class ProfileView(View):
         portfolio = request.user.get_user_portfolio()
         profile = portfolio.profile.get_profile()
 
+        tabCreationForm = TabCreationForm
         context = {
+            'tabCreationForm' : TabCreationForm,
+            'portfolio': portfolio,
             'profile': profile
         }
 
