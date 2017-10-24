@@ -54,10 +54,18 @@ class ActivityCreateView(View):
         if not check_user_login(request):
             return HttpResponse(status=400)
 
-        form = ActivityCreationForm()
+        portfolio = request.user.get_user_portfolio()
+        profile = portfolio.profile.get_profile()
+        tab = portfolio.tabs.get(pk=tab_id)
+        activityCreateForm = ActivityCreationForm()
+        tabCreationForm = TabCreationForm()
 
         context = {
-            'form': form,
+            'portfolio': portfolio,
+            'tab' : tab,
+            'profile': profile,
+            'activityCreateForm': activityCreateForm,
+            'tabCreationForm': tabCreationForm,
         }
 
         return render(request, 'portfolio/activity_create.html', context)
@@ -65,22 +73,20 @@ class ActivityCreateView(View):
     def post(self, request, tab_id):
         if not check_user_login(request):
             return HttpResponse(status=400)
-
         try:
             portfolio = request.user.get_user_portfolio()
             activity_tab = portfolio.tabs.get(pk=tab_id)
         except ObjectDoesNotExist:
             return HttpResponse(status=400)
-
         form = ActivityCreationForm(request.POST)
-
         if form.is_valid():
             act = form.save(commit=False)
             act.portfolio = portfolio
             act.tab = activity_tab
             act.save()
 
-            return HttpResponse(status=200)
+            messages.success(request, _('액티비티를 등록했습니다.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         else:
             return HttpResponse(status=400)
@@ -111,10 +117,20 @@ class StoryCreateView(View):
         if not check_user_login(request):
             return HttpResponse(status=400)
 
-        form = StoryCreationForm()
+        portfolio = request.user.get_user_portfolio()
+        profile = portfolio.profile.get_profile()
+
+        activityCreateForm = ActivityCreationForm()
+        tabCreationForm = TabCreationForm()
+        storyCreationForm = StoryCreationForm()
 
         context = {
-            'form': form,
+            'portfolio': portfolio,
+            'tab': tab,
+            'profile': profile,
+            'activityCreateForm': activityCreateForm,
+            'tabCreationForm': tabCreationForm,
+            'storyCreationForm': storyCreationForm,
         }
 
         return render(request, 'portfolio/story-create.html', context)
@@ -192,10 +208,10 @@ class TabCreateView(View):
             tab.save()
 
             # return HttpResponse(status=200)
-            next = request.POST.get('next', '/')
+
             # 포스트 완료 메세지
             messages.success(request, _('탭을 등록했습니다.'))
-            return HttpResponseRedirect(next)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             return HttpResponse(status=400)
 
@@ -233,7 +249,7 @@ class ProfileView(View):
         portfolio = request.user.get_user_portfolio()
         profile = portfolio.profile.get_profile()
 
-        tabCreationForm = TabCreationForm
+        tabCreationForm = TabCreationForm()
         context = {
             'tabCreationForm' : TabCreationForm,
             'portfolio': portfolio,

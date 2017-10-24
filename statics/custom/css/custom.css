@@ -254,11 +254,18 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 }
 
 /* activity content 제목 */
-.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title p {
+/* activity Creation */
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title p,
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title input {
   font-size: 35px;
   line-height: 40px;
   color: #47525e;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
+
+
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .datetime {
   color: #7a8994;
   opacity: .45;
@@ -275,12 +282,32 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
     }
 
 /* activity 요약 */
+/* activity Creation */
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract p {
+   display: block;
   font-family: arial;
   color: #47525e;
   font-size: 17px;
   line-height: 30px;
 }
+/* TODO: 텍스트 필드 수정해야 한다.*/
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract textarea {
+  display: block;
+    font-family: arial;
+    color: #47525e;
+    font-size: 17px;
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    width: 100%;
+    resize: none;
+    border: 0px;
+
+}
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract input {
+
+}
+
 /* activity 상세글 */
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-body p {
   font-size: 17px;
@@ -357,6 +384,8 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 .activity-content-wrapper .social-card {
   width: 100%;
 }
+
+
 
 
 /*------------------------------------------------------------------

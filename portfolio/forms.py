@@ -25,9 +25,23 @@ class TabCreationForm(forms.ModelForm):
 
 class ActivityCreationForm(forms.ModelForm):
 
+    summary = forms.CharField(
+     widget=forms.Textarea(attrs={
+         'placeholder': '간략한 활동의 설명을 적어주세요 (100자 미만)',
+         'rows' : 4,
+         'maxlength' : 100,
+     }))
     class Meta:
         model = Activity
         fields = ('title', 'summary', 'start_time', 'end_time')
+
+    def __init__(self, *args, **kwargs):
+        super(ActivityCreationForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({
+          'class' : 'bold',
+          'placeholder' : '제목을 입력하세요',
+        })
+
 
 
 ################################################################################
