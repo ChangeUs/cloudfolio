@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^activity/delete/(?P<activity_id>[0-9]+)/$', ActivityDeleteView.as_view(), name='activity_delete'),
     url(r'^story/create/(?P<activity_id>[0-9]+)/$', StoryCreateView.as_view(), name='story_create'),
     url(r'^story/delete/(?P<story_id>[0-9]+)/$', StoryDeleteView.as_view(), name='story_delete'),
+    url(r'^tab/create/$', TabCreateView.as_view(), name='tab_create'),
+    url(r'^tab/delete/(?P<tab_id>[0-9]+)/$', TabDeleteView.as_view(), name='tab_delete'),
     url(r'^tab/$', tab, name='tab'),
     url(r'^story_edit/$', story_edit, name='story_edit'),
 
