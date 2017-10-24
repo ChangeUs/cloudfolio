@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.views.generic import View
 from portfolio.models import Portfolio
 from portfolio.forms import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from portfolio.profile import ProfileInfo
 from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 
 # Create your views here.
 
@@ -59,7 +60,7 @@ class ActivityCreateView(View):
             'form': form,
         }
 
-        return render(request, 'portfolio/activity-create.html', context)
+        return render(request, 'portfolio/activity_create.html', context)
 
     def post(self, request, tab_id):
         if not check_user_login(request):
@@ -172,7 +173,6 @@ class TabCreateView(View):
         context = {
             'form': form,
         }
-
         return render(request, 'portfolio/tab-create.html', context)
 
     def post(self, request):
@@ -191,8 +191,11 @@ class TabCreateView(View):
             tab.portfolio = portfolio
             tab.save()
 
-            return HttpResponse(status=200)
-
+            # return HttpResponse(status=200)
+            next = request.POST.get('next', '/')
+            # 포스트 완료 메세지
+            messages.success(request, _('탭을 등록했습니다.'))
+            return HttpResponseRedirect(next)
         else:
             return HttpResponse(status=400)
 

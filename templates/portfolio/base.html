@@ -45,7 +45,6 @@
 
   </head>
   <body class="fixed-header">
-
       <!--      -->
     <nav class="page-sidebar" data-pages="sidebar">
       <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
@@ -230,19 +229,35 @@
                             </ul>
                         </div>
 
-{{ request.portfolio }}
-{#                        {{ request.user.portfolio.tabs }}#}
-{#                        {{ request.user.portfolios.tab }}#}
-{#                        {{ portfolio }}#}
-                        {{ portfolio }}
                         {% for tab in portfolio.get_all_tabs %}
-                            {{ tab.title }}
+                            <div class="list-view-group-container list-activity">
+                            <div class="list-view-group-header">
+                                <span>{{ tab.title }}</span>
+                                <a class="list-refresh" href="{% url 'portfolios:activity_create' tab.id %}">
+                                    &nbsp;액티비티 <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <ul class="no-padding">
+                                <!-- 액티비티 단위 -->
+                                <li class="item padding-15 active">
+                                    <!-- picutre / normal -->
+                                    <div class="inline m-l-15 normal">
+                                        <p class="recipients no-margin hint-text small">2018.08.19</p>
+                                        <p class="subject no-margin">activity.title - 최대 1줄 activity.title - 최대 1줄 activity.title - 최대 1줄</p>
+                                        <p class="body no-margin">                          요약내용이 들어감 최대 2줄.    요약내용이 들어감 최대 2줄   요약내용이 들어감 최대 2줄   요약내용이 들어감 최대 2줄   요약내용이 들어감 최대 2줄
+                                        </p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         {% endfor %}
-{#                        {{ profile }}#}
 
 
                         {# 탭추가 #}
                         <a class="tab-creation" id="btnTabCreation" href="#"><i class="fa fa-plus"></i>&nbsp;탭추가</a>
+
 
                         {# 추가될 모달 #}
                         <div class="modal fade slide-up disable-scroll" id="modalTapCreation" tabindex="-1" role="dialog" aria-hidden="false">
@@ -257,7 +272,7 @@
                   </div>
                   <div class="modal-body">
                       {# TODO: action에 url 추가하기 #}
-                    <form method="post" role="form" action="">
+                    <form method="post" role="form" action="{% url 'portfolios:tab_create' %}">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
                       <div class="form-group-attached">
@@ -310,10 +325,13 @@
       </div>
               <!-- END SPLIT DETAILS -->
             </div>
+
           </div>
           <!-- END APP -->
-        </div>
+
+              </div>
         <!-- END PAGE CONTENT -->
+
       </div>
 
 
@@ -354,6 +372,7 @@
     <script src="{% static 'pages/js/pages.js' %}" type="text/javascript"></script>
     <!-- END CORE TEMPLATE JS -->
     <!-- BEGIN PAGE LEVEL JS -->
+    <script src="{% static 'assets/js/notifications.js' %}" type="text/javascript"></script>
     <script src="{% static 'assets/js/scripts_alt.js' %}" type="text/javascript"></script>
       <script src="{% static 'custom/js/custom.js' %}" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS -->
@@ -408,5 +427,22 @@
             });
         });
       </script>
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                (function($) {
+                    'use strict';
+                    $('.page-container').pgNotification({
+                        style: 'bar',
+                        message: '{{ message }}',
+                        position: 'bottom',
+                        timeout: 2000,
+                        type: 'info'
+                    }).show();
+                })(window.jQuery);
+            </script>
+        {% endfor %}
+    {% endif %}
+
   </body>
 </html>
