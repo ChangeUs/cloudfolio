@@ -5,6 +5,7 @@ from portfolio.forms import *
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from portfolio.profile import ProfileInfo
+from django.contrib import messages
 
 # Create your views here.
 
@@ -56,10 +57,105 @@ class ActivityCreateView(View):
 
         context = {
             'form': form,
-            'tab_id': tab_id
         }
 
         return render(request, 'portfolio/activity-create.html', context)
+
+    def post(self, request, tab_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            activity_tab = portfolio.tabs.get(pk=tab_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        form = ActivityCreationForm(request.POST)
+
+        if form.is_valid():
+            act = form.save(commit=False)
+            act.portfolio = portfolio
+            act.tab = activity_tab
+            act.save()
+
+            return HttpResponse(status=200)
+
+        else:
+            return HttpResponse(status=400)
+
+
+class ActivityDeleteView(View):
+
+    def get(self, request, activity_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            act = portfolio.activities.get(pk=activity_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        act.delete()
+        return HttpResponse(status=200)
+
+
+################################################################################
+
+
+class StoryCreateView(View):
+
+    def get(self, request, activity_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        form = StoryCreationForm()
+
+        context = {
+            'form': form,
+        }
+
+        return render(request, 'portfolio/story-create.html', context)
+
+    def post(self, request, activity_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            act = portfolio.activities.get(pk=activity_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        form = StoryCreationForm(request.POST)
+
+        if form.is_valid():
+            story = form.save(commit=False)
+            story.portfolio = portfolio
+            story.activity = act
+            story.save()
+
+            return HttpResponse(status=200)
+
+        else:
+            return HttpResponse(status=400)
+
+
+class StoryDeleteView(View):
+
+    def get(self, request, story_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            story = portfolio.stories.get(pk=story_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        story.delete()
+        return HttpResponse(status=200)
 
 
 ################################################################################
