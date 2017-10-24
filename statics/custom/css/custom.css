@@ -44,6 +44,14 @@ pages.css 수정항목
   right: 30px;
 }
 
+.split-view .split-list .list-refresh {
+  opacity: 0.8;
+  right: 10px;
+  font-weight: normal !important;
+}
+.split-view .split-list .list-refresh:hover {
+  color: #007be8 ;
+}
 /*------------------------------------------------------------------
 리스트뷰 프로필 항목
  - 이름(recipients): 고정 1줄 (non-edit)
@@ -180,8 +188,16 @@ pages.css 수정항목
 }
 
 
-
-
+/* 프로필 각 필드의 간격 조정 */
+.fields-body .field .field-content.div-narrow div{
+  padding: 0px;
+}
+.fields-body .field .field-content.div-narrow div:first-child{
+  padding-left: 15px;
+}
+.fields-body .field .field-content.div-narrow div:last-child{
+  padding-right: 15px;
+}
 
 
 
