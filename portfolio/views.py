@@ -5,6 +5,7 @@ from portfolio.forms import *
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from portfolio.profile import ProfileInfo
+from django.contrib import messages
 
 # Create your views here.
 
@@ -71,12 +72,17 @@ class ActivityCreateView(View):
             return HttpResponse(status=400)
 
         form = ActivityCreationForm(request.POST)
-        act = form.save(commit=False)
-        act.portfolio = portfolio
-        act.tab = activity_tab
-        act.save()
 
-        return HttpResponse(status=200)
+        if form.is_valid():
+            act = form.save(commit=False)
+            act.portfolio = portfolio
+            act.tab = activity_tab
+            act.save()
+
+            return HttpResponse(status=200)
+
+        else:
+            return HttpResponse(status=400)
 
 
 class ActivityDeleteView(View):
@@ -123,12 +129,17 @@ class StoryCreateView(View):
             return HttpResponse(status=400)
 
         form = StoryCreationForm(request.POST)
-        story = form.save(commit=False)
-        story.portfolio = portfolio
-        story.activity = act
-        story.save()
 
-        return HttpResponse(status=200)
+        if form.is_valid():
+            story = form.save(commit=False)
+            story.portfolio = portfolio
+            story.activity = act
+            story.save()
+
+            return HttpResponse(status=200)
+
+        else:
+            return HttpResponse(status=400)
 
 
 class StoryDeleteView(View):
