@@ -151,6 +151,10 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     # Attributes of Activity model #
 
+    portfolio = models.ForeignKey(
+        Portfolio,
+        related_name="activities",
+    )
     tab = models.ForeignKey(
         Tab,
         related_name="activities",
@@ -212,6 +216,10 @@ class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     # Attributes of Story model #
 
+    portfolio = models.ForeignKey(
+        Portfolio,
+        related_name="stories"
+    )
     activity = models.ForeignKey(
         Activity,
         related_name="stories",
