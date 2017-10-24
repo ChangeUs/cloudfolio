@@ -3,16 +3,32 @@ from django.views.generic import View
 from portfolio.models import Portfolio
 from portfolio.forms import *
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 from portfolio.profile import ProfileInfo
 
 # Create your views here.
 
 from django.template.defaultfilters import register
 
+################################################################################
+
 
 @register.filter(name="isinstance")
 def isinstance_filter(val, instance_type):
     return isinstance(val, eval(instance_type))
+
+
+def check_user_login(request):
+    """
+    Check whether the current user is logged in or not.
+    :param request: request parameter of view.
+    :return: True if logged in or False if anonymous user.
+    """
+    if request.user.is_anonymous():
+        return False
+    return True
+
+################################################################################
 
 # TODO: class기반의 view로 바꿔주면 백단에서 더욱편함.
 # 현재는 프론트단을 위해 임시로 def를 만든 것.
@@ -27,10 +43,17 @@ def portfolio_main_view(request, pk):
     return render(request, 'portfolio/index.html', {'user': request.user, 'portfolio': portfolio})
 
 
+################################################################################
+
+
 class ProfileView(View):
 
+    """
+    Render current user portfolio profile.
+    This view shows all information including private profile.
+    """
     def get(self, request):
-        if not self.check_user(request):
+        if not check_user_login(request):
             return HttpResponse(status=400)
 
         """Get portfolio and profile from user"""
@@ -43,16 +66,50 @@ class ProfileView(View):
 
         return render(request, 'portfolio/profile_info.html', context)
 
-    @staticmethod
-    def check_user(request):
-        if request.user.is_anonymous():
-            return False
-        return True
+
+################################################################################
+
+
+class ProfilePublicView(View):
+
+    def get(self, request, pk):
+
+        """
+        Render an user profile only public checked.
+        :param pk: primay key or the portfolio.
+        """
+
+        try:
+            """Get portfolio and profile from user primary key"""
+            portfolio = Portfolio.objects.get(pk=pk)
+            profile = portfolio.profile.get_public_profile()
+
+        except ObjectDoesNotExist:
+            """If the portfolio does not exist, return with error code"""
+            return HttpResponse(status=404)
+
+        context = {
+            'profile': profile
+        }
+
+        return render(request, 'portfolio/profile_info.html', context)
+
+
+################################################################################
 
 
 class ProfileEditView(View):
 
     def get(self, request):
+
+        """
+        Renders editing view for current user portfolio profile.
+         It needs "profile" parameter by GET method. "profile" parameter represents
+        the profile information to edit and the domain of "profile" parameter is
+        defined in profile.py.
+        :return: rendered html for editing portfolio profile.
+        """
+
         if not self.check_all(request):
             return HttpResponse(status=400)
 
@@ -64,6 +121,16 @@ class ProfileEditView(View):
         return render(request, 'portfolio/profile-edit.html', context)
 
     def post(self, request):
+
+        """
+        Edits portfolio profile for an user.
+         It needs "profile" parameter by GET method and it needs "index" parameter
+        more if the profile is array. "profile" parameter represents the profile
+        information to edit and "index" represents the array index to change when
+        the profile is array.
+        :return: status 200 code if successfully edited, or status 400 if not.
+        """
+
         if not self.check_all(request):
             return HttpResponse(status=400)
 
@@ -134,39 +201,51 @@ class ProfileEditView(View):
 
     @staticmethod
     def check_parameter(request):
-        """if "profile" is not in URL parameter"""
+        """
+        Checks "profile" parameter by GET method exists or not.
+        :return: True if exist or false if not exist.
+        """
         if 'profile' not in request.GET:
             return False
         return True
 
     @staticmethod
     def check_parameter_value(request):
+        """
+        Checks whether "profile" parameter is in domain.
+        :return: True if in or false if not in.
+        """
         profile_value = request.GET['profile']
         """if "profile" parameter value is not registered profile info"""
         if profile_value not in ProfileInfo.PROFILE:
             return False
         return True
 
-    @staticmethod
-    def check_user(request):
-        """if anonymous user"""
-        if request.user.is_anonymous():
-            return False
-        return True
-
     def check_all(self, request):
-        if self.check_parameter(request) and self.check_parameter_value(request) and self.check_user(request):
+        """
+        Checks "profile" parameter is appropriate and signed in.
+        :return: True if all condition satisfies or false if not.
+        """
+        if self.check_parameter(request) and self.check_parameter_value(request) and check_user_login(request):
             return True
         return False
 
+
 # 임시
+
+
 def activity(request):
     return render(request, 'portfolio/activity.html')
+
+
 def activity_edit(request):
     return render(request, 'portfolio/activity_edit.html')
+
+
 def tab(request):
     return render(request, 'portfolio/tab.html')
+
+
 def story_edit(request):
-    return render(request, 'portfolio/story_edit.html')
-def profile_temp(request):
-    return render(request, 'portfolio/profile_temp.html')
+    context = { 'portfolio':request.user.get_user_portfolio() }
+    return render(request, 'portfolio/story_edit.html', context)

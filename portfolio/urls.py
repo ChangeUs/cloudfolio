@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', portfolio_main_view, name='portfolio_main_view'),
 
     url(r'^profile/$', ProfileView.as_view(), name='portfolio_profile'),
+    url(r'^profile/(?P<pk>[0-9]+)/$', ProfilePublicView.as_view(), name='portfolio_public_view'),
     url(r'^profile/edit$', ProfileEditView.as_view()),
 
     # 임시
