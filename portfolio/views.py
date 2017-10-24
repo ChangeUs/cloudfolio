@@ -46,6 +46,25 @@ def portfolio_main_view(request, pk):
 ################################################################################
 
 
+class ActivityCreateView(View):
+
+    def get(self, request, tab_id):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        form = ActivityCreationForm()
+
+        context = {
+            'form': form,
+            'tab_id': tab_id
+        }
+
+        return render(request, 'portfolio/activity-create.html', context)
+
+
+################################################################################
+
+
 class ProfileView(View):
 
     """

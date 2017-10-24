@@ -15,6 +15,7 @@ urlpatterns = [
     # 임시
     url(r'^activity/$', activity, name='activity'),
     url(r'^activity_edit/$', activity_edit, name='activity_edit'),
+    url(r'^activity/create/(?P<tab_id>[0-9]+)/$', ActivityCreateView.as_view(), name='activity_create'),
     url(r'^tab/$', tab, name='tab'),
     url(r'^story_edit/$', story_edit, name='story_edit'),
 
