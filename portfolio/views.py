@@ -245,7 +245,9 @@ def activity_edit(request):
 def tab(request):
     return render(request, 'portfolio/tab.html')
 
-
 def story_edit(request):
     context = { 'portfolio':request.user.get_user_portfolio() }
     return render(request, 'portfolio/story_edit.html', context)
+
+def profile_temp(request):
+    return render(request, 'portfolio/profile_temp.html')
