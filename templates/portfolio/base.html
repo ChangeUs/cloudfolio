@@ -233,18 +233,16 @@
 
                         {% for tab in portfolio.get_all_tabs %}
                             <div class="list-view-group-container list-activity">
-                                <a href="{% url 'portfolios:tab' tab.id %}">
-                                    <div class="list-view-group-header">
+                                    <div class="list-view-group-header link" onclick="goTab({{ tab.id }})">
                                         <span>{{ tab.title }}</span>
                                         <a class="list-refresh" href="{% url 'portfolios:activity_create' tab.id %}">
                                             &nbsp;액티비티 <i class="fa fa-plus"></i>
                                         </a>
                                     </div>
-                                </a>
                             <ul class="no-padding">
                                 <!-- 액티비티 단위 -->
                                 {% for activity in tab.get_all_activities %}
-                                <li class="item padding-15 active">
+                                <li class="item padding-15 active link" onclick="goActivity({{ activity.id }})">
                                     <!-- picutre / normal -->
                                     <div class="inline m-l-15 normal">
                                         <p class="recipients no-margin hint-text small">2018.08.19</p>
@@ -453,6 +451,15 @@
             </script>
         {% endfor %}
     {% endif %}
+      <script>
+        function goActivity(actvity_id) {
+            window.location.href='/portfolios/activity/'+actvity_id;
+        }
+        function goTab(tab_id) {
+            window.location.href='/portfolios/tab/'+tab_id;
+        }
+
+    </script>
 
   </body>
 </html>
