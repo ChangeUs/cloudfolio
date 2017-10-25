@@ -82,7 +82,9 @@ pages.css 수정항목
 .split-view .split-list .list-profile .item .body {
     height: auto;
 }
-
+.split-view .split-list .list-profile .item .body .tag {
+  margin-right: 10px;
+}
 
 /*------------------------------------------------------------------
 리스트뷰 일반 항목
