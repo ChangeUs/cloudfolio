@@ -52,19 +52,12 @@ class Portfolio(TimeStampedModel):
 
     def make_tab(self, title):
         tab = Tab(
-            portfolio=self.id,
+            portfolio=self,
             title=title
         )
 
         tab.save()
         return tab
-
-    def make_tab(self, title, privacy):
-        tab = Tab(
-            portfolio=self.id,
-            title=title,
-            privacy=privacy
-        )
 
         tab.save()
         return tab
@@ -112,7 +105,8 @@ class Tab(TimeStampedModel):
 
     def make_activity(self, title, summary):
         activity = Activity(
-            tab=self.id,
+            tab=self,
+            portfolio=self.portfolio,
             title=title,
             summary=summary)
 
@@ -121,7 +115,8 @@ class Tab(TimeStampedModel):
 
     def make_activity(self, title, summary, privacy):
         activity = Activity(
-            tab=self.id,
+            tab=self,
+            portfolio=self.portfolio,
             title=title,
             summary=summary,
             privacy=privacy)
@@ -181,7 +176,8 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     def make_story(self, title, content):
         story = Story(
-            activity=self.id,
+            activity=self,
+            portfolio=self.portfolio,
             title=title,
             content=content)
 
@@ -190,7 +186,8 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
 
     def make_story(self, title, content, privacy):
         story = Story(
-            activity=self.id,
+            activity=self,
+            portfolio=self.portfolio,
             title=title,
             content=content,
             privacy=privacy)
@@ -235,8 +232,8 @@ class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
     title = models.CharField(max_length=MAX_TITLE_LENGTH, blank=True, default="")
     content = models.TextField()
 
-    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True)
-    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True)
+    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True, null=True)
+    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True, null=True)
 
     # Meta information #
 
