@@ -1,0 +1,1998 @@
+/*CSS Content*/
+
+/*1. Basic*/
+/*2. Photo*/
+/*3. Icons*/
+/*4. Text Heading*/
+/*5. Main Section*/
+/*6. Text About*/
+/*7. Text Education*/
+/*8. Text Experience*/
+/*9. Text Skills*/
+/*10. Recent*/
+/*11. Text Contacts*/
+/*12. Buttons*/
+/*13. Buttons Min*/
+/*14. Mobile Navigation*/
+/*15. Modal Page Recent Works*/
+/*16. Scrollbar Webkit*/
+/*17. Optimized CSS for tablet portrait orientation*/
+/*18. Optimized CSS for tablet landscape orientation*/
+/*19. Optimized CSS for mobile portrait orientation*/
+/*20. Optimized CSS for mobile landscape orientation*/
+/*21. Animation*/
+
+
+/*=============Basic=============*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.frame {
+    border: 3vmin solid #00cee2;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.frame-scroll {
+    border: 3vmin solid #00cee2;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 0;
+}
+
+.frame-scroll-top {
+    width: 100%;
+    height: 3vmin;
+    position: fixed;
+    background-color: #00cee2;
+    z-index: 2;
+}
+
+.frame-scroll-bottom {
+    width: 100%;
+    height: 3vmin;
+    position: fixed;
+    bottom:0;
+    background-color: #00cee2;
+    z-index: 2;
+}
+
+.container-scroll {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/*=============Photo=============*/
+
+.photo {
+    background: url('../pic/photo.jpg') 50% 50% no-repeat;
+    background-size: contain;
+    width: 45vmin;
+    height: 45vmin;
+    border: 0 solid white;
+    border-radius: 50%;
+    margin: 15vmin 10vmin 5vmin 15vmin;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.photo-min {
+    background: url('../pic/photo.jpg') 50% 50% no-repeat;
+    background-size: contain;
+    width: 30vmin;
+    height: 30vmin;
+    border: 0 solid white;
+    border-radius: 50%;
+    margin: 10vmin 5vmin 5vmin 10vmin;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+.photo-min:hover {
+    box-shadow: 0 1vmin 2vmin 0 lightblue;
+    filter: brightness(1.04);
+    transition-duration: 0.3s;
+}
+
+/*=============Icons=============*/
+
+.icons {
+    width: 45vmin;
+    height: 3.5vmin;
+    margin: 4vmin 10vmin 10vmin 15vmin;
+    text-align: center;
+}
+
+.icons a,
+.icons-mobile-nav-footer a {
+    width: 3.5vmin;
+    height: 3.5vmin;
+    margin: 0 1vmin;
+    display: inline-block;
+    background-size: contain;
+
+    opacity: 0;
+    animation-name: appearance-rotate;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.icons-min a {
+    width: 5vmin;
+    height: 5vmin;
+    margin: 0 1vmin;
+    display: inline-block;
+    background-size: contain;
+
+    opacity: 0;
+    animation-name: appearance-rotate;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.icons a:hover,
+.icons-min a:hover {
+    filter: drop-shadow(0 0vmin 0.5vmin #00cee2);
+    transition-duration: 0.2s;
+}
+
+.icons-min {
+    width: 30vmin;
+    height: 3.5vmin;
+    margin: 4vmin 5vmin 15vmin 10vmin;
+    text-align: center;
+}
+
+.icon-linkedin {
+    background: url('../pic/ic_linkedin.svg') no-repeat 50% 50%;
+
+    animation-delay: 1.6s;
+}
+
+.icon-behance {
+    background: url('../pic/ic_behance.svg') no-repeat 50% 50%;
+
+    animation-delay: 1.5s;
+}
+
+.icon-dribble {
+    background: url('../pic/ic_dribbble.svg') no-repeat 50% 50%;
+
+    animation-delay: 1.4s;
+}
+
+.icon-upwork {
+    background: url('../pic/ic_upwork.svg') no-repeat 50% 50%;
+
+    animation-delay: 1.3s;
+}
+
+.icon-edu,
+.icon-cert {
+    width: 4vmin;
+    height: 4vmin;
+    margin-right: 2vmin;
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.icon-edu {
+    background: url('../pic/ic_edu.svg') no-repeat 50% 50%;
+}
+
+.icon-cert {
+    background: url('../pic/ic_cert.svg') no-repeat 50% 50%;
+}
+
+/*=============Text Heading=============*/
+
+.text-heading {
+    margin: 2vmin 15vmin 5vmin 10vmin;
+}
+
+.text-heading h2 {
+    font-size: 5.7vmin;
+    line-height: 3.5vmin;
+    font-weight: 100;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.text-heading h2:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.text-heading h2:last-child {
+    text-transform: uppercase;
+    font-weight: 400;
+
+    animation-delay: 0.4s;
+}
+
+.text-heading h2 span {
+    color: #00cee2;
+}
+
+/*=============Main Section=============*/
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10vmin 10vmin 5vmin 5vmin;
+    width: 90vmin;
+    height: 50vmin;
+    z-index: 1;
+}
+
+.text-about,
+.text-contacts,
+.text-education,
+.text-experience {
+    display: flex;
+    flex-direction: column;
+    width: 55vmin;
+    max-height: 50vmin;
+    overflow-x: hidden;
+    margin: 0 0 auto 0;
+    padding-left: 4vmin;
+    border-left: 2px solid #00cee2;
+    padding-right: 2vmin;
+
+    position: relative;
+
+    /*Scroll style for IE*/
+    scrollbar-face-color: #00cee2;
+    scrollbar-arrow-color: #00cee2;
+    scrollbar-shadow-color: #00cee2;
+}
+
+.main-section h2 {
+    margin: 0 3vmin 2vmin 0;
+    font-weight: 100;
+    line-height: 3.5vmin;
+    font-size: 4.5vmin;
+    align-self: flex-end;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.main-section h2:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.main-section h3 {
+    margin: 0 3vmin 1vmin 0;
+    font-weight: 100;
+    color: #00cee2;
+    line-height: 2.5vmin;
+    font-size: 3.5vmin;
+    align-self: flex-end;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+
+.cv-button {
+    display: inline-block;
+    width: 11.5vmin;
+    height: 11.5vmin;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding-top: 6.3vmin;
+    font-size: 2.5vmin;
+    background: #00cee2 url('../pic/ic_arrow.svg') no-repeat 50% 30%;
+    background-size: 3vmin;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    outline: none;
+    margin: 5vmin auto auto auto;
+    z-index: 1;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.cv-button:hover {
+    background-color: #00dcf0;
+    box-shadow: 0 1vmin 2vmin 0 lightblue;
+    transition-duration: 0.3s;
+}
+
+.text-about p,
+.text-contacts p,
+.text-education p,
+.text-experience p {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vmin;
+    font-weight: 100;
+    line-height: 3.25vmin;
+}
+
+/*=============Text About=============*/
+
+.text-about p,
+.text-contacts p {
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.text-about p:first-child,
+.text-contacts p:first-child {
+    animation-delay: 0.4s;
+}
+
+.text-about p:nth-child(2),
+.text-contacts p:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.text-about p:nth-child(3),
+.text-contacts p:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.text-about p:nth-child(4),
+.text-contacts p:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+/*=============Text Education=============*/
+
+.main-section .text-education {
+    display: block;
+}
+
+.edu,
+.cert {
+    display: flex;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.edu {
+    padding-bottom: 1vmin;
+    margin-bottom: 2vmin;
+
+    animation-delay: 0.5s;
+}
+
+.cert {
+    animation-delay: 0.7s;
+}
+
+.text-education h4 {
+    margin: 2.5vmin 0 1.5vmin 0;
+    padding: 0;
+    font-size: 2vmin;
+    font-weight: 700;
+}
+
+.text-education h4:first-child {
+    margin: 0 0 2vmin 0;
+}
+
+.text-education p {
+    margin: 0;
+    padding: 0;
+    line-height: 2.5vmin;
+}
+
+/*=============Text Experience=============*/
+
+.text-experience .exp-time {
+    color: #999999;
+}
+
+.exp-feature {
+    position: relative;
+    left: 5vmin;
+}
+
+.exp-feature::before {
+    content: '';
+    width: 2.5vmin;
+    height: 1.25vmin;
+    position: absolute;
+    left: -5vmin;
+    transform: rotate(-45deg);
+    border: 1px solid #00cee2;
+    border-top-style: none;
+    border-right-style: none;
+}
+
+.text-experience h4 {
+    margin: 0 0 1vmin 0;
+    padding: 0;
+    font-size: 2vmin;
+    font-weight: 700;
+}
+
+.text-experience p {
+    margin: 0 0 1vmin 0;
+    padding: 0;
+    line-height: 2.5vmin;
+}
+
+.text-experience div {
+    margin-top: 2.75vmin;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.text-experience div:first-of-type {
+    margin-top: 0;
+
+    animation-delay: 0.6s;
+}
+
+.text-experience div:nth-of-type(2) {
+    animation-delay: 0.7s;
+}
+
+.text-experience div:nth-of-type(3) {
+    animation-delay: 0.8s;
+}
+
+.text-experience div:nth-of-type(4) {
+    animation-delay: 0.9s;
+}
+
+.text-experience div:nth-of-type(5) {
+    animation-delay: 1.0s;
+}
+
+.text-experience div:nth-of-type(6) {
+    animation-delay: 1.1s;
+}
+
+.text-experience div:nth-of-type(7) {
+    animation-delay: 1.2s;
+}
+
+/*=============Text Skills=============*/
+
+.text-skills {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10vmin 10vmin 5vmin 5vmin;
+    width: 90vmin;
+    height: 45vmin;
+    position: relative;
+    left: 4vmin;
+}
+
+.text-skills h2 {
+    color: #00cee2;
+    font-size: 3vmin;
+    margin: 3vmin 0 3vmin 0;
+    padding: 0 0 0 2.75vmin;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.text-skills-second h2:first-child {
+    animation-delay: 0.45s;
+}
+
+.text-skills-second h2:nth-of-type(2) {
+    animation-delay: 0.7s;
+}
+
+.text-skills ul {
+    margin: 0;
+    list-style: none;
+    font-size: 2vmin;
+    line-height: 4vmin;
+    padding: 0 0 0 2.75vmin;
+}
+
+.list-skills li,
+.list-languages li,
+.list-tools li {
+    position: relative;
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.list-skills li::before,
+.list-languages li::before {
+    content: '';
+    width: 2.5vmin;
+    height: 1.25vmin;
+    position: absolute;
+    left: -5vmin;
+    top: 0.5vmin;
+    transform: rotate(-45deg);
+    border: 1px solid #00cee2;
+    border-top-style: none;
+    border-right-style: none;
+}
+
+.list-skills li:first-child {
+    animation-delay: 0.05s;
+}
+
+.list-skills li:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.list-skills li:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.list-skills li:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.list-skills li:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.list-skills li:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+.list-skills li:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+.list-skills li:nth-child(8) {
+    animation-delay: 0.4s;
+}
+
+.list-languages li:first-child {
+    animation-delay: 0.75s;
+}
+
+.list-languages li:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.list-tools-adobe {
+    animation-delay: 0.5s;
+}
+
+.list-tools-sketch {
+    animation-delay: 0.55s;
+}
+
+.list-tools-ux {
+    animation-delay: 0.6s;
+}
+
+.list-tools-pm {
+    animation-delay: 0.65s;
+}
+
+.list-tools li::before {
+    content: '';
+    width: 2.75vmin;
+    height: 2.75vmin;
+    position: absolute;
+    left: -5.5vmin;
+}
+
+.list-tools-adobe::before {
+    background: url('../pic/ic_adobe.svg') 0 bottom no-repeat;
+}
+
+.list-tools-sketch::before {
+    background: url('../pic/ic_sketch.svg') 0 bottom no-repeat;
+}
+
+.list-tools-ux::before {
+    background: url('../pic/ic_ux.svg') 0 bottom no-repeat;
+}
+
+.list-tools-pm::before {
+    background: url('../pic/ic_pm.svg') 0 bottom no-repeat;
+}
+
+/*=============Recent=============*/
+
+.recent-head {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.recent h2 {
+    padding: 0;
+    margin: 10vmin 0.5vmin 5vmin 25vmin;
+    width: 60vmin;
+    color: #00cee2;
+    font-size: 7vmin;
+    font-weight: 100;
+    line-height: 7vmin;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.icons-recent {
+    width: 60vmin;
+    margin: 15vmin 25vmin 5vmin 0.5vmin;
+    text-align: right;
+}
+
+.icons-recent a:last-child {
+    margin-right: 0;
+}
+
+.icons-recent .icon-linkedin {
+    animation-delay: 0.2s;
+}
+
+.icons-recent .icon-behance {
+    animation-delay: 0.3s;
+}
+
+.icons-recent .icon-dribble {
+    animation-delay: 0.4s;
+}
+
+.icons-recent .icon-upwork {
+    animation-delay: 0.5s;
+}
+
+.recent-img {
+    display: flex;
+    justify-content: center;
+}
+
+.recent-img-big {
+    margin: 1vmin 0.5vmin 1vmin 25vmin;
+    background: url('../pic/recent-img-big.jpg') 50% 50% no-repeat;
+    background-size: cover;
+    width: 60vmin;
+    height: 40vmin;
+
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.8s;
+    animation-delay: 0.7s;
+    animation-fill-mode: forwards;
+}
+
+.recent-img-big:hover {
+    filter: brightness(1.1);
+}
+
+.recent-img-small {
+    margin: 1vmin 25vmin 1vmin 0.5vmin;
+    width: 60vmin;
+    height: 40vmin;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recent-img-small-top {
+    width: 60vmin;
+    height: 20vmin;
+    background: url('../pic/recent-img-small-top.jpg') 50% 50% no-repeat;
+    background-size: cover;
+
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.8s;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+.recent-img-small-top:hover,
+.recent-img-small-bottom-1:hover,
+.recent-img-small-bottom-2:hover {
+    filter: brightness(1.1);
+}
+
+.recent-img-small-bottom-1 {
+    width: 29.5vmin;
+    height: 19vmin;
+    margin: 1vmin 0.5vmin 0 0;
+    background: url('../pic/recent-img-small-bottom-1.jpg') 50% 50% no-repeat;
+    background-size: cover;
+
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.8s;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.recent-img-small-bottom-2 {
+    width: 29.5vmin;
+    height: 19vmin;
+    margin: 1vmin 0 0 0.5vmin;
+    background: url('../pic/recent-img-small-bottom-2.jpg') 50% 50% no-repeat;
+    background-size: cover;
+
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s;
+
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.8s;
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards;
+}
+
+.recent .buttons-min {
+    width: 100vmin;
+    margin: 5vmin auto 10vmin auto;
+}
+
+.recent .buttons-min a:first-child {
+    padding: 4.3vmin 0;
+
+    animation-delay: 1.5s;
+}
+
+.recent .buttons-min a:nth-child(2) {
+    animation-delay: 1.4s;
+}
+
+.recent .buttons-min a:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.recent .buttons-min a:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+.recent .buttons-min a:nth-child(5) {
+    opacity: 0;
+    animation-name: appearance;
+    animation-delay: 1.1s;
+    animation-fill-mode: forwards;
+}
+
+.recent .buttons-min a:nth-child(6) {
+    animation-delay: 1.0s;
+}
+
+/*=============Text Contacts=============*/
+
+.text-contacts {
+    height: 50vmin;
+}
+
+.text-contacts a {
+    text-decoration: none;
+    color: black;
+}
+
+.text-contacts p {
+    position: relative;
+}
+
+.text-contacts p:not(:first-child) {
+    margin: 1vmin 0 0 5vmin;
+}
+
+.text-contacts p::before {
+    content: '';
+    width: 2.75vmin;
+    height: 2.75vmin;
+    position: absolute;
+    left: -5vmin;
+    top: -0.3vmin;
+}
+
+.contact-mail::before {
+    background: url('../pic/ic_mail.svg') 50% bottom no-repeat;
+}
+
+.contact-skype::before {
+    background: url('../pic/ic_skype.svg') 50% bottom no-repeat;
+}
+
+.text-contacts .contact-viber::before {
+    background: url('../pic/ic_viber.svg') 50% bottom no-repeat;
+}
+
+/*=============Buttons=============*/
+
+.buttons {
+    margin: 0 15vmin 0 10vmin;
+    position: relative;
+}
+
+.buttons-up, .buttons-bottom {
+    display: flex;
+    vertical-align: middle;
+}
+
+.buttons-up {
+    margin-bottom: 5vmin;
+}
+
+.buttons a {
+    display: inline-block;
+    width: 11.5vmin;
+    height: 11.5vmin;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 5vmin 0;
+    font-size: 1.6vmin;
+    background-color: #00cee2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 6vmin;
+    outline: none;
+}
+
+.buttons a:last-child {
+    margin-right: 0;
+}
+
+.buttons-up a,
+.buttons-bottom a {
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.buttons-up a:first-child {
+    animation-delay: 0.6s;
+}
+
+.buttons-up a:nth-child(2) {
+    padding: 4vmin 0;
+
+    animation-delay: 0.7s;
+}
+
+.buttons-up a:last-child {
+    animation-delay: 0.8s;
+}
+
+.buttons-bottom a:first-child {
+    animation-delay: 1.1s;
+}
+
+.buttons-bottom a:nth-child(2) {
+    animation-delay: 1.0s;
+}
+
+.buttons-bottom a:last-child {
+    animation-delay: 0.9s;
+}
+
+.buttons a:hover {
+    background-color: #00dcf0;
+    box-shadow: 0 1vmin 2vmin 0 lightblue;
+    transition-duration: 0.3s;
+}
+
+/*=============Buttons Min=============*/
+
+.buttons-min {
+    margin: 0 10vmin 3vmin 5vmin;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons-min a {
+    display: inline-block;
+    width: 10vmin;
+    height: 10vmin;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 4.3vmin 0;
+    font-size: 1.4vmin;
+    background-color: #00cee2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 6vmin;
+    outline: none;
+}
+
+.buttons-min a {
+    opacity: 0;
+    animation-name: appearance;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.buttons-min a:first-child {
+    padding: 3.5vmin 0;
+
+    animation-delay: 1.1s;
+}
+
+.buttons-min a:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.buttons-min a:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.buttons-min a:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.buttons-min a:last-child {
+    margin-right: 0;
+
+    animation-delay: 0.7s;
+}
+
+.buttons-min a:hover {
+    background-color: #20f0f7;
+    box-shadow: 0 1vmin 2vmin 0 lightblue;
+    transition-duration: 0.3s;
+}
+
+/*=============Mobile Navigation=============*/
+
+.icon-mobile-nav {
+    display: none;
+    position: absolute;
+    top: 8vmin;
+    right: 8vmin;
+}
+
+.element-icon-nav {
+    width: 11vmin;
+    height: 1.25vmin;
+    background-color: #00cee2;
+    margin: 1vmin 0;
+}
+
+.mobile-nav {
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 8vmin;
+    right: 5vmin;
+    background-color: #00cee2;
+    overflow-x: hidden;
+    padding-top: 20vmin;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav .close-btn {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    right: 5vmin;
+    font-size: 12vmin;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.mobile-nav-links a {
+    margin: 3vmin 5vmin 3vmin 5vmin;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 7vmin;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    font-weight: 400;
+}
+
+.mobile-nav-links a:hover {
+    color: #f1f1f1;
+}
+
+.icons-mobile-nav-footer {
+    display: flex;
+    margin: auto;
+}
+
+.icon-linkedin-white {
+    background: url('../pic/ic_linkedin_white.svg') no-repeat 50% 50%;
+}
+
+.icon-behance-white {
+    background: url('../pic/ic_behance_white.svg') no-repeat 50% 50%;
+}
+
+.icon-dribble-white {
+    background: url('../pic/ic_dribbble_white.svg') no-repeat 50% 50%;
+}
+
+.icon-upwork-white {
+    background: url('../pic/ic_upwork_white.svg') no-repeat 50% 50%;
+}
+
+/*=============Modal Page Recent Works=============*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #00cee2;
+    color: white;
+    font-weight: 400;
+    margin: auto;
+    padding: 0;
+    width: 80vmin;
+}
+
+.close-btn-modal {
+    color: white;
+    position: absolute;
+    top: 3vmin;
+    right: 9vmin;
+    font-size: 7vmin;
+    font-weight: 700;
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-img {
+    display: none;
+    text-align: center;
+}
+
+.modal-img img {
+    width: 100%;
+}
+
+.modal-img-prev,
+.modal-img-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 2.5vmin;
+    margin-top: -5vmin;
+    color: white;
+    font-weight: 700;
+    font-size: 3.5vmin;
+    transition: 0.6s ease;
+    border-radius: 0 1vmin 1vmin 0;
+    user-select: none;
+}
+
+.modal-img-next {
+    right: 0;
+    border-radius: 1vmin 0 0 1vmin;
+}
+
+.modal-img-prev:hover,
+.modal-img-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-img p {
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding: 1.2vmin;
+    font-size: 2vmin;
+}
+
+.modal-img p a {
+    color: white;
+    text-decoration: none;
+}
+
+/*=============Scrollbar Webkit=============*/
+
+::-webkit-scrollbar-track {
+    background-color:#ecedee
+}
+
+::-webkit-scrollbar-thumb {
+    background-color:#00cee2;
+}
+
+::-webkit-scrollbar{
+    width: 0.5vmin;
+}
+
+/*=============Optimized CSS for tablet portrait orientation=============*/
+
+@media (orientation: portrait) and (min-width: 651px) and (max-width: 1100px) {
+
+    .photo {
+        width: 40vmin;
+        height: 40vmin;
+        margin: 10vmin auto auto auto;
+    }
+
+    .photo-min {
+        width: 30vmin;
+        height: 30vmin;
+        margin: auto;
+    }
+
+    .icons {
+        margin: auto auto 5vmin auto;
+        order: 1;
+    }
+
+    .icons-min {
+        margin: auto auto 5vmin auto;
+        order: 1;
+        width: 40vmin;
+    }
+
+    .icons-min a {
+        width: 3.5vmin;
+        height: 3.5vmin;
+        margin: 0 1vmin;
+    }
+
+    .text-heading {
+        margin: auto auto auto auto;
+    }
+
+    .main-section {
+        margin: 0 5vmin 5vmin 5vmin;
+        width: 85vmin;
+        height: 50vmin;
+    }
+
+    .text-about,
+    .text-contacts,
+    .text-education,
+    .text-experience {
+        width: 45vmin;
+        margin: 0 0 auto 0;
+        padding-left: 3vmin;
+        border-left: 2px solid #00cee2;
+    }
+
+    .text-skills {
+        margin: 0 5vmin 5vmin 5vmin;
+        width: 85vmin;
+        height: 50vmin;
+        position: relative;
+        left: 6vmin;
+    }
+
+    .text-skills ul {
+        width: 35vmin;
+    }
+
+    .text-about p,
+    .text-contacts p,
+    .text-education p,
+    .text-experience p {
+        margin-top: 0;
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.2vmin;
+        font-weight: 100;
+        line-height: 3.25vmin;
+    }
+
+    .buttons {
+        margin: auto auto auto auto;
+    }
+
+    .buttons-min {
+        margin: 0 10vmin 3vmin 10vmin;
+    }
+
+    .buttons-min a {
+        margin-right: 6vmin;
+    }
+
+    .recent-head {
+        width: 60vmin;
+        margin: auto;
+    }
+
+    .recent h2 {
+        margin: 10vmin 5vmin 5vmin 0;
+        width: 25vmin;
+        font-size: 5vmin;
+        line-height: 5vmin;
+    }
+
+    .icons-recent {
+        width: 25vmin;
+        margin: 10vmin 0 5vmin 5vmin;
+    }
+
+    .recent-img {
+        flex-direction: column;
+        vertical-align: middle;
+    }
+
+    .recent .buttons-min {
+        width: 50vmin;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .recent .buttons-min a {
+        margin: 1.5vmin 3vmin;
+    }
+
+    .recent-img-big {
+        margin: 1vmin auto 0.5vmin auto;
+        height: 20vmin;
+    }
+
+    .recent-img-small {
+        margin: 0.5vmin auto 1vmin auto;
+    }
+}
+
+/*=============Optimized CSS for tablet landscape orientation=============*/
+
+@media (orientation: landscape) and (min-width: 901px) and (max-width: 1400px) {
+
+    .photo {
+        width: 35vmin;
+        height: 35vmin;
+        margin: 15vmin 10vmin 5vmin 15vmin;
+    }
+
+    .photo-min {
+        width: 25vmin;
+        height: 25vmin;
+        margin: 10vmin 2vmin 5vmin 10vmin;
+    }
+
+    .icons {
+        width: 35vmin;
+    }
+
+    .icons-min {
+        width: 25vmin;
+    }
+
+    .icons-min a {
+        width: 3.75vmin;
+        height: 3.75vmin;
+        margin: 0 1vmin;
+    }
+
+    .text-heading {
+        margin: 2vmin 15vmin 2vmin 10vmin;
+    }
+
+    .main-section {
+        width: 75vmin;
+        height: 45vmin;
+    }
+
+    .text-about,
+    .text-contacts,
+    .text-education,
+    .text-experience {
+        width: 50vmin;
+    }
+
+    .main-section h2 {
+        line-height: 2.5vmin;
+        font-size: 3.5vmin;
+    }
+
+    .main-section h3 {
+        line-height: 1.5vmin;
+        font-size: 2.5vmin;
+    }
+
+    .text-skills {
+        width: 75vmin;
+        height: 50vmin;
+    }
+
+    .text-skills ul {
+        width: 30vmin;
+    }
+}
+
+/*=============Optimized CSS for mobile portrait orientation=============*/
+
+@media (orientation: portrait) and (max-width: 650px) {
+
+    .container-scroll {
+        flex-wrap: nowrap;
+        height: auto;
+    }
+
+    .photo {
+        width: 45vmin;
+        height: 45vmin;
+        margin: 20vmin auto 5vmin auto;
+    }
+
+    .photo-min {
+        width: 45vmin;
+        height: 45vmin;
+        margin: 25vmin auto 5vmin auto;
+    }
+
+    .text-heading {
+        margin: 3vmin auto 3vmin auto;
+    }
+
+    .text-heading h2 {
+        font-size: 7.5vmin;
+    }
+
+    .main-section {
+        flex-wrap: nowrap;
+        margin: 5vmin auto 10vmin auto;
+        width: 80vmin;
+        height: auto;
+    }
+
+    .text-about,
+    .text-contacts,
+    .text-education,
+    .text-experience {
+        width: 80vmin;
+        margin: 5vmin auto 15vmin auto;
+        border: none;
+        padding: 0;
+        overflow-x: visible;
+        max-height: none;
+    }
+
+    .main-section h2 {
+        margin: 0 auto 3vmin auto;
+        line-height: 8vmin;
+        font-size: 10vmin;
+        align-self: center;
+    }
+
+    .main-section h3 {
+        margin: 2vmin auto 1vmin auto;
+        line-height: 6vmin;
+        font-size: 8vmin;
+        align-self: center;
+    }
+
+    .cv-button {
+        bottom: 8.5vmin;
+        right: 8.5vmin;
+        position: fixed;
+        width: 15vmin;
+        height: 15vmin;
+        padding: 7.5vmin 0;
+        font-size: 4vmin;
+        background-position: 50% 25%;
+        background-size: 4vmin;
+    }
+
+    .cv-button:hover {
+        font-size: 3.5vmin;
+        background-color: #20f0f7;
+        box-shadow: 0 1vmin 2vmin 0 lightblue;
+    }
+
+    .text-about p,
+    .text-contacts p,
+    .text-education p,
+    .text-experience p {
+        font-size: 5vmin;
+        line-height: 6vmin;
+    }
+
+    .text-about p:last-child,
+    .text-contacts p:last-child,
+    .text-education p:last-child,
+    .text-experience p:last-child {
+        margin-bottom: 2vmin;
+    }
+
+    .edu,
+    .cert {
+        display: block;
+    }
+
+    .text-education p {
+        text-align: center;
+    }
+
+    .text-education h4 {
+        font-size: 5vmin;
+        text-align: center;
+        margin-top: 4vmin;
+    }
+
+    .edu-text p:last-child {
+        margin: 0;
+    }
+
+    .text-experience h4 {
+        font-size: 5vmin;
+        margin: 0;
+    }
+
+    .text-experience .exp-time {
+        margin: 5vmin 0 0 0;
+    }
+
+    .exp-feature:before {
+        top: 1.5vmin;
+    }
+
+    .text-skills {
+        flex-wrap: nowrap;
+        margin: 5vmin 10vmin 15vmin 20vmin;
+        width: 70vmin;
+    }
+
+    .text-skills h2 {
+        margin: 0 auto 3vmin 0;
+        line-height: 12.5vmin;
+        font-size: 12.5vmin;
+        font-weight: 400;
+        padding: 0 2.75vmin 0 0;
+    }
+
+    .text-skills h2:first-child {
+        animation-name: appearance-min;
+    }
+
+    .text-skills ul {
+        font-size: 5vmin;
+        line-height: 10vmin;
+        margin: 0 auto 10vmin auto;
+        padding: 0 2.75vmin 0 0;
+    }
+
+    .list-skills li::before,
+    .list-languages li::before {
+        width: 4vmin;
+        height: 2vmin;
+        left: -8vmin;
+        top: 3vmin;
+    }
+
+    .list-tools li::before {
+        width: 5.5vmin;
+        height: 5.5vmin;
+        left: -9vmin;
+        top: 1.5vmin;
+    }
+
+    .text-contacts p:not(:first-child) {
+        margin-left: 6vmin;
+    }
+
+    .text-contacts p::before {
+        width: 5.5vmin;
+        height: 5.5vmin;
+        left: -7vmin;
+        top: -1vmin;
+    }
+
+    .icons {
+        width: auto;
+        order: 1;
+        margin: 15vmin auto 10vmin auto;
+    }
+
+    .icons-min {
+        display: none;
+    }
+
+    .icons a,
+    .icons-mobile-nav-footer a {
+        width: 8vmin;
+        height: 8vmin;
+        margin: 0 2vmin;
+    }
+
+    .icon-edu,
+    .icon-cert {
+        width: 10vmin;
+        height: 10vmin;
+        margin: 0 auto 2vmin auto;
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .buttons-min {
+        display: none;
+    }
+
+    .icon-mobile-nav {
+        display: block;
+    }
+
+    .recent {
+        width: 100%;
+    }
+
+    .recent-head h2 {
+        margin: 20vmin auto 5vmin auto;
+        font-size: 12vmin;
+        width: auto;
+        text-align: center;
+    }
+
+    .recent-img {
+        width: 94vmin;
+        margin: auto;
+        display: block;
+    }
+
+    .recent-img-big {
+        width: 94vmin;
+        height: 70vmin;
+        margin: 0 0 2vmin 0;
+        position: relative;
+
+        animation-delay: 0.2s;
+    }
+
+    .recent-img-small {
+        display: block;
+        width: 94vmin;
+        margin: 0 0 2vmin 0;
+        position: relative;
+    }
+
+    .recent-img-small-top {
+        width: 94vmin;
+        height: 70vmin;
+        margin: 0 0 2vmin 0;
+
+        animation-delay: 0.4s;
+    }
+
+    .recent-img-small-bottom-1 {
+        width: 94vmin;
+        height: 70vmin;
+        margin: 0 0 2vmin 0;
+
+        animation-delay: 0.6s;
+    }
+
+    .recent-img-small-bottom-2 {
+        width: 94vmin;
+        height: 70vmin;
+        margin: 0 0 2vmin 0;
+
+        animation-delay: 0.8s;
+    }
+
+    .icons-recent {
+        display: none;
+    }
+
+    .container-scroll-recent {
+        height: auto;
+    }
+
+    .mobile-nav {
+        height: 75%;
+    }
+
+    .modal-content {
+        width: 100%;
+        margin: auto 0 auto 0;
+    }
+
+    .modal-img p {
+        font-size: 3.5vmin;
+    }
+}
+
+/*=============Optimized CSS for mobile landscape orientation=============*/
+
+@media (orientation: landscape) and (max-width: 900px) {
+
+    body {
+        align-items: center;
+    }
+
+    .container-scroll {
+        align-items: flex-start;
+    }
+
+    .photo {
+        width: 45vmin;
+        height: 45vmin;
+        margin: 20vmin 5vmin 20vmin 10vmin;
+    }
+
+    .photo-min {
+        width: 35vmin;
+        height: 35vmin;
+        margin: auto 15vmin;
+        position: fixed;
+    }
+
+    .text-heading {
+        margin: 8vmin 10vmin 5vmin 10vmin;
+    }
+
+    .text-heading h2 {
+        font-size: 7vmin;
+    }
+
+    .main-section {
+        flex-wrap: nowrap;
+        margin: 5vmin 10vmin 15vmin 60vmin;
+        width: 50%;
+    }
+
+    .text-about,
+    .text-contacts,
+    .text-education,
+    .text-experience {
+        width: 100%;
+        margin: 5vmin auto 15vmin auto;
+        border: none;
+        padding: 0;
+        overflow-x: visible;
+    }
+
+    .main-section h2 {
+        margin: 0 auto 3vmin 0;
+        line-height: 8vmin;
+        font-size: 10vmin;
+        align-self: center;
+    }
+
+    .main-section h3 {
+        margin: 2vmin auto 1vmin 0;
+        line-height: 6vmin;
+        font-size: 8vmin;
+        align-self: center;
+    }
+
+    .cv-button {
+        bottom: 8.5vmin;
+        right: 8.5vmin;
+        position: fixed;
+        width: 15vmin;
+        height: 15vmin;
+        padding: 7.5vmin 0;
+        font-size: 3.5vmin;
+        background-size: 4vmin;
+        background-position: 50% 25%;
+    }
+
+    .cv-button:hover {
+        font-size: 3.5vmin;
+        background-color: #20f0f7;
+        box-shadow: 0 1vmin 2vmin 0 lightblue;
+    }
+
+    .text-about p,
+    .text-contacts p,
+    .text-education p,
+    .text-experience p {
+        font-size: 5vmin;
+        line-height: 6vmin;
+    }
+
+    .text-about div:last-child p:last-child,
+    .text-contacts div:last-child p:last-child,
+    .text-education div:last-child p:last-child,
+    .text-experience div:last-child p:last-child {
+        margin-bottom: 20vmin;
+    }
+
+    .text-about > p:last-child,
+    .text-contacts > p:last-child,
+    .text-education > p:last-child,
+    .text-experience > p:last-child {
+        margin-bottom: 20vmin;
+    }
+
+    .edu,
+    .cert {
+        display: block;
+    }
+
+    .edu-text p:last-child {
+        margin: 0;
+    }
+
+    .text-education .edu .edu-text p:last-child {
+        margin-bottom: 2vmin;
+    }
+
+    .text-education h4 {
+        font-size: 5vmin;
+    }
+
+    .text-experience h4 {
+        font-size: 5vmin;
+    }
+
+    .text-experience .exp-time {
+        margin: 5vmin 0 0 0;
+    }
+
+    .exp-feature:before {
+        top: 1.5vmin;
+    }
+
+    .text-skills {
+        flex-wrap: nowrap;
+        margin: 5vmin 10vmin 15vmin 70vmin;
+        width: 50%;
+    }
+
+    .text-skills h2 {
+        margin: 0 auto 3vmin 0;
+        line-height: 12.5vmin;
+        font-size: 12.5vmin;
+        font-weight: 400;
+        padding: 0 2.75vmin 0 0;
+    }
+
+    .text-skills ul {
+        font-size: 5vmin;
+        line-height: 10vmin;
+        margin: 0 auto 10vmin auto;
+        padding: 0 2.75vmin 0 0;
+    }
+
+    .list-skills li::before,
+    .list-languages li::before {
+        width: 4vmin;
+        height: 2vmin;
+        left: -8vmin;
+        top: 3vmin;
+    }
+
+    .list-tools li::before {
+        width: 5.5vmin;
+        height: 5.5vmin;
+        left: -9vmin;
+        top: 1.5vmin;
+    }
+
+    .text-contacts p:not(:first-child) {
+        margin-left: 6vmin;
+    }
+
+    .text-contacts p::before {
+        width: 5.5vmin;
+        height: 5.5vmin;
+        left: -7vmin;
+        top: -1vmin;
+    }
+
+    .icons {
+        width: auto;
+        margin: 5vmin 10vmin 12vmin 10vmin;
+        order: 1;
+    }
+
+    .icons-min {
+        display: none;
+    }
+
+    .icons a,
+    .icons-mobile-nav-footer a {
+        width: 7vmin;
+        height: 7vmin;
+        margin: 0 2vmin;
+    }
+
+    .icon-edu,
+    .icon-cert {
+        width: 10vmin;
+        height: 10vmin;
+        margin-bottom: 2vmin;
+    }
+
+    .icon-mobile-nav {
+        display: block;
+        right: 10vmin;
+    }
+
+    .mobile-nav {
+        height: 68vmin;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        position: fixed;
+        top: 7vmin;
+        right: 9vmin;
+    }
+
+    .mobile-nav-links {
+        height: 50vmin;
+        width: 150vmin;
+        margin: auto;
+    }
+
+    .icons-mobile-nav-footer {
+        display: flex;
+        margin: 0 auto 5vmin auto;
+    }
+
+    .buttons,
+    .buttons-min {
+        display: none;
+    }
+
+    .recent {
+        margin: auto;
+    }
+
+    .recent h2 {
+        margin: 5vmin 0.5vmin 5vmin 5vmin;
+        font-size: 9vmin;
+        line-height: 9vmin;
+    }
+
+    .icons-recent {
+        width: 60vmin;
+        height: 7vmin;
+        margin: 5vmin 5vmin 5vmin 0.5vmin;
+        text-align: right;
+    }
+
+    .recent-img-big {
+        margin: 1vmin 0.5vmin 1vmin 5vmin;
+    }
+
+    .recent-img-small {
+        margin: 1vmin 5vmin 1vmin 0.5vmin;
+    }
+
+    .modal-content {
+        width: 90vmin;
+    }
+
+    .modal-img p {
+        font-size: 3.5vmin;
+    }
+}
+
+/*=============Animations=============*/
+
+@keyframes appearance {
+    0% {
+        transform: scale(1.3);
+
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes appearance-min {
+    0% {
+        transform: scale(1.1);
+
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes appearance-rotate {
+    0% {
+        transform: scale(1.3) rotate(-90deg);
+
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
