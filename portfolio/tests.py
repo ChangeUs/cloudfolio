@@ -5,8 +5,8 @@ from portfolio.models import *
 # Create your tests here.
 
 user = Account(
-    name='김철수1240',
-    email='ksw120@gmail.com'
+    name='강하늘',
+    email='kang@changeus.com'
 )
 
 user.set_password('1234')
