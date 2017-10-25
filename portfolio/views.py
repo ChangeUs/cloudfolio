@@ -216,6 +216,7 @@ class TabCreateView(View):
             return HttpResponse(status=400)
 
 
+
 class TabDeleteView(View):
 
     def get(self, request, tab_id):
@@ -230,6 +231,36 @@ class TabDeleteView(View):
 
         tab.delete()
         return HttpResponse(status=200)
+
+
+class TabView(View):
+
+    def get(self, request, pk):
+        if not check_user_login(request):
+            return HttpResponse(status=400)
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            tab = portfolio.tabs.get(pk=pk)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        portfolio = request.user.get_user_portfolio()
+        profile = portfolio.profile.get_profile()
+
+        activityCreateForm = ActivityCreationForm()
+        tabCreationForm = TabCreationForm()
+
+
+        context = {
+            'portfolio': portfolio,
+            'tab': tab,
+            'profile': profile,
+            'activityCreateForm': activityCreateForm,
+            'tabCreationForm': tabCreationForm,
+        }
+
+        return render(request, 'portfolio/tab.html', context)
 
 
 ################################################################################

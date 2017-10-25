@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^tab/create/$', TabCreateView.as_view(), name='tab_create'),
     url(r'^tab/delete/(?P<tab_id>[0-9]+)/$', TabDeleteView.as_view(), name='tab_delete'),
     url(r'^tab/$', tab, name='tab'),
+    url(r'^tab/(?P<pk>[0-9]+)/$', TabView.as_view(), name='tab'),
+
     url(r'^story_edit/$', story_edit, name='story_edit'),
     url(r'^profile_temp/$', profile_temp, name='profile_temp'),
 
