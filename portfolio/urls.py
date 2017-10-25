@@ -31,4 +31,6 @@ urlpatterns = [
     url(r'^profile_temp/$', profile_temp, name='profile_temp'),
     url(r'^gallery/(?P<portfolio_id>[0-9]+)/$', GalleryView.as_view(), name='gallery'),
 
+    url(r'^resume/default/$', ResumeView.as_view(), name='Resume'),
+
 ]
