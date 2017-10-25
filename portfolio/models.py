@@ -138,6 +138,9 @@ class Tab(TimeStampedModel):
 
         return self.activities.filter(privacy=kwargs['privacy'])
 
+    def get_public_activities(self):
+        return self.get_all_activities(privacy=PrivacyModel.PUBLIC_ALL)
+
 
 ################################################################################
 
@@ -203,6 +206,9 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
             return self.stories.all()
 
         return self.stories.filter(privacy=kwargs['privacy'])
+
+    def get_public_stories(self):
+        return self.get_all_stories(privacy=PrivacyModel.PUBLIC_ALL)
 
 
 ################################################################################
