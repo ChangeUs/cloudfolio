@@ -33,4 +33,5 @@ urlpatterns = [
 
     url(r'^resume/default/$', ResumeView.as_view(), name='Resume'),
 
+
 ]
