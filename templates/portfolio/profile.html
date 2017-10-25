@@ -20,11 +20,16 @@
 
                         <div class="content-right">
                             <div class="sender inline m-l-10">
-                                <p class="name no-margin p-t-5 bold">홍길동</p>
+                                {# TODO: profile뷰이기때문에 profile.name으로 접근필요 #}
+                                <p class="name no-margin p-t-5 bold">{{ portfolio.account }}</p>
 
-                                <p class="datetime no-margin">프로그래머</p>
-                                <p class="datetime m-t-20">한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필한줄프로필</p>
-                                <p class="datetime no-margin"># 태그</p>
+                                <p class="datetime no-margin">{{ profile.occupation.occupation }}</p>
+                                <p class="datetime no-margin">{{ profile.introduction.introduction }}</p>
+                                <p class="datetime m-t-15">
+                                    {% for keyword_content in profile.interest_keyword %}
+                                        <span class="tag">#&nbsp;{{ keyword_content.interest_keyword }}</span>
+                                    {% endfor %}
+                                </p>
                             </div>
                         </div>
 
@@ -40,6 +45,7 @@
                                 <h4 class="semi-bold">선택된 프로필</h4>
                         </div>
                     </div>
+
                         <div class="fields-body">
                             {# 교육사항 #}
                             <div class="field">
@@ -49,36 +55,33 @@
                                         <h5 class="semi-bold">교육사항</h5>
                                     </div>
                                 </div>
+
                                 {# 필드내용 #}
+                                {% for each in profile.education %}
                                 <div class="row field-content div-narrow">
                                         <div class="col-sm-3">
-                                            한양대학교
+                                            {{ each.school }}
                                         </div>
                                         <div class="col-sm-2">
-                                            석사
+                                            {{ each.degree }}
                                         </div>
                                         <div class="col-sm-4">
-                                            컴퓨터공학
+                                            {{ each.major }}
                                         </div>
+                                        {% if each.start_date %}
                                         <div class="col-sm-3 text-right">
-                                            2017.03~2018.03
+                                            {# TODO: end_date 병합필요 #}
+                                            {{ each.start_date }}
                                         </div>
+                                        {% endif %}
                                 </div>
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
-                                            한양대학교
-                                        </div>
-                                        <div class="col-sm-2">
-                                            석사
-                                        </div>
-                                        <div class="col-sm-4">
-                                            컴퓨터공학
-                                        </div>
-                                        <div class="col-sm-3 text-right">
-                                            2017.03~2018.03
-                                        </div>
-                                </div>
+                                {% endfor %}
                             </div>
+
+
+
+
+
                             {# 연락처 #}
                             <div class="field">
                                 <div class="row">
@@ -88,20 +91,21 @@
                                     </div>
                                 </div>
                                 {# 필드내용 #}
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
-                                            휴대폰
-                                        </div>
-                                        <div class="col-sm-4 text-right">
-                                            010-0000-0000
-                                        </div>
-                                </div>
+
                                 <div class="row field-content div-narrow">
                                         <div class="col-sm-3">
                                             전화번호
                                         </div>
                                         <div class="col-sm-4 text-right">
-                                            02-0000-0000
+                                            {{ profile.contact.phone_number }}
+                                        </div>
+                                </div>
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            모바일
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            {{ profile.contact.mobile_phone_number }}
                                         </div>
                                 </div>
                             </div>
@@ -119,7 +123,7 @@
                                             실주소
                                         </div>
                                         <div class="col-sm-4 text-right">
-                                            서울시
+                                            {{ profile.address.residence }}
                                         </div>
 
                                 </div>
@@ -128,11 +132,37 @@
                                             활동주소
                                         </div>
                                         <div class="col-sm-4 text-right">
-                                            서울시
+                                            {{ profile.address.active_area }}
                                         </div>
 
                                 </div>
                             </div>
+
+                        {# 언어 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">사용언어</h5>
+                                    </div>
+                                </div>
+
+                                {# 필드내용 #}
+                                {% for each in profile.language %}
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            {{ each.language_name }}
+                                        </div>
+
+                                        <div class="col-sm-4 text-right">
+                                            {# TODO: end_date 병합필요 #}
+                                            {{ each.level }}
+                                        </div>
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
                             {# 웹사이트 #}
                             <div class="field">
                                 <div class="row">
@@ -142,54 +172,13 @@
                                     </div>
                                 </div>
                                 {# 필드내용 #}
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-1">
-                                            <i class="fa fa-behance">: </i>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            dribble.com/asda
-                                        </div>
-                                </div>
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-1">
-                                            <i class="fa fa-codepen">: </i>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            dribble.com/asda
-                                        </div>
-                                </div>
 
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-1">
-                                            <i class="fa fa-facebook-square">: </i>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            dribble.com/asda
-                                        </div>
-                                </div>
-
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-1">
-                                            <i class="fa fa-flickr">: </i>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            dribble.com/asda
-                                        </div>
-                                </div>
                                 <div class="row field-content div-narrow">
                                         <div class="col-sm-1">
                                             <i class="fa fa-github">: </i>
                                         </div>
                                         <div class="col-sm-5">
-                                            dribble.com/asda
-                                        </div>
-                                </div>
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-1">
-                                            <i class="fa fa-google-plus">: </i>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            dribble.com/asda
+                                            {{ profile.homepage.github_page }}
                                         </div>
                                 </div>
                                 <div class="row field-content div-narrow">
@@ -197,14 +186,16 @@
                                             <i class="fa fa-instagram">: </i>
                                         </div>
                                         <div class="col-sm-5">
-                                            dribble.com/asda
+                                            {{ profile.homepage.blog_page }}
                                         </div>
                                 </div>
 
-
-
-
                             </div>
+
+
+
+
+
                         </div>
 
 

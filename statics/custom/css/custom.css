@@ -442,3 +442,9 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
     font-size: 15px !important;
     line-height: 30px !important;
   }
+
+
+
+  .field {
+    margin-bottom: 25px;
+  }

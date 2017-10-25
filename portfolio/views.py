@@ -318,7 +318,7 @@ class ProfileView(View):
             'profile': profile
         }
 
-        return render(request, 'portfolio/profile_info.html', context)
+        return render(request, 'portfolio/profile.html', context)
 
 
 ################################################################################
@@ -346,7 +346,7 @@ class ProfilePublicView(View):
             'profile': profile
         }
 
-        return render(request, 'portfolio/profile_info.html', context)
+        return render(request, 'portfolio/profile.html', context)
 
 
 ################################################################################
@@ -538,4 +538,4 @@ def story_edit(request):
     return render(request, 'portfolio/story_edit.html', context)
 
 def profile_temp(request):
-    return render(request, 'portfolio/profile_temp.html')
+    return render(request, 'portfolio/profile.html')
