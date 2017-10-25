@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.views.generic import View
 from portfolio.models import Portfolio
 from portfolio.forms import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from portfolio.profile import ProfileInfo
 from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 
 # Create your views here.
 
@@ -53,33 +54,39 @@ class ActivityCreateView(View):
         if not check_user_login(request):
             return HttpResponse(status=400)
 
-        form = ActivityCreationForm()
+        portfolio = request.user.get_user_portfolio()
+        profile = portfolio.profile.get_profile()
+        tab = portfolio.tabs.get(pk=tab_id)
+        activityCreateForm = ActivityCreationForm()
+        tabCreationForm = TabCreationForm()
 
         context = {
-            'form': form,
+            'portfolio': portfolio,
+            'tab' : tab,
+            'profile': profile,
+            'activityCreateForm': activityCreateForm,
+            'tabCreationForm': tabCreationForm,
         }
 
-        return render(request, 'portfolio/activity-create.html', context)
+        return render(request, 'portfolio/activity_create.html', context)
 
     def post(self, request, tab_id):
         if not check_user_login(request):
             return HttpResponse(status=400)
-
         try:
             portfolio = request.user.get_user_portfolio()
             activity_tab = portfolio.tabs.get(pk=tab_id)
         except ObjectDoesNotExist:
             return HttpResponse(status=400)
-
         form = ActivityCreationForm(request.POST)
-
         if form.is_valid():
             act = form.save(commit=False)
             act.portfolio = portfolio
             act.tab = activity_tab
             act.save()
 
-            return HttpResponse(status=200)
+            messages.success(request, _('액티비티를 등록했습니다.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         else:
             return HttpResponse(status=400)
@@ -110,10 +117,20 @@ class StoryCreateView(View):
         if not check_user_login(request):
             return HttpResponse(status=400)
 
-        form = StoryCreationForm()
+        portfolio = request.user.get_user_portfolio()
+        profile = portfolio.profile.get_profile()
+
+        activityCreateForm = ActivityCreationForm()
+        tabCreationForm = TabCreationForm()
+        storyCreationForm = StoryCreationForm()
 
         context = {
-            'form': form,
+            'portfolio': portfolio,
+            'tab': tab,
+            'profile': profile,
+            'activityCreateForm': activityCreateForm,
+            'tabCreationForm': tabCreationForm,
+            'storyCreationForm': storyCreationForm,
         }
 
         return render(request, 'portfolio/story-create.html', context)
@@ -172,7 +189,6 @@ class TabCreateView(View):
         context = {
             'form': form,
         }
-
         return render(request, 'portfolio/tab-create.html', context)
 
     def post(self, request):
@@ -191,8 +207,11 @@ class TabCreateView(View):
             tab.portfolio = portfolio
             tab.save()
 
-            return HttpResponse(status=200)
+            # return HttpResponse(status=200)
 
+            # 포스트 완료 메세지
+            messages.success(request, _('탭을 등록했습니다.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             return HttpResponse(status=400)
 
@@ -230,7 +249,10 @@ class ProfileView(View):
         portfolio = request.user.get_user_portfolio()
         profile = portfolio.profile.get_profile()
 
+        tabCreationForm = TabCreationForm()
         context = {
+            'tabCreationForm' : TabCreationForm,
+            'portfolio': portfolio,
             'profile': profile
         }
 
@@ -415,7 +437,9 @@ def activity_edit(request):
 def tab(request):
     return render(request, 'portfolio/tab.html')
 
-
 def story_edit(request):
     context = { 'portfolio':request.user.get_user_portfolio() }
     return render(request, 'portfolio/story_edit.html', context)
+
+def profile_temp(request):
+    return render(request, 'portfolio/profile_temp.html')

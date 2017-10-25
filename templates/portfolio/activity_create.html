@@ -1,3 +1,12 @@
+
+
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit">#}
+{#</form>#}
+
+
 {% extends 'portfolio/base.html' %}
 {% load staticfiles %}
 
@@ -6,7 +15,7 @@
 
     <div class="activity-content-wrapper" style="">
 <!-- 콘텐츠페이지 상단 버튼 -->
-                    <!-- 
+                    <!--
               <div class="actions-wrapper menuclipper bg-master-lightest">
                     <ul class="actions menuclipper-menu no-margin p-l-20 ">
                       <li class="hidden-lg-up">
@@ -29,49 +38,51 @@
                 <div class="activity-content-background">
                     <div class="activity-content">
 
-
+        <form method="post" action="{% url 'portfolios:activity_create' tab.id %}">
                 <div class="activity-content-header">
-                  <div class="upper-header">
-                      <p class="datetime m-b-15"><span>포트폴리오 > 카테고리</span></p>
+
+                        {% csrf_token %}
+                        <div class="upper-header">
+                      <p class="datetime m-b-15"><span>포트폴리오 > {{ tab.title }}</span></p>
                     <!-- editable -->
+
                     <div class="title">
-                        <p class="bold">제목을 입력하시오.</p>
+                        {{ activityCreateForm.title }}
                     </div>
 
                     <p class="datetime m-t-15 ">
+
                         <span class="projected">17.08.03~17.08.04 </span>
                         <span class="updated">1시간전에 업데이트됨</span>
                   </p>
 
                   </div>
-                  <div class="clearfix"></div>
-                  <div class="abstract m-t-15 m-b-20 semi-bold">
-                      <p>
-                          150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글
-                          </p>
+                        <div class="clearfix"></div>
+                        <div class="abstract m-t-15 m-b-20 semi-bold">
+                      {{ activityCreateForm.summary }}
                     </div>
 
                 </div>
                 <div class="clearfix"></div>
 
+{#                    <hr>#}
+                    <div class="activity-content-body m-t-10" >
 
-
-                    <hr>
-                    <div class="activity-content-body m-t-10 editable" >
-{#                    <div class="activity-content-body m-t-10 editable" >#}
-                        <p>
-                            Type your text
-                        </p>
+{#                        <p>#}
+{#                            Type your text#}
+{#                        </p>#}
                   </div>
                   <hr>
+                        <button class="btn btn-primary btn-cons m-b-10 btn-floating" type="submit"><i class="pg-form"></i> <span class="bold">작성완료</span> </button>
+    </form>
               </div>
                 </div>
 
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
                 </div>
 
 {% endblock %}

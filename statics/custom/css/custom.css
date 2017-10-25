@@ -10,6 +10,7 @@ pages.css 수정항목
     margin-left: 0;
 }
 
+
 /*------------------------------------------------------------------
 리스트뷰 공통 스타일
  - 탭 글씨 크기 상향
@@ -43,6 +44,26 @@ pages.css 수정항목
   right: 30px;
 }
 
+/* 탭에서 액티비티 추가 버튼 */
+.split-view .split-list .list-refresh {
+  opacity: 0.8;
+  right: 10px;
+  font-weight: normal !important;
+}
+
+.split-view .split-list .list-refresh:hover {
+  color: #007be8 ;
+}
+
+/* 리스트뷰에 탭추가버튼 */
+.tab-creation {
+  padding: 15px;
+  font-size: 15px;
+  display: block;
+  color: rgba(122, 137, 148, 0.7);
+}
+
+
 /*------------------------------------------------------------------
 리스트뷰 프로필 항목
  - 이름(recipients): 고정 1줄 (non-edit)
@@ -59,6 +80,7 @@ pages.css 수정항목
 .split-view .split-list .list-profile .item .body {
     height: auto;
 }
+
 
 /*------------------------------------------------------------------
 리스트뷰 일반 항목
@@ -153,11 +175,41 @@ pages.css 수정항목
     margin-top: 0px;
 }
 
+/*------------------------------------------------------------------
+프로필
+------------------------------------------------------------------ */
+
+.email-content-header {
+  position: relative;
+}
+.content-left .thumbnail-wrapper {
+  float: none;
+}
+.content-left {
+  width: 50px;
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
+.content-right {
+  padding-left: 60px;
+  margin: 0;
+}
 
 
-
-
-
+/* 프로필 각 필드의 간격 조정 */
+.fields-body .field .field-content.div-narrow div{
+  padding: 0px;
+}
+.fields-body .field .field-content.div-narrow div:first-child{
+  padding-left: 15px;
+}
+.fields-body .field .field-content.div-narrow div:last-child{
+  padding-right: 15px;
+}
 
 
 
@@ -202,11 +254,18 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 }
 
 /* activity content 제목 */
-.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title p {
+/* activity Creation */
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title p,
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title input {
   font-size: 35px;
   line-height: 40px;
   color: #47525e;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
+
+
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .datetime {
   color: #7a8994;
   opacity: .45;
@@ -223,12 +282,32 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
     }
 
 /* activity 요약 */
+/* activity Creation */
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract p {
+   display: block;
   font-family: arial;
   color: #47525e;
   font-size: 17px;
   line-height: 30px;
 }
+/* TODO: 텍스트 필드 수정해야 한다.*/
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract textarea {
+  display: block;
+    font-family: arial;
+    color: #47525e;
+    font-size: 17px;
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    width: 100%;
+    resize: none;
+    border: 0px;
+
+}
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract input {
+
+}
+
 /* activity 상세글 */
 .split-view .split-details .activity-content-wrapper .activity-content .activity-content-body p {
   font-size: 17px;
@@ -305,6 +384,8 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
 .activity-content-wrapper .social-card {
   width: 100%;
 }
+
+
 
 
 /*------------------------------------------------------------------
