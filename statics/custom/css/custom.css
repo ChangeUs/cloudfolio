@@ -448,3 +448,13 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
   .field {
     margin-bottom: 25px;
   }
+
+  .showbox .social-card {
+    width: auto;
+  }
+.showbox .social-card.share .card-description p:first-child {
+  font-size: 16px;
+      color: #373e43;
+  font-weight: 700;
+    margin-bottom: 4px;
+}

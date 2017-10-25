@@ -1,16 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import View
-from portfolio.models import Portfolio
-from portfolio.forms import *
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from portfolio.profile import ProfileInfo
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-
-# Create your views here.
-
 from django.template.defaultfilters import register
+
+from portfolio.models import Portfolio
+from portfolio.forms import *
+from portfolio.profile import ProfileInfo
+
 
 ################################################################################
 
