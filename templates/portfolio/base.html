@@ -62,7 +62,7 @@
         <ul class="menu-items">
 
           <li class="m-t-30">
-            <a href="#" class="detailed">
+            <a href="{% url 'portfolios:profile' %}" class="detailed">
               <span class="title">에디터</span>
               <span class="details">3 activities</span>
             </a>
@@ -167,16 +167,23 @@
                             </div>
                             <ul class="no-padding">
                                 <!-- 액티비티 단위 -->
-                                <li class="item padding-15 active">
+                                <li class="item padding-15 active link" onclick="goProfile()">
                                     <div class="thumbnail-wrapper d32 circular">
                                         <img width="40" height="40" alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
                                     </div>
                                     <!-- picutre / normal -->
                                     <div class="inline m-l-15 picture">
-                                        <p class="recipients no-margin hint-text small">홍길동</p>
-                                        <p class="subject no-margin">profile.description 한줄 프로필이 들어간다 최대 2줄  profile.description 한줄 프로필이 들어간다 최대 2줄  profile.description 한줄 프로필이 들어간다 최대 2줄</p>
+{#                                        <p class="recipients no-margin hint-text small">{{ portfolio.profile.name }}</p>#}
+                                        <p class="recipients no-margin hint-text small">{{ portfolio.account }}</p>
+{#                                        <p class="recipients no-margin hint-text small">{{ profile }}</p>#}
+
+                                        <p class="subject no-margin"> {{ profile.introduction.introduction }} </p>
                                         <p class="body no-margin">
-                                            대학생 / 관심키워드 - 최대1줄 대학생 / 관심키워드 - 최대1줄 대학생 / 관심키워드 - 최대1줄
+                                            {{ profile.occupation.occupation }}&nbsp;&nbsp;/&nbsp;&nbsp;
+
+                                            {% for keyword_content in profile.interest_keyword %}
+                                                <span class="tag">#&nbsp;{{ keyword_content.interest_keyword }}</span>
+                                            {% endfor %}
                                         </p>
                                     </div>
                                     <!-- <div class="datetime">5 Mins ago</div> -->
@@ -457,6 +464,9 @@
         }
         function goTab(tab_id) {
             window.location.href='/portfolios/tab/'+tab_id;
+        }
+        function goProfile() {
+            window.location.href='/portfolios/profile/';
         }
 
     </script>

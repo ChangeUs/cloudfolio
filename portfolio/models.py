@@ -72,6 +72,7 @@ class Portfolio(TimeStampedModel):
         return self.tabs.filter(privacy=kwargs['privacy'])
 
 
+
 ################################################################################
 
 

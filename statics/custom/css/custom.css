@@ -82,7 +82,9 @@ pages.css 수정항목
 .split-view .split-list .list-profile .item .body {
     height: auto;
 }
-
+.split-view .split-list .list-profile .item .body .tag {
+  margin-right: 10px;
+}
 
 /*------------------------------------------------------------------
 리스트뷰 일반 항목
@@ -439,4 +441,10 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
   .activity-content-wrapper.story_edit .card.social-card .card-description p {
     font-size: 15px !important;
     line-height: 30px !important;
+  }
+
+
+
+  .field {
+    margin-bottom: 25px;
   }

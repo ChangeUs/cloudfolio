@@ -14,6 +14,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.mail import EmailMessage
 from portfolio.models import Portfolio
 from django.contrib.auth.forms import PasswordChangeForm
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 # 회원가입
 def signup(request):
@@ -79,6 +81,8 @@ def delete_user(request):
 
 #로그인
 def signin(request):
+
+
     template = 'registration/login.html'
     message = ""
 
@@ -91,14 +95,26 @@ def signin(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponse('로그인 성공 ' + email + " " + password)
+                messages.success(request, _('로그인에 성공했습니다'))
+                # TODO: 로그인 성공시 프로필화면
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             else:
                 return HttpResponse("Your account is not active, please contact the site admin")
         else:
+            # TODO: 로그인 실패 메세지 구현
             return HttpResponse("로그인 실패 : Your username and/or password were incorrect")
     else:
-        context = {"message": message}
-        return render(request, template, context)
+        # get
+        # TODO: 로그인 계정의 is_active에따라 redirect 다르게 설정 필요
+        if request.user.is_anonymous:
+            context = {"message": message}
+            return render(request, template, context)
+        else:
+            redirect_url = reverse('portfolios:profile')
+            return redirect(redirect_url)
+
+
+
 
 
 #로그아웃
