@@ -29,5 +29,6 @@ urlpatterns = [
 
     url(r'^story_edit/$', story_edit, name='story_edit'),
     url(r'^profile_temp/$', profile_temp, name='profile_temp'),
+    url(r'^gallery/(?P<portfolio_id>[0-9]+)/$', GalleryView.as_view(), name='gallery'),
 
 ]

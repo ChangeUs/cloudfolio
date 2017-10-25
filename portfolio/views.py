@@ -485,6 +485,23 @@ class ProfileEditView(View):
         return False
 
 
+################################################################################
+
+class GalleryView(View):
+
+    def get(self, request, portfolio_id):
+
+        try:
+            portfolio = Portfolio.objects.get(pk=portfolio_id)
+            profile = portfolio.profile.get_public_profile()
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        context = {'portfolio':portfolio, 'profile':profile}
+
+        return render(request, 'portfolio/gallery.html', context)
+
+
 # 임시
 
 
