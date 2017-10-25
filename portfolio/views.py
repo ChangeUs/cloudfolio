@@ -502,6 +502,23 @@ class GalleryView(View):
         return render(request, 'portfolio/gallery.html', context)
 
 
+################################################################################
+
+class ResumeView(View):
+
+    def get(self, request):
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            profile = portfolio.profile.get_public_profile()
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        context = {'portfolio':portfolio, 'profile':profile}
+
+        return render(request, 'portfolio/resume-default.html', context)
+
+
 # 임시
 
 

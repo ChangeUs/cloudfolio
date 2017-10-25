@@ -283,7 +283,7 @@ class Profile(TimeStampedModel):
                 arr = []
                 for profile_info in info:
                     if profile_info.get('public'):
-                        arr.insert(profile_info)
+                        arr.append(profile_info)
 
                 if len(arr) > 0:
                     profile.update({field: arr})
