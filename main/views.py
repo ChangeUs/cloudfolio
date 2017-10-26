@@ -31,3 +31,32 @@ class ShowboxView(View):
         }
 
         return render(request, 'portfolio/showbox.html', context)
+
+
+# 샘플 이력서
+def resume_sample_1(request):
+    if not check_user_login(request):
+        return HttpResponse(status=400)
+
+    portfolio = request.user.get_user_portfolio()
+    profile = portfolio.profile.get_profile()
+
+    context = {
+        'portfolio': portfolio,
+        'profile': profile,
+    }
+
+    return render(request, 'resume_sample/sample1/index.html', context)
+
+def resume_sample_2(request):
+    if not check_user_login(request):
+        return HttpResponse(status=400)
+
+    portfolio = request.user.get_user_portfolio()
+    profile = portfolio.profile.get_profile()
+
+    context = {
+        'portfolio': portfolio,
+        'profile': profile,
+    }
+    return render(request, 'resume_sample/sample2/education.html', context)
