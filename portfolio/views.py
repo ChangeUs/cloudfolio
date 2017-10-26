@@ -51,11 +51,12 @@ class ActivityView(View):
     def get(self, request, pk):
         if not check_user_login(request):
             return HttpResponse(status=400)
-
         try:
             portfolio = request.user.get_user_portfolio()
-            tab = portfolio.tabs.get(pk=pk)
             act = portfolio.activities.get(pk=pk)
+            tab = portfolio.tabs.get(pk=act.tab_id)
+            print("tab: ", tab)
+
         except ObjectDoesNotExist:
             return HttpResponse(status=400)
 

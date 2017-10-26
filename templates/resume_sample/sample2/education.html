@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SimpleCV - CV Template">
+    <meta name="keywords" content="HTML5,CSS3,CV,simple,curriculum vitae,animated,animation,about,contacts,recent work,flat,modern,page,responsive,inspire,inspire.by,template">
+    <meta name="author" content="inspire.by">
+
+    <title>강하늘 | 이력서양식1 </title>
+
+    <link rel="stylesheet" href="{% static 'resume_sample/sample2/css/main.css' %}">
+
+    <link rel="shortcut icon" href="pic/favicon.ico" type="image/x-icon">
+
+    <!--FONT-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="frame-scroll"></div>
+    <div class="frame-scroll-top"></div>
+    <div class="frame-scroll-bottom"></div>
+
+    <div class="container-scroll">
+
+        <!--MOBILE NAVIGATION-->
+
+        <div id="id-mobile-nav" class="mobile-nav">
+
+            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+
+            <nav class="mobile-nav-links">
+                <a href="index.html">home</a>
+                <a href="about.html">about</a>
+                <a href="recent.html">recent works</a>
+                <a href="experience.html">experience</a>
+                <a href="skills.html">skills</a>
+                <a href="contacts.html">contacts</a>
+            </nav>
+
+            <div class="icons-mobile-nav-footer">
+                <a class="icon-linkedin-white" href="#"></a>
+                <a class="icon-behance-white" href="#"></a>
+                <a class="icon-dribble-white" href="#"></a>
+                <a class="icon-upwork-white" href="#"></a>
+            </div>
+
+        </div>
+
+        <div class="icon-mobile-nav" onclick="openNav()">
+            <div class="element-icon-nav"></div>
+            <div class="element-icon-nav"></div>
+            <div class="element-icon-nav"></div>
+        </div>
+
+    <!--MAIN CONTENT-->
+
+        <a href="index.html" class="photo-min"></a>
+
+        <div class="icons-min">
+            <a class="icon-linkedin" href="#"></a>
+            <a class="icon-behance" href="#"></a>
+            <a class="icon-dribble" href="#"></a>
+            <a class="icon-upwork" href="#"></a>
+        </div>
+
+        <section class="main-section">
+            <h2>{{ portfolio.account }}</h2>
+            <h3>{{ portfolio.account.email }}</h3>
+            <h3>{{ profile.occupation.occupation }}</h3>
+            <a class="cv-button" href="resume/resume_template.docx">CV</a>
+            <div class="text-education">
+                <div class="edu">
+                    <div class="icon-edu"></div>
+                    <div class="edu-text">
+                        <h4>Education</h4>
+                        {% for each in profile.education %}
+                        <div style="margin-bottom: 20px;">
+
+                            <p><b>{{ each.school }}</b></p>
+                            <p>{{ each.major }}</p>
+                            <p>2015-2017</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% for each in tab %}
+                <div class="cert">
+                    <div class="icon-cert"></div>
+                    <div class="cert-text">
+                        <h4>{{ each.title }}</h4>
+                        {% for activity in each.get_all_activities %}
+                            <div style="margin-bottom: 20px;">
+                                <p><b>{{ activity.title }}</b></p>
+                                <p>{{ activity.summary }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+    <script>
+            function openNav() {
+            document.getElementById("id-mobile-nav").style.width = "90%";
+            }
+
+            function closeNav() {
+            document.getElementById("id-mobile-nav").style.width = "0";
+            }
+    </script>
+
+</body>
+</html>
