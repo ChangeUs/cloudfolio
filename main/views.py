@@ -39,10 +39,12 @@ def resume_sample_1(request):
         return HttpResponse(status=400)
 
     portfolio = request.user.get_user_portfolio()
+    tab = portfolio.get_all_tabs()
     profile = portfolio.profile.get_profile()
 
     context = {
         'portfolio': portfolio,
+        'tab' : tab,
         'profile': profile,
     }
 
@@ -54,9 +56,11 @@ def resume_sample_2(request):
 
     portfolio = request.user.get_user_portfolio()
     profile = portfolio.profile.get_profile()
+    tab = portfolio.get_all_tabs()
 
     context = {
         'portfolio': portfolio,
+        'tab': tab,
         'profile': profile,
     }
     return render(request, 'resume_sample/sample2/education.html', context)

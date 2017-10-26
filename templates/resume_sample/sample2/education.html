@@ -11,7 +11,7 @@
     <meta name="keywords" content="HTML5,CSS3,CV,simple,curriculum vitae,animated,animation,about,contacts,recent work,flat,modern,page,responsive,inspire,inspire.by,template">
     <meta name="author" content="inspire.by">
 
-    <title>Masha UI/UX Designer CV Education</title>
+    <title>강하늘 | 이력서양식1 </title>
 
     <link rel="stylesheet" href="{% static 'resume_sample/sample2/css/main.css' %}">
 
@@ -73,59 +73,44 @@
         </div>
 
         <section class="main-section">
-            <h2>Masha</h2>
-            <h2>Thompson</h2>
-            <h3>education</h3>
-            <h3>&certificates</h3>
+            <h2>{{ portfolio.account }}</h2>
+            <h3>{{ portfolio.account.email }}</h3>
+            <h3>{{ profile.occupation.occupation }}</h3>
             <a class="cv-button" href="resume/resume_template.docx">CV</a>
             <div class="text-education">
                 <div class="edu">
                     <div class="icon-edu"></div>
                     <div class="edu-text">
-                        <h4>BSc Psychology & Biology</h4>
-                        <p>Yale University</p>
-                        <p>New Haven, Connecticut, U.S.</p>
-                        <p>2001-2005</p>
+                        <h4>Education</h4>
+                        {% for each in profile.education %}
+                        <div style="margin-bottom: 20px;">
+
+                            <p><b>{{ each.school }}</b></p>
+                            <p>{{ each.major }}</p>
+                            <p>2015-2017</p>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
+
+            {% for each in tab %}
                 <div class="cert">
                     <div class="icon-cert"></div>
                     <div class="cert-text">
-                        <h4>Visual design</h4>
-                        <p>College of Art And Design</p>
-                        <p>online</p>
-                        <p>2007-2008</p>
-
-                        <h4>German</h4>
-                        <p>Goethe Institut</p>
-                        <p>Munich, Germany</p>
-                        <p>2005-2006</p>
-
-                        <h4>HTML/CSS (basic)</h4>
-                        <p>EPIX Systems internal training</p>
-                        <p>Newtown, Pennsylvania, U.S.</p>
-                        <p>2012</p>
-
-                        <h4>German with native speaker</h4>
-                        <p>EPIX Systems internal training</p>
-                        <p>Newtown, Pennsylvania, U.S.</p>
-                        <p>2013</p>
-
-                        <h4>Commercial Fashion Illustration</h4>
-                        <p>online</p>
-                        <p>2016</p>
+                        <h4>{{ each.title }}</h4>
+                        {% for activity in each.get_all_activities %}
+                            <div style="margin-bottom: 20px;">
+                                <p><b>{{ activity.title }}</b></p>
+                                <p>{{ activity.summary }}</p>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
+            {% endfor %}
             </div>
         </section>
 
-        <nav class="buttons-min">
-            <a href="recent.html">recent works</a>
-            <a href="about.html">about</a>
-            <a href="experience.html">experience</a>
-            <a href="skills.html">skills</a>
-            <a href="contacts.html">contacts</a>
-        </nav>
+
 
     </div>
 
