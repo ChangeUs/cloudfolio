@@ -324,3 +324,122 @@ class TechnologyForm(ProfileForm):
         label='수준',
         widget=forms.NumberInput
     )
+
+################################################################################
+# Team Profile
+
+
+class TeamIntroductionForm(ProfileForm):
+
+    introduction = forms.CharField(
+        required=False,
+        label="기업/프로젝트 소개글",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+
+class TeamEstablishment(ProfileForm):
+
+    establishment = forms.DateField(
+        required=False,
+        label="설립일",
+        widget=forms.DateInput
+    )
+
+
+class TeamAddressForm(ProfileForm):
+
+    address = forms.CharField(
+        required=False,
+        label="사무실 주소",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+
+class TeamContactForm(ProfileForm):
+
+    phone_number = forms.CharField(
+        required=False,
+        label="대표 전화번호",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+    email = forms.CharField(
+        required=False,
+        label="대표 이메일",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+
+class TeamCEOForm(ProfileForm):
+
+    ceo_name = forms.CharField(
+        required=False,
+        label="CEO/팀장 이름",
+        widget=forms.TextInput
+    )
+
+    ceo_info = forms.CharField(
+        required=False,
+        label="CEO/팀장 정보",
+        widget=forms.TextInput
+    )
+
+
+class TeamMemberForm(ProfileForm):
+
+    MULTIPLE = True
+
+    member_name = forms.CharField(
+        required=False,
+        label="팀원 이름",
+        widget=forms.TextInput
+    )
+
+    member_info = forms.CharField(
+        required=False,
+        label="팀원 정보",
+        widget=forms.TextInput
+    )
+
+
+class TeamNewsForm(ProfileForm):
+
+    MULTIPLE = True
+
+    news_page = forms.URLField(
+        required=False,
+        label="관련 뉴스기사",
+        widget=forms.URLInput
+    )
+
+
+class RelatedKeywordsForm(ProfileForm):
+
+    MULTIPLE = True
+
+    related_keyword = forms.CharField(
+        required=False,
+        label="관련 키워드",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+
+class DesiredTalentForm(ProfileForm):
+
+    MULTIPLE = True
+
+    desired_talent = forms.CharField(
+        required=False,
+        label="원하는 인재상",
+        strip=False,
+        widget=forms.TextInput
+    )
+
+
+
