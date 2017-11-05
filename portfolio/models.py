@@ -1,5 +1,6 @@
 
 from account.models import Account
+from core.storage import PublicMediaStorage, PrivateMediaStorage
 from core.models import *
 from django.contrib.postgres.fields import ArrayField, JSONField
 
@@ -233,8 +234,8 @@ class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
     title = models.CharField(max_length=MAX_TITLE_LENGTH, blank=True, default="")
     content = models.TextField()
 
-    image_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True, null=True)
-    uploaded_files = ArrayField(models.CharField(max_length=MAX_PATH_LENGTH), blank=True, null=True)
+    image_files = ArrayField(models.FileField(), blank=True, null=True)
+    uploaded_files = ArrayField(models.FileField(), blank=True, null=True)
 
     # Meta information #
 
