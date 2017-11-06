@@ -294,3 +294,26 @@ class Profile(TimeStampedModel):
         return profile
 
 ################################################################################
+
+
+def story_file_path(instance, filename):
+    return '/'.join(['story', '{0}', '{1}']).format(instance.story_id, filename)
+
+
+class FileContent(models.Model):
+
+    # Attributes of FileContent model #
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    story = models.ForeignKey(
+        Story,
+        related_name="files"
+    )
+
+    file = models.FileField(upload_to=story_file_path, storage=PrivateMediaStorage())
+
+    class Meta:
+        verbose_name = "file"
+        verbose_name_plural = "files"
+        ordering = ('story', )
