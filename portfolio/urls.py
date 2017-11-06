@@ -10,7 +10,7 @@ urlpatterns = [
 
     url(r'^profile/$', ProfileView.as_view(), name='profile'),
     url(r'^profile/(?P<pk>[0-9]+)/$', ProfilePublicView.as_view(), name='portfolio_public_view'),
-    url(r'^profile/edit$', ProfileEditView.as_view()),
+    url(r'^profile/(?P<pk>[0-9]+)/edit$', ProfileEditView.as_view()),
 
     # 임시
     url(r'^tab/(?P<pk>[0-9]+)/$', TabView.as_view(), name='tab'),

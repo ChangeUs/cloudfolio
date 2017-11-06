@@ -12,6 +12,14 @@ class Portfolio(TimeStampedModel):
 
     MAX_TITLE_LENGTH = 100
 
+    PORTFOLIO_TYPE = (
+        (1, "Personal"),
+        (2, "Team"),
+    )
+
+    PORTFOLIO_TYPE_PERSONAL = 1
+    PORTFOLIO_TYPE_TEAM = 2
+
     # Attributes of Portfolio model #
 
     account = models.ForeignKey(
@@ -21,6 +29,7 @@ class Portfolio(TimeStampedModel):
     )
 
     title = models.CharField(max_length=MAX_TITLE_LENGTH)
+    portfolio_type = models.IntegerField(choices=PORTFOLIO_TYPE, default=1)
 
     # Meta information #
 
@@ -70,7 +79,6 @@ class Portfolio(TimeStampedModel):
             return self.tabs.all()
 
         return self.tabs.filter(privacy=kwargs['privacy'])
-
 
 
 ################################################################################

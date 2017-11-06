@@ -9,6 +9,7 @@ from django.template.defaultfilters import register
 from portfolio.models import Portfolio
 from portfolio.forms import *
 from portfolio.profile import ProfileInfo
+from portfolio.team_profile import TeamProfileInfo
 
 
 ################################################################################
@@ -354,7 +355,7 @@ class ProfilePublicView(View):
 
 class ProfileEditView(View):
 
-    def get(self, request):
+    def get(self, request, pk):
 
         """
         Renders editing view for current user portfolio profile.
@@ -364,17 +365,25 @@ class ProfileEditView(View):
         :return: rendered html for editing portfolio profile.
         """
 
+        try:
+            portfolio = Portfolio.objects.get(pk=pk)
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
         if not self.check_all(request):
             return HttpResponse(status=400)
 
         """Get portfolio and profile from user"""
-        profile_form = ProfileInfo.get_profile_form(request.GET['profile'])
+        profile_form = self.get_profile_form(request, portfolio)
+
+        if profile_form is None:
+            return HttpResponse(status=400)
 
         form = profile_form()
         context = {'profile_form': form}
         return render(request, 'portfolio/profile-edit.html', context)
 
-    def post(self, request):
+    def post(self, request, pk):
 
         """
         Edits portfolio profile for an user.
@@ -389,10 +398,13 @@ class ProfileEditView(View):
             return HttpResponse(status=400)
 
         """Get portfolio and profile from user"""
-        portfolio = request.user.get_user_portfolio()
+        portfolio = Portfolio.objects.get(pk=pk)
         profile = portfolio.profile
         profile_title = request.GET['profile']
-        profile_form = ProfileInfo.get_profile_form(request.GET['profile'])
+        profile_form = self.get_profile_form(request, portfolio)
+
+        if profile_form is None:
+            return HttpResponse(status=400)
 
         form = profile_form(request.POST)
 
@@ -463,26 +475,22 @@ class ProfileEditView(View):
             return False
         return True
 
-    @staticmethod
-    def check_parameter_value(request):
-        """
-        Checks whether "profile" parameter is in domain.
-        :return: True if in or false if not in.
-        """
-        profile_value = request.GET['profile']
-        """if "profile" parameter value is not registered profile info"""
-        if profile_value not in ProfileInfo.PROFILE:
-            return False
-        return True
 
     def check_all(self, request):
         """
         Checks "profile" parameter is appropriate and signed in.
         :return: True if all condition satisfies or false if not.
         """
-        if self.check_parameter(request) and self.check_parameter_value(request) and check_user_login(request):
+        if self.check_parameter(request) and check_user_login(request):
             return True
         return False
+
+    def get_profile_form(self, request, portfolio):
+        if portfolio.portfolio_type == Portfolio.PORTFOLIO_TYPE_PERSONAL:
+            profile_form = ProfileInfo.get_profile_form(request.GET['profile'])
+        elif portfolio.portfolio_type == Portfolio.PORTFOLIO_TYPE_TEAM:
+            profile_form = TeamProfileInfo.get_profile_form(request.GET['profile'])
+        return profile_form
 
 
 ################################################################################
