@@ -18,3 +18,6 @@ DATABASES = {
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'

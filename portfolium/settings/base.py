@@ -151,9 +151,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 # public media location
-AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
 DEFAULT_FILE_STORAGE = 'core.storage.PublicMediaStorage'
 
 # private media location
-AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 PRIVATE_FILE_STORAGE = 'core.storage.PrivateMediaStorage'
