@@ -14,3 +14,6 @@ DATABASES = {
 }
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'statics/')]
+
+AWS_PUBLIC_MEDIA_LOCATION = 'dev/media/public'
+AWS_PRIVATE_MEDIA_LOCATION = 'dev/media/private'
