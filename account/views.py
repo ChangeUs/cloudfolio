@@ -16,6 +16,7 @@ from portfolio.models import Portfolio
 # from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from account.forms import UserCreationForm, PasswordChangeFormCustom
 
@@ -156,6 +157,7 @@ def delete_user(request):
     return HttpResponseRedirect('/')
 
 #비밀번호 변경
+@login_required
 def change_password(request):
     template1 = 'registration/password_change_form.html'
     template2 = 'registration/password_change_done.html'
