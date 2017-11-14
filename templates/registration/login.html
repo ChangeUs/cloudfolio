@@ -56,9 +56,11 @@
                 </div>
               </div>
               <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <a href="#" class="text-info small">비밀번호 찾기</a>
+                <a href="{% url 'accounts:password_reset' %}" id="btnPwReset" class="text-info small">비밀번호 찾기</a>
               </div>
             </div>
+
+
             <!-- END Form Control-->
             <button class="btn btn-primary btn-cons m-t-10" type="submit">로그인</button>
           </form>

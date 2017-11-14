@@ -5,7 +5,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from account.models import Account
 from portfolium import settings
 from .tokens import account_activation_token
-from account.forms import UserCreationForm
+
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, update_session_auth_hash
@@ -13,9 +13,13 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.mail import EmailMessage
 from portfolio.models import Portfolio
-from django.contrib.auth.forms import PasswordChangeForm
+# from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
+from account.forms import UserCreationForm, PasswordChangeFormCustom
+
 
 # 회원가입
 def signup(request):
@@ -153,12 +157,13 @@ def delete_user(request):
     return HttpResponseRedirect('/')
 
 #비밀번호 변경
+@login_required
 def change_password(request):
     template1 = 'registration/password_change_form.html'
     template2 = 'registration/password_change_done.html'
 
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordChangeFormCustom(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
@@ -167,10 +172,11 @@ def change_password(request):
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        form = PasswordChangeForm(request.user)
+        form = PasswordChangeFormCustom(request.user)
 
     return render(request, template1, {
         'form': form
     })
+
 
 

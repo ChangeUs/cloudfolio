@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
+from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
+
 # from django.contrib.auth import password_validation
 from account.models import Account
 
@@ -84,3 +86,28 @@ class UserChangeForm(forms.ModelForm):
 
     def save(self, user):
         user.save()
+
+# PasswordResetForm을 상속하여 email 태그를 수정
+class PasswordResetFormCustom(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(PasswordResetFormCustom, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({
+          'class' : 'form-control',
+          'placeholder' : '비밀번호를 찾고자 하는 계정 이메일을 입력하세요',
+        })
+
+class PasswordChangeFormCustom(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(PasswordChangeFormCustom, self).__init__(*args, **kwargs)
+        self.fields['old_password'].widget.attrs.update({
+          'class' : 'form-control',
+          'placeholder' : 'current password',
+        })
+        self.fields['new_password1'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'new password',
+        })
+        self.fields['new_password2'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'new password confirmation',
+        })

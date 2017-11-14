@@ -8,4 +8,13 @@
       modalElem.children('.modal-dialog').removeClass('modal-lg')
   });
 
+
+
+
+
+
+
+
+
+
 })(window.jQuery);
