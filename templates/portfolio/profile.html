@@ -1,0 +1,213 @@
+{% extends 'portfolio/base_secondary.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+
+
+
+    <div class="email-content-wrapper" style="">
+                  <div class="email-content">
+                    <div class="email-content-header">
+
+                        <div class="content-left">
+                            <div class="thumbnail-wrapper d50 circular">
+                                <img width="40" height="40" alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
+                            </div>
+                        </div>
+
+                        <div class="content-right">
+                            <div class="sender inline m-l-10">
+                                {# TODO: profile뷰이기때문에 profile.name으로 접근필요 #}
+                                <p class="name no-margin p-t-5 bold">{{ portfolio.account }}</p>
+
+                                <p class="datetime no-margin">{{ profile.occupation.occupation }}</p>
+                                <p class="datetime no-margin">{{ profile.introduction.introduction }}</p>
+                                <p class="datetime m-t-15">
+                                    {% for keyword_content in profile.interest_keyword %}
+                                        <span class="tag">#&nbsp;{{ keyword_content.interest_keyword }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="email-content-body m-t-20">
+
+
+                    <div class="row">
+                        <div class="col-sm-12 title">
+                                <h4 class="semi-bold">선택된 프로필</h4>
+                        </div>
+                    </div>
+
+                        <div class="fields-body">
+                            {# 교육사항 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">교육사항</h5>
+                                    </div>
+                                </div>
+
+                                {# 필드내용 #}
+                                {% for each in profile.education %}
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            {{ each.school }}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            {{ each.degree }}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            {{ each.major }}
+                                        </div>
+                                        {% if each.start_date %}
+                                        <div class="col-sm-3 text-right">
+                                            {# TODO: end_date 병합필요 #}
+                                            {{ each.start_date }}
+                                        </div>
+                                        {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+
+
+
+
+
+                            {# 연락처 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">연락처</h5>
+                                    </div>
+                                </div>
+                                {# 필드내용 #}
+
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            전화번호
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            {{ profile.contact.phone_number }}
+                                        </div>
+                                </div>
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            모바일
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            {{ profile.contact.mobile_phone_number }}
+                                        </div>
+                                </div>
+                            </div>
+                            {# 주소 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">주소</h5>
+                                    </div>
+                                </div>
+                                {# 필드내용 #}
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            실주소
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            {{ profile.address.residence }}
+                                        </div>
+
+                                </div>
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            활동주소
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            {{ profile.address.active_area }}
+                                        </div>
+
+                                </div>
+                            </div>
+
+                        {# 언어 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">사용언어</h5>
+                                    </div>
+                                </div>
+
+                                {# 필드내용 #}
+                                {% for each in profile.language %}
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-3">
+                                            {{ each.language_name }}
+                                        </div>
+
+                                        <div class="col-sm-4 text-right">
+                                            {# TODO: end_date 병합필요 #}
+                                            {{ each.level }}
+                                        </div>
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            {# 웹사이트 #}
+                            <div class="field">
+                                <div class="row">
+                                    {# 필드명 #}
+                                    <div class="col-sm-12 field-title">
+                                        <h5 class="semi-bold">웹사이트</h5>
+                                    </div>
+                                </div>
+                                {# 필드내용 #}
+
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-1">
+                                            <i class="fa fa-github">: </i>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            {{ profile.homepage.github_page }}
+                                        </div>
+                                </div>
+                                <div class="row field-content div-narrow">
+                                        <div class="col-sm-1">
+                                            <i class="fa fa-instagram">: </i>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            {{ profile.homepage.blog_page }}
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+{% endblock %}

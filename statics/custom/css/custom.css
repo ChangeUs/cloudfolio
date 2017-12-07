@@ -1,0 +1,460 @@
+/* Custom CSS */
+
+/*==================================================================
+pages.css 수정항목
+================================================================== */
+
+/* 레이아웃 왼쪽이동 조정 */
+.inner-content {
+    /* margin-left: -211px; */
+    margin-left: 0;
+}
+
+
+/*------------------------------------------------------------------
+리스트뷰 공통 스타일
+ - 탭 글씨 크기 상향
+------------------------------------------------------------------ */
+/* 텍스트 한줄압축 */
+.line-1 {
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+/* 텍스트 두줄압축 */
+.line-2 {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+/* 리스트뷰 - 탭 글씨 */
+.split-view .split-list .list-view-fake-header, .split-view .split-list .list-view-group-header {
+    font-size: 13px !important;
+    font-weight: bold;
+}
+/* 리스트뷰 - 탭 보조 아이콘(액티비티 쓰기) */
+
+/* 떠있는 버튼 */
+.btn-floating {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* 탭에서 액티비티 추가 버튼 */
+.split-view .split-list .list-refresh {
+  opacity: 0.8;
+  right: 10px;
+  font-weight: normal !important;
+}
+
+.split-view .split-list .list-refresh:hover {
+  color: #007be8 ;
+}
+
+/* 리스트뷰에 탭추가버튼 */
+.tab-creation {
+  padding: 15px;
+  font-size: 15px;
+  display: block;
+  color: rgba(122, 137, 148, 0.7);
+}
+.link {
+  cursor: pointer;
+}
+
+/*------------------------------------------------------------------
+리스트뷰 프로필 항목
+ - 이름(recipients): 고정 1줄 (non-edit)
+ - 한줄 프로필(subject): 최대 2줄
+ - 부가항목(body): 고정 1줄
+------------------------------------------------------------------ */
+/* subject 최대 2줄 */
+.split-view .split-list .list-profile .item .subject {
+    height: auto;
+    max-height: 38px;
+
+}
+/* body 고정 1줄 수정 */
+.split-view .split-list .list-profile .item .body {
+    height: auto;
+}
+.split-view .split-list .list-profile .item .body .tag {
+  margin-right: 10px;
+}
+
+/*------------------------------------------------------------------
+리스트뷰 일반 항목
+ - 날짜(recipients): 고정 1줄 (non-edit)
+ - 제목(subject): 고정 1줄
+ - 요약(body): 최대 2줄
+------------------------------------------------------------------ */
+
+/* subject 고정 1줄 수정 */
+.split-view .split-list .list-activity .item .subject {
+    height: auto;
+    -webkit-line-clamp: 1;
+}
+/* body 최대 2줄 수정 */
+.split-view .split-list .list-activity .item .body {
+    height: auto;
+    max-height: 38px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: normal;
+}
+/*------------------------------------------------------------------
+리스트뷰 반응형 크기조정
+  @ 481px 이상:
+    * inline picture 버젼 : 404px
+    * inline normal 버젼  : 451px
+  @ 768px 이상:
+    * inline picture 버젼 : 691px
+    * inline normal 버젼  : 738px
+  @ 980px 이상:
+    * inline picture 버젼 : 282px
+    * inline normal 버젼  : 329px
+------------------------------------------------------------------ */
+
+@media (min-width: 481px) {
+/* @ 481px 이상 picture */
+    .split-view .split-list .list-profile .item .inline.picture {
+        /* 481-30-15-32 = 404px */
+        margin-left: 15px;
+        width: 404px;
+    }
+/* @ 481px 이상 normal */
+    .split-view .split-list .list-activity .item .inline.normal {
+        margin-left: 0px;
+        /* 481-30 = 451px */
+        width: 451px;
+    }
+}
+@media (min-width: 768px) {
+/* @ 768px 이상 picture */
+    .split-view .split-list .list-profile .item .inline.picture {
+        /* 768-30-15-32 = 691px */
+        margin-left: 15px;
+        width: 691px;
+    }
+/* @ 768px 이상 normal */
+    .split-view .split-list .list-activity .item .inline.normal {
+        margin-left: 0px;
+        /* 768-30 = 738px */
+        width: 738px;
+    }
+}
+@media (min-width: 980px) {
+/* @ 980px 이상 picture */
+    .split-view .split-list .list-profile .item .inline.picture {
+        /* 일반모드 */
+        /* 329-15-32 = 282px */
+        margin-left: 15px;
+        width: 282px;
+    }
+/* @ 980px 이상 normal */
+    .split-view .split-list .list-activity .item .inline.normal {
+        /* 일반모드 */
+        margin-left: 0px;
+        width: 329px;
+    }
+}
+
+/*------------------------------------------------------------------
+탭뷰
+------------------------------------------------------------------ */
+/* 탭뷰 카드 액티비티 날짜표시 */
+.tab .card .card-header {
+    padding: 20px 20px 5px 20px;
+    min-height: 25px;
+    color: #7a8994;
+    opacity: 07;
+}
+/* 탭뷰 카드 액티비티 제목 */
+.tab .card .card-block h3 {
+    margin-top: 0px;
+}
+
+/*------------------------------------------------------------------
+프로필
+------------------------------------------------------------------ */
+
+.email-content-header {
+  position: relative;
+}
+.content-left .thumbnail-wrapper {
+  float: none;
+}
+.content-left {
+  width: 50px;
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
+.content-right {
+  padding-left: 60px;
+  margin: 0;
+}
+
+
+/* 프로필 각 필드의 간격 조정 */
+.fields-body .field .field-content.div-narrow div{
+  padding: 0px;
+}
+.fields-body .field .field-content.div-narrow div:first-child{
+  padding-left: 15px;
+}
+.fields-body .field .field-content.div-narrow div:last-child{
+  padding-right: 15px;
+}
+
+
+
+
+
+
+/*------------------------------------------------------------------
+light.css의 [20. Email App]부분을 Activity App으로 바꿈.
+*/
+/* Email Components
+--------------------------------------------------
+*/
+
+.split-view .split-details .activity-content-wrapper {
+  height: 100%;
+  width: auto;
+  overflow: auto;
+}
+.split-view .split-details .activity-content-wrapper .actions-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 799;
+}
+/* custom 생성. 액티비티 뷰 백그라운드를 위함. */
+.split-view .split-details .activity-content-wrapper .activity-content-background {
+  background: #fff;
+  border-bottom: 1px solid rgba(234, 236, 238, 0.7);
+  height: auto;
+}
+
+.split-view .split-details .activity-content-wrapper .activity-content {
+  margin: 0 auto;
+  width: 600px;
+  display: block;
+  padding-top: 62px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* activity content 제목 */
+/* activity Creation */
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title p,
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .title input {
+  font-size: 35px;
+  line-height: 40px;
+  color: #47525e;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .upper-header .datetime {
+  color: #7a8994;
+  opacity: .45;
+  font-family: arial;
+  font-size: 14px;
+}
+    /* activity 프로젝트 기간 */
+    .datetime .projected {
+        float: left;
+    }
+    /* activity 최종 업데이트 시간 */
+    .datetime .updated {
+        float: right;
+    }
+
+/* activity 요약 */
+/* activity Creation */
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract p {
+   display: block;
+  font-family: arial;
+  color: #47525e;
+  font-size: 17px;
+  line-height: 30px;
+}
+/* TODO: 텍스트 필드 수정해야 한다.*/
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract textarea {
+  display: block;
+    font-family: arial;
+    color: #47525e;
+    font-size: 17px;
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    width: 100%;
+    resize: none;
+    border: 0px;
+
+}
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-header .abstract input {
+
+}
+
+/* activity 상세글 */
+.split-view .split-details .activity-content-wrapper .activity-content .activity-content-body p {
+  font-size: 17px;
+  line-height: 30px;
+  color: #7a8994;
+  letter-spacing: 0.001em;
+}
+.split-view .split-details .activity-content-wrapper .activity-content .activity-reply {
+  min-height: 200px;
+}
+.split-view .split-details .activity-content-wrapper activity-content .editor-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.split-view .split-details .activity-content-wrapper .activity-content .editor-wrapper .wysihtml5-sandbox {
+  max-height: 150px;
+  min-height: 130px !important;
+  width: 100% !important;
+}
+/* activity App Top Header
+--------------------------------------------------
+*/
+.header-wrapper-activity {
+  font-size: 14.92px;
+}
+.header-wrapper-activity .dropdown > .btn {
+  color: #00e8ba;
+}
+.header-wrapper-activity .btn:hover {
+  text-decoration: none;
+}
+/* Responsive Handler : Email App
+--------------------------------------------------
+*/
+
+
+
+
+/*------------------------------------------------------------------
+액티비티 뷰
+------------------------------------------------------------------ */
+.activity-content-wrapper {
+      background-color: #f6f9fa;
+}
+/* 액티비티 편집화면 */
+.activity-content-background.edit .abstract{
+  /* 요약 단락 하단 border 제거 */
+  border-bottom: 0px;
+}
+  .activity-content-background.edit .activity-content {
+    width: auto !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+  }
+  /* 카테고리 */
+  .activity-content-background.edit .activity-content .datetitle p{
+  }
+  /* 제목 */
+  .activity-content-background.edit .activity-content .title p{
+    font-size: 25px !important;
+    line-height: 30px !important;
+  }
+  /* 요약 */
+  .activity-content-background.edit .activity-content .abstract p{
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+
+/* 액티비티 편집 화면에서는 액티비티 정보가 container에 담긴다.*/
+.activity-content-background.edit {
+
+}
+
+/**/
+.activity-content-wrapper .social-card {
+  width: 100%;
+}
+
+
+
+
+/*------------------------------------------------------------------
+스토리 작성 뷰
+------------------------------------------------------------------ */
+/* 스토리 뷰 하단까지 길이 확대 */
+.activity-content-wrapper.story_edit {
+  overflow: hidden !important;
+}
+/* 스토리 뷰 카드 위치 가운데 */
+.activity-content-wrapper.story_edit .card.social-card{
+  height: 100vh;
+  margin: 0 auto;
+  float: none;
+  width: 636px;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+  /* 카드 수정 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header {
+    border-bottom: 0px;
+  }
+  /* 유저이미지 크기조정 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header .user-pic {
+    height: 32px;
+    width: 32px;
+    margin-right: 20px;
+  }
+  .activity-content-wrapper.story_edit .card.social-card .card-header .user-pic img {
+    height: 32px;
+    width: 32px;
+  }
+  /* 제목 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header h5 {
+      font-size: 24px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+  }
+  /* 제목 */
+  .activity-content-wrapper.story_edit .card.social-card .card-header h6 {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    margin-top:20px;
+  }
+  /* 내용 */
+  .activity-content-wrapper.story_edit .card.social-card .card-description p {
+    font-size: 15px !important;
+    line-height: 30px !important;
+  }
+
+
+
+  .field {
+    margin-bottom: 25px;
+  }
+
+  .showbox .social-card {
+    width: auto;
+  }
+.showbox .social-card.share .card-description p:first-child {
+  font-size: 16px;
+      color: #373e43;
+  font-weight: 700;
+    margin-bottom: 4px;
+}

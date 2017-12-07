@@ -1,0 +1,57 @@
+{% extends 'portfolio/base_secondary.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <div class="activity-content-wrapper" style="">
+
+                <div class="activity-content-background">
+                    <div class="activity-content">
+
+
+                <div class="activity-content-header">
+                  <div class="upper-header">
+                      <p class="datetime m-b-15"><span>포트폴리오 > {{ tab.title }}</span></p>
+                    <!-- editable -->
+                    <div class="title">
+                        <p class="bold">{{ activity.title }}</p>
+                    </div>
+
+                    <p class="datetime m-t-15 ">
+                        <span class="projected">17.08.03~17.08.04 </span>
+                        <span class="updated">1시간전에 업데이트됨</span>
+                  </p>
+
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="abstract m-t-15 m-b-20 semi-bold">
+                      <p>
+                          {{ activity.summary }}
+                          </p>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+
+
+
+                    <hr>
+                    <div class="activity-content-body m-t-10" >
+{#                    <div class="activity-content-body m-t-10 editable" >#}
+                        <p>
+                            Type your text
+                        </p>
+                  </div>
+                  <hr>
+              </div>
+                </div>
+
+                    
+                    
+                    
+                    
+                    
+                </div>
+
+{% endblock %}

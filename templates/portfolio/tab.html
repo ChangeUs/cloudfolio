@@ -1,0 +1,84 @@
+{% extends 'portfolio/base_secondary.html' %}
+{% load staticfiles %}
+
+{% block content %}
+        
+          <div class="jumbotron  no-margin tab" data-pages="parallax">
+            <div class=" container-fluid   container-fixed-lg sm-p-l-0 sm-p-r-0">
+              <div class="inner" style="transform: translateY(0px); opacity: 1;">
+                {# TODO: 공개범위 수정 #}
+                <h3 class="semi-bold">{{ tab.title }}</h3>
+              </div>
+
+                <div class="row">
+                    {# 액티비티 #}
+                    {% for activity in tab.get_all_activities %}
+                            <div class="col-xl-4 col-lg-6" onclick="goActivity({{ activity.id }})">
+
+                                    <div class="card card-default link">
+                              <div class="card-header ">
+                                <div class="card-title">
+                                    2017.08.29 ~ 2019.10.30
+                                </div>
+                                <div class="card-controls">
+                                  <ul>
+                                    <li>
+                                        <a data-toggle="close" href="#"><i class="fa fa-edit"></i></a>
+                                    </li>
+                            {#                                <li>#}
+                            {#                                    <a data-toggle="close" href="#"><i class="fa fa-globe"></i></a>#}
+                            {#                                </li>#}
+                                      <li>
+                                          <div class="dropdown">
+                                          <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">
+                                            <i class="fa fa-globe"></i>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                                            <a href="#" class="dropdown-item">전체공개</a>
+                                            <a href="#" class="dropdown-item">나만보기</a>
+                                          </div>
+                                        </div>
+                                      </li>
+
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class="card-block">
+                                <div class="scroll-wrapper scrollable" style="position: relative;"><div class="scrollable scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 168px;">
+                                  <div class="demo-card-scrollable">
+                                    <h3><span class="semi-bold line-1">{{ activity.title }}</span></h3>
+                                    <p>
+                                        {{ activity.summary }}
+                                    </p>
+                                  </div>
+                                </div>
+                                    <div class="scroll-element scroll-x" style="">
+                                    <div class="scroll-element_outer">
+                                        <div class="scroll-element_size">
+                                        </div><div class="scroll-element_track">
+
+                                    </div>
+                                        <div class="scroll-bar" style="width: 96px;">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="scroll-element scroll-y" style="">
+                                        <div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 96px; top: 0px;"></div></div></div></div>
+                              </div>
+                            </div>
+
+                            </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+          </div>
+
+
+
+
+{% endblock %}

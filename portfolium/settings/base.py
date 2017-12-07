@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'account',
     'portfolio'
 ]
@@ -117,3 +118,40 @@ AUTH_USER_MODEL = 'account.Account'
 # When Login success, go to main page.
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+# Email Activation
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'changeus00@gmail.com'
+# Google App Password
+EMAIL_HOST_PASSWORD = 'xzddkopyhqjmgywz'
+DEFAULT_FROM_EMAIL = 'ChangeUs Team <changeus00@gmail.com>'
+
+
+"""
+AWS S3 Settings
+ - USE boto3 library for manipulating Amazon AWS S3.
+"""
+
+# access key id, secret access key, and storage bucket name is defined in secrets.json file
+AWS_ACCESS_KEY_ID = get_secret('S3_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_secret('S3_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = get_secret('S3_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+# public media location
+DEFAULT_FILE_STORAGE = 'core.storage.PublicMediaStorage'
+
+# private media location
+PRIVATE_FILE_STORAGE = 'core.storage.PrivateMediaStorage'

@@ -1,0 +1,112 @@
+{% extends 'portfolio/base_secondary.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+                <div class="activity-content-wrapper" style="">
+<!-- 콘텐츠페이지 상단 버튼 -->
+                    <!-- 
+              <div class="actions-wrapper menuclipper bg-master-lightest">
+                    <ul class="actions menuclipper-menu no-margin p-l-20 ">
+                      <li class="hidden-lg-up">
+                        <a href="#" class="split-list-toggle"><i class="fa fa-angle-left"></i> All Inboxes</a>
+                      </li>
+                      <li class="no-padding "><a href="#" class="text-info">Reply</a>
+                      </li>
+                      <li class="no-padding "><a href="#">Reply all</a>
+                      </li>
+                      <li class="no-padding "><a href="#">Forward</a>
+                      </li>
+                      <li class="no-padding "><a href="#">Mark as read</a>
+                      </li>
+                      <li class="no-padding "><a href="#" class="text-danger">Delete</a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+-->
+                <div class="activity-content-background edit">
+                    <div class="container-fluid  container-fixed-lg sm-p-l-0 sm-p-r-0">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="activity-content">
+
+
+
+                                            <div class="activity-content-header">
+                      <div class="upper-header">
+                          <p class="datetime m-t-15 m-b-5"><span>포트폴리오 > 카테고리</span></p>
+                        <!-- editable -->
+                        <div class="title">
+                            <p class="bold">제목을 입력하시오.</p>
+                        </div>
+
+                        <p class="datetime no-margin ">
+                            <span class="projected">17.08.03~17.08.04 </span>
+                            <span class="updated">1시간전에 업데이트됨</span>
+                      </p>
+
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="abstract m-t-5 m-b-20 semi-bold">
+                          <p>
+                              150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글은 정확히 150자임. 공백을 포함아였음. 150자 요약 들어가는 곳. 여기도 에디터를 사용하나? 이 글
+                              </p>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+    {##}
+
+
+                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+
+                    
+{# 작업중 ################################################ #}
+{#<div class="card card-default">#}
+{#                          <div class="card-header ">#}
+{#                            <div class="card-title">#}
+
+                <div class="container-fluid  container-fixed-lg sm-p-l-0 sm-p-r-0 m-t-20 ">
+                    {% for i in "01234566" %}
+                    <div class="row">
+            <div class="col-lg-12">
+                        <div class="card social-card share " data-social="item">
+                          <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                          </div>
+                          <div class="card-header clearfix">
+                            <div class="user-pic">
+                              <img alt="Profile Image" width="33" height="33" data-src-retina="{% static 'assets/img/profiles/8x.jpg' %}" data-src="{% static 'assets/img/profiles/8.jpg' %}" src="{% static 'assets/img/profiles/8x.jpg' %}">
+                            </div>
+                            <h5>#1. 프로젝트 기획단계 회고</h5>
+                            <h6>홍길동 / &nbsp;
+                                    <span class="location semi-bold">
+                                        스토리 일자: 2017.03.05
+                                    </span>
+                                </h6>
+                          </div>
+                          <div class="card-description">
+                            <p>
+                                스토리에 대한 내용입니다. 스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.스토리에 대한 내용입니다.
+                            </p>
+                            <div class="via">3일전에 업데이트됨</div>
+                          </div>
+                        </div>
+</div>
+
+
+                        </div>
+                    {% endfor %}
+                </div>
+{# //작업중 ################################################ #}
+                    
+                </div>
+
+{% endblock %}
