@@ -10,7 +10,7 @@ from portfolio.models import Portfolio
 from portfolio.forms import *
 from portfolio.profile import ProfileInfo
 from portfolio.team_profile import TeamProfileInfo
-
+import re
 
 ################################################################################
 
@@ -525,6 +525,48 @@ class ResumeView(View):
         context = {'portfolio':portfolio, 'profile':profile}
 
         return render(request, 'portfolio/resume-default.html', context)
+
+    def post(self, request):
+
+        profile_regex = re.compile(r'^profile-(?P<profile>[a-zA-Z0-9_\-]+)$')
+        activity_regex = re.compile(r'^activity-(?P<activity>[a-zA-Z0-9_\-]+)$')
+
+        try:
+            portfolio = request.user.get_user_portfolio()
+            profile = portfolio.profile.get_profile()
+        except ObjectDoesNotExist:
+            return HttpResponse(status=400)
+
+        selected_portfolio = {}
+        selected_profile = {}
+
+        for title, value in request.POST.items():
+            if value == 'on':
+                match = profile_regex.search(title)
+
+                # it is activity
+                if match is None:
+                    match = activity_regex.search(title)
+                    selected_title = match.group('activity')
+                    activity = Activity.objects.get(id=int(selected_title))
+                    selected_portfolio.update({activity.title: activity.summary})
+
+                else:
+                    selected_title = match.group('profile')
+                    selected_profile.update({selected_title: profile[selected_title]})
+
+        context = {
+            'profile': selected_profile,
+            'activities': selected_portfolio
+        }
+
+        resume = Resume(
+            portfolio=portfolio,
+            contents=context
+        )
+
+        resume.save()
+        return render(request, 'portfolio/resume-result.html', context)
 
 
 # 임시

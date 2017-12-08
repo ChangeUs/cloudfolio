@@ -3,23 +3,12 @@
 
 {% block content %}
 
-<!-- json 형태로 프로필 전부 가져오기 -->
-{{ profile }}
-
-
 <hr>
-
-<!-- 하나의 정보 가져오기 -->
-{% if 'occupation' in profile %}
-    {{ profile.occupation.occupation }}
-    {{ profile.occupation.public }}
-{% endif %}
 
 <!-- 모든 정보 가져오기 -->
 
-<form method="post">{% csrf_token %}
 {% for profile_title, profile_value in profile.items %}
-<h1>{{ profile_title }}<input type="checkbox" name="profile-{{ profile_title }}"></h1>
+<h1>{{ profile_title }}</h1>
 
     <!-- 배열 형태 처리 (즉, 학교 profile 처럼 multiple 가능한 프로필 처리 -->
     {% if profile_value|isinstance:"list" %}
@@ -50,23 +39,9 @@
 {{ portfolio }}
 
 <br>
-
-{% for tab in portfolio.get_all_tabs %}
-    <li>{{ tab }}
-        <ul>
-        {% for activity in tab.get_public_activities %}
-            <li>{{ activity }} <input type="checkbox" name="activity-{{ activity.id }}">
-                <ul>
-                    {% for story in activity.get_public_stories %}
-                        <li>{{ story }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-        </ul>
-    </li>
+<ul>
+{% for activity_title, activity_content in activities.items %}
+    <li><b>{{ activity_title }} : </b> {{ activity_content }}</li>
 {% endfor %}
-    <input type="submit" value="이력서 생성">
-</form>
-
+</ul>
 {% endblock %}
