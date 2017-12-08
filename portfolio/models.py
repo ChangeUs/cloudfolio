@@ -331,7 +331,7 @@ class Resume(TimeStampedModel):
 
     # Attributes of Profile model #
 
-    portfolio = models.OneToOneField(Portfolio, auto_created=True)
+    portfolio = models.ForeignKey(Portfolio, auto_created=True)
     contents = JSONField(default={})
 
     class Meta:
