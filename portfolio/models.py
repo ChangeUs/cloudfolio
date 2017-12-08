@@ -325,3 +325,16 @@ class FileContent(models.Model):
         verbose_name = "file"
         verbose_name_plural = "files"
         ordering = ('story', )
+
+
+class Resume(TimeStampedModel):
+
+    # Attributes of Profile model #
+
+    portfolio = models.OneToOneField(Portfolio, auto_created=True)
+    contents = JSONField(default={})
+
+    class Meta:
+        verbose_name = "resume"
+        verbose_name_plural = "resumes"
+        ordering = ('portfolio', )
