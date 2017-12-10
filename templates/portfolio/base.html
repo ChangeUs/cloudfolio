@@ -102,46 +102,7 @@
     <!-- END SIDEBAR -->
 
     <div class="page-container">
-      <div class="header ">
-        <a href="#" class="btn-link toggle-sidebar hidden-lg-up pg pg-menu" data-toggle="sidebar">
-        </a>
-        <!-- END MOBILE SIDEBAR TOGGLE -->
-        <div class="">
-          <div class="brand inline">
-            <img src="{% static 'assets/img/logo_blue.png' %}" alt="logo" data-src="{% static 'assets/img/logo_blue.png' %}" data-src-retina="{% static 'assets/img/logo_blue_2x.png' %}" height="22">
-          </div>
-
-            <a href="#" class="btn btn-link text-primary m-l-20 hidden-md-down"><i class="fa fa-edit"></i> &nbsp;New Activity</a>
-
-          <a href="#" class="search-link hidden-md-down" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
-        </div>
-        <div class="d-flex align-items-center">
-
-          <!--상단 프로필 - 이름 -->
-          <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down m-l-20">
-            <span class="semi-bold">강</span> <span class="text-master">하늘</span>
-          </div>
-          <!--상단 프로필 - 사진 -->
-          <div class="dropdown pull-right hidden-md-down">
-            <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="thumbnail-wrapper d32 circular inline">
-              <img src="{% static 'assets/img/profiles/avatar.jpg' %}" alt="" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" data-src-retina="{% static 'assets/img/profiles/avatar_small2x.jpg' %}" width="32" height="32">
-              </span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-              <a href="{% url 'accounts:password_change' %}" class="dropdown-item"><i class="pg-settings_small"></i> 비밀번호 변경</a>
-              <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
-              <a href="{% url 'accounts:logout' %}" class="clearfix bg-master-lighter dropdown-item">
-                <span class="pull-left">로그아웃</span>
-                <span class="pull-right"><i class="pg-power"></i></span>
-              </a>
-            </div>
-          </div>
-          <!-- END User Info-->
-<!--우측 퀵뷰 버튼-->
-<!--          <a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>-->
-        </div>
-      </div> <!-- //header -->
+      {% include 'portfolio/_base_header.html' %}
 <!--#################################################### -->
 <!--#################################################### -->
 <!--#################################################### -->

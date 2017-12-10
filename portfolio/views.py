@@ -524,7 +524,7 @@ class ResumeView(View):
 
         context = {'portfolio':portfolio, 'profile':profile}
 
-        return render(request, 'portfolio/resume-default.html', context)
+        return render(request, 'resume/resume-default.html', context)
 
     def post(self, request):
 
@@ -566,7 +566,7 @@ class ResumeView(View):
         )
 
         resume.save()
-        return render(request, 'portfolio/resume-result.html', context)
+        return render(request, 'resume/resume-result.html', context)
 
 
 # 임시
