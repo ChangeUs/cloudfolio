@@ -1,0 +1,255 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Pages - Admin Dashboard UI Kit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="apple-touch-icon" href="{% static 'pages/ico/60.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'pages/ico/76.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'pages/ico/120.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'pages/ico/152.png' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- 페이지 로드 바 -->
+    <link href="{% static 'assets/plugins/pace/pace-theme-flash.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 부트스트랩 -->
+	<link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 아이콘 -->
+	<link href="{% static 'assets/plugins/font-awesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css" />
+    <!--  -->
+	<link href="{% static 'assets/plugins/jquery-scrollbar/jquery.scrollbar.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <!-- 선택필드(태그기능) -->
+	<link href="{% static 'assets/plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <!-- ios 스타일 switch -->
+	<link href="{% static 'assets/plugins/switchery/css/switchery.min.css' %}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'assets/plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css' %}" rel="stylesheet" type="text/css" media="screen">
+    <!-- icon -->
+    <link href="{% static 'pages/css/pages-icons.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 전체 스타일 관련 -->
+    <link class="main-stylesheet" href="{% static 'pages/css/themes/light.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Custom CSS -->
+    <link href="{% static 'custom/css/custom.css' %}" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body class="fixed-header resume-base">
+      <!--      -->
+    <nav class="page-sidebar" data-pages="sidebar">
+      <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+      <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
+      <!-- BEGIN SIDEBAR MENU HEADER-->
+      <div class="sidebar-header">
+        <img src="{% static 'assets/img/logo_blue.png' %}" alt="logo" class="brand" data-src="{% static 'assets/img/logo_blue.png' %}" data-src-retina="{% static 'assets/img/logo_blue_2x.png' %}" height="22">
+      </div>
+      <!-- END SIDEBAR MENU HEADER-->
+      <!-- START SIDEBAR MENU -->
+      <div class="sidebar-menu">
+        <!-- BEGIN SIDEBAR MENU ITEMS-->
+        <ul class="menu-items">
+
+          <li class="m-t-30">
+            <a href="{% url 'portfolios:profile' %}" class="detailed">
+              <span class="title">에디터</span>
+              <span class="details">3 activities</span>
+            </a>
+            <span class="icon-thumbnail "><i data-feather="shield"></i></span>
+          </li>
+
+
+          <li class="">
+            <a href="{% url 'main:showbox' %}">
+              <span class="title">쇼박스</span>
+            </a>
+            <span class="icon-thumbnail "><i data-feather="list"></i></span>
+          </li>
+
+          <li class="">
+            <a href="#">
+              <span class="title">내 포트폴리오</span>
+            </a>
+            <span class="icon-thumbnail ">pt</span>
+          </li>
+
+          <li class="">
+            <a href="#">
+              <span class="title">내 이력서</span>
+            </a>
+            <span class="icon-thumbnail ">re</span>
+          </li>
+
+
+
+
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <!-- END SIDEBAR MENU -->
+    </nav>
+    <!-- END SIDEBAR -->
+
+    <div class="page-container">
+
+<!--#################################################### -->
+<!--#################################################### -->
+<!--#################################################### -->
+
+        <div class="page-content-wrapper full-height">
+        <!-- START PAGE CONTENT -->
+        <div class="content full-height">
+          <!-- START APP -->
+          <div class="inner-content full-height">
+
+{# ---#}
+          {% block content-wrapper %}
+
+          {% endblock %}
+
+{# ---#}
+          </div>
+          <!-- END APP -->
+
+              </div>
+        <!-- END PAGE CONTENT -->
+
+      </div>
+
+
+
+<!--#################################################### -->
+<!--#################################################### -->
+<!--#################################################### -->
+
+
+
+
+
+
+
+
+    </div> <!-- // page-container-->
+
+
+    <!-- BEGIN VENDOR JS -->
+    <script src="{% static 'assets/plugins/feather-icons/feather.min.js' %}" type="text/javascript"></script>
+        <!-- BEGIN VENDOR JS -->
+    <script src="{% static 'assets/plugins/pace/pace.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery/jquery-1.11.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/modernizr.custom.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery-ui/jquery-ui.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/tether/js/tether.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery/jquery-easy.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery-unveil/jquery.unveil.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery-bez/jquery.bez.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery-ios-list/jquery.ioslist.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery-actual/jquery.actual.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/select2/js/select2.full.js' %}" type="text/javascript" ></script>
+    <!-- sidebar hover시 애니메이션적용 -->
+    <script src="{% static 'assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+{#    <script src="{% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>#}
+    <script src="{% static 'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}" type="text/javascript"></script>
+    <!-- END VENDOR JS -->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="{% static 'pages/js/pages.js' %}" type="text/javascript"></script>
+    <!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL JS -->
+    <script src="{% static 'assets/js/notifications.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/scripts_alt.js' %}" type="text/javascript"></script>
+      <script src="{% static 'custom/js/custom.js' %}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS -->
+
+    <!-- medium editor JS -->
+{#    <script src="{% static 'modules/jquery/dist/jquery.min.js' %}"></script>#}
+    <script src="{% static 'modules/medium-editor/dist/js/medium-editor.js' %}"></script>
+    <script src="{% static 'modules/handlebars/dist/handlebars.runtime.min.js' %}"></script>
+    <script src="{% static 'modules/jquery-sortable/source/js/jquery-sortable-min.js' %}"></script>
+    <script src="{% static 'modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js' %}"></script>
+    <script src="{% static 'modules/blueimp-file-upload/js/jquery.iframe-transport.js' %}"></script>
+    <script src="{% static 'modules/blueimp-file-upload/js/jquery.fileupload.js' %}"></script>
+    <script src="{% static 'modules/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js' %}"></script>
+
+    {# TODO: datepicker 추가하기 #}
+
+    <!-- medium editor script -->
+    <script type="text/javascript">
+
+
+//        var title_editable = new MediumEditor('#title-editable');
+//        var abstract_editable = new MediumEditor('#abstract-editable');
+        var editor = new MediumEditor('.editable');
+
+//        var editor = new MediumEditor('.editable');
+        $(function () {
+            $('.editable').mediumInsert({
+                editor: editor,
+                addons: {
+                    images: {
+                        uploadScript: null,
+                        deleteScript: null,
+                        captionPlaceholder: 'Type caption for image',
+                        styles: {
+                            slideshow: {
+                                label: '<span class="fa fa-play"></span>',
+                                added: function ($el) {
+                                    $el
+                                        .data('cycle-center-vert', true)
+                                        .cycle({
+                                            slides: 'figure'
+                                        });
+                                },
+                                removed: function ($el) {
+                                    $el.cycle('destroy');
+                                }
+                            }
+                        },
+                        actions: null
+                    }
+                }
+            });
+        });
+      </script>
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                (function($) {
+                    'use strict';
+                    $('.page-container').pgNotification({
+                        style: 'bar',
+                        message: '{{ message }}',
+                        position: 'bottom',
+                        timeout: 2000,
+                        type: 'info'
+                    }).show();
+                })(window.jQuery);
+            </script>
+        {% endfor %}
+    {% endif %}
+      <script>
+        function goActivity(actvity_id) {
+            window.location.href='/portfolios/activity/'+actvity_id;
+        }
+        function goTab(tab_id) {
+            window.location.href='/portfolios/tab/'+tab_id;
+        }
+        function goProfile() {
+            window.location.href='/portfolios/profile/';
+        }
+        function goResume1() {
+            window.location.href='/resume/1/';
+        }
+        function goResume2() {
+            window.location.href='/resume/2/';
+        }
+
+    </script>
+
+  </body>
+</html>
