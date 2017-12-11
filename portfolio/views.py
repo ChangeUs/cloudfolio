@@ -579,7 +579,7 @@ class ResumeView(View):
             'portfolio': portfolio,
             'profile': profile,
             'selected_profile': selected_profile,
-            'selected_activities': selected_portfolio
+            'selected_portfolio': selected_portfolio
         }
         # // 발표용 임시 작성 --
         return render(request, 'resume/resume-result.html', context)

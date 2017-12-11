@@ -3,12 +3,7 @@
 
 
 {% block content-wrapper %}
-
-{{ selected_profile }}
-    <hr>
-    {{ selected_activities }}
-    <hr>
-
+    d
 <!-- json 형태로 프로필 전부 가져오기 -->
 {#{{ profile }}#}
 
@@ -91,7 +86,7 @@
                     </div>
                 </div>
 
-                {% for tab in portfolio.get_all_tabs %}
+                {% for tab,values in selected_portfolio.items %}
                 <div class="each-content">
                     <div class="content-title">
                         <h2>{{ tab }}</h2> <!-- 이름 -->
@@ -99,11 +94,14 @@
 
                     </div>
                     <div class="content-activity">
-                        {% for activity in tab.get_public_activities %}
-                        <div class="activity">
-                            <h4>{{ activity }}</h4>
-                            <p class="no-margin">- {{ activity.summary }}</p>
-                        </div>
+
+                        {% for activities in values %}
+                            {% for activity_title, activity_summary in activities.items %}
+                            <div class="activity">
+                                <h4>{{ activity_title }}</h4>
+                                <p class="no-margin">- {{ activity_summary }}</p>
+                            </div>
+                            {% endfor %}
                         {% endfor %}
                     </div>
                 <hr>
