@@ -1,0 +1,47 @@
+
+{% load staticfiles %}
+
+{% block content %}
+
+<hr>
+
+<!-- 모든 정보 가져오기 -->
+
+{% for profile_title, profile_value in profile.items %}
+<h1>{{ profile_title }}</h1>
+
+    <!-- 배열 형태 처리 (즉, 학교 profile 처럼 multiple 가능한 프로필 처리 -->
+    {% if profile_value|isinstance:"list" %}
+
+        {% for profile_index_value in profile_value %}
+            <ul>
+                {% for profile_field, profile_content in profile_index_value.items %}
+                <li><b>{{ profile_field }}</b> : {{ profile_content }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+
+    <!-- 단일 형태 정보 처리 -->
+    {% else %}
+
+        <ul>
+            {% for profile_field, profile_content in profile_value.items %}
+                <li><b>{{ profile_field }}</b> : {{ profile_content }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endfor %}
+
+
+<!-- portfolio 정보 가져오기 -->
+<br>
+{{ portfolio }}
+
+<br>
+<ul>
+{% for activity_title, activity_content in activities.items %}
+    <li><b>{{ activity_title }} : </b> {{ activity_content }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
