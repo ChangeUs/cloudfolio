@@ -1,114 +1,72 @@
-{% extends 'resume/base.html' %}
+
 {% load staticfiles %}
 
-
-{% block content-wrapper %}
+{% block content %}
 
 <!-- json 형태로 프로필 전부 가져오기 -->
-{#{{ profile }}#}
-
-<div class="container paper-like">
-    <div class="row">
-        <div class="top-content col-sm-3">
+{{ profile }}
 
 
-                <div class="resume-image circular">
-                    <img  alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
-                </div>
+<hr>
 
-            <hr>
+<!-- 하나의 정보 가져오기 -->
+{% if 'occupation' in profile %}
+    {{ profile.occupation.occupation }}
+    {{ profile.occupation.public }}
+{% endif %}
 
+<!-- 모든 정보 가져오기 -->
 
+<form method="post">{% csrf_token %}
+{% for profile_title, profile_value in profile.items %}
+<h1>{{ profile_title }}<input type="checkbox" name="profile-{{ profile_title }}"></h1>
 
-            <div class="clearfix"></div>
-            <div class="content-etc">
+    <!-- 배열 형태 처리 (즉, 학교 profile 처럼 multiple 가능한 프로필 처리 -->
+    {% if profile_value|isinstance:"list" %}
 
-
-
-                <p class="datetime m-t-15">
-                    <ul class="content-li">
-                        <li>전화 {{ profile.contact.phone_number }}</li>
-                        <li>모바일 {{ profile.contact.mobile_phone_number }}</li>
-                        <li>주소 {{ profile.address.active_area }}</li>
-                    </ul>
-                </p>
-
-                <hr>
-                <p class="datetime m-t-15">
-                    <ul class="content-li ">
-                        <li>{{ profile.homepage.github_page }}</li>
-                        <li>{{ profile.homepage.blog_page }}</li>
-                    </ul>
-                </p>
-                <hr>
-
-
-
-                <p class="datetime m-t-15">
-                    {% for keyword_content in profile.interest_keyword %}
-                        <span class="tag">#{{ keyword_content.interest_keyword }}&nbsp;&nbsp;</span>
-                    {% endfor %}
-                </p>
-            </div>
-
-            <hr>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="col-sm-9">
-                <div class="each-content">
-                    <div class="content-title">
-                        <h2><b>{{ portfolio.account }}</b> 이력서</h2> <!-- 이름 -->
-                        <div class="left-padding">
-                            <p class="">{{ profile.occupation.occupation }}</p>
-                            <p class="no-margin">{{ profile.introduction.introduction }}</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            <div class="each-content">
-                    <div class="content-title">
-                        <h2>교육</h2> <!-- 이름 -->
-                        {% for each in profile.education %}
-                                <div class="row field-content div-narrow">
-                                        <div class="col-sm-6">
-                                            {{ each.school }}
-                                        </div>
-                                        <div class="col-sm-3">
-                                            {{ each.degree }}
-                                        </div>
-                                        <div class="col-sm-3 text-right">
-                                            {{ each.major }}
-                                        </div>
-                                </div>
-                                {% endfor %}
-                        <hr>
-                    </div>
-                </div>
-
-                {% for tab in portfolio.get_all_tabs %}
-                <div class="each-content">
-                    <div class="content-title">
-                        <h2>{{ tab }}</h2> <!-- 이름 -->
-
-
-                    </div>
-                    <div class="content-activity">
-                        {% for activity in tab.get_public_activities %}
-                        <div class="activity">
-                            <h4>{{ activity }}</h4>
-                            <p class="no-margin">- {{ activity.summary }}</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                <hr>
-                </div>
+        {% for profile_index_value in profile_value %}
+            <ul>
+                {% for profile_field, profile_content in profile_index_value.items %}
+                <li><b>{{ profile_field }}</b> : {{ profile_content }}</li>
                 {% endfor %}
+            </ul>
+        {% endfor %}
+
+    <!-- 단일 형태 정보 처리 -->
+    {% else %}
+
+        <ul>
+            {% for profile_field, profile_content in profile_value.items %}
+                <li><b>{{ profile_field }}</b> : {{ profile_content }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endfor %}
 
 
-        </div>
-    </div>
+<!-- portfolio 정보 가져오기 -->
+<br>
+{{ portfolio }}
 
-</div>
+<br>
+
+{% for tab in portfolio.get_all_tabs %}
+    <li>{{ tab }}
+        <ul>
+        {% for activity in tab.get_public_activities %}
+            <li>{{ activity }} <input type="checkbox" name="activity-{{ activity.id }}">
+                <ul>
+                    {% for story in activity.get_public_stories %}
+                        <li>{{ story }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+    <input type="submit" value="이력서 생성">
+</form>
 
 {% endblock %}

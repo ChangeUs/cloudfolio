@@ -218,6 +218,7 @@ class Activity(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
         return self.get_all_stories(privacy=PrivacyModel.PUBLIC_ALL)
 
 
+
 ################################################################################
 
 class Story(TimeStampedModel, FormatOfPeriodModel, PrivacyModel):
