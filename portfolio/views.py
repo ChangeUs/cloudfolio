@@ -524,7 +524,7 @@ class ResumeView(View):
 
         context = {'portfolio':portfolio, 'profile':profile}
 
-        return render(request, 'portfolio/resume-default.html', context)
+        return render(request, 'resume/resume-default.html', context)
 
     def post(self, request):
 
@@ -549,7 +549,15 @@ class ResumeView(View):
                     match = activity_regex.search(title)
                     selected_title = match.group('activity')
                     activity = Activity.objects.get(id=int(selected_title))
-                    selected_portfolio.update({activity.title: activity.summary})
+                    # selected_portfolio.update({activity.title: activity.summary})
+
+
+                    if str(activity.tab) in selected_portfolio:
+                        selected_portfolio[str(activity.tab)].append({activity.title: activity.summary})
+                    else:
+                        act = []
+                        act.append({activity.title: activity.summary})
+                        selected_portfolio.update({str(activity.tab): act})
 
                 else:
                     selected_title = match.group('profile')
@@ -566,7 +574,15 @@ class ResumeView(View):
         )
 
         resume.save()
-        return render(request, 'portfolio/resume-result.html', context)
+        # Todo : 발표용 임시 작성 --
+        context = {
+            'portfolio': portfolio,
+            'profile': profile,
+            'selected_profile': selected_profile,
+            'selected_portfolio': selected_portfolio
+        }
+        # // 발표용 임시 작성 --
+        return render(request, 'resume/resume-result.html', context)
 
 
 # 임시

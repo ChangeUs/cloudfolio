@@ -1,52 +1,40 @@
-{% extends 'portfolio/base_secondary.html' %}
+{% extends 'resume/base.html' %}
 {% load staticfiles %}
 
-{% block content %}
+{% block content-wrapper %}
 
+<form method="post">{% csrf_token %}
 
+<div class="container resume-select">
+    <div class="row">
+        <div class="top-content col-sm-12">
 
-
-
-
-    <div class="email-content-wrapper" style="">
-                  <div class="email-content">
-                    <div class="email-content-header">
-
-                        <div class="content-left">
-                            <div class="thumbnail-wrapper d50 circular">
-                                <img width="40" height="40" alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
-                            </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="resume-image circular">
+                            <img  alt="" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" src="{% static 'assets/img/profiles/avatar2x.jpg' %}">
                         </div>
-
-                        <div class="content-right">
-                            <div class="sender inline m-l-10">
-                                {# TODO: profile뷰이기때문에 profile.name으로 접근필요 #}
-                                <p class="name no-margin p-t-5 bold">{{ portfolio.account }}</p>
-
-                                <p class="no-margin">{{ profile.occupation.occupation }}</p>
-                                <p class="no-margin">{{ profile.introduction.introduction }}</p>
-                                <p class="m-t-15">
-                                    {% for keyword_content in profile.interest_keyword %}
-                                        <span class="tag">#&nbsp;{{ keyword_content.interest_keyword }}</span>
-                                    {% endfor %}
-                                </p>
-                            </div>
-                        </div>
-
-                        <hr>
-                      <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="email-content-body m-t-20">
+                    <div class="col-sm-10">
+                        <p class="name bold m-t-15">{{ portfolio.account }}</p>
+                        <p class="no-margin">{{ profile.occupation.occupation }}</p>
+                        <p class="no-margin">{{ profile.introduction.introduction }}</p>
+                    </div>
+                </div>
 
 
-                        <div class="fields-body">
+            <hr>
+
+
+
+            <div class="clearfix"></div>
+            <div class="fields-body">
                             {# 교육사항 #}
                             <div class="field">
                                 <div class="row">
                                     {# 필드명 #}
                                     <div class="col-sm-12 field-title">
-                                        <h5 class="semi-bold">교육사항</h5>
+                                        <h5 class="semi-bold"><input type="checkbox" >&nbsp;&nbsp;교육사항</h5>
                                     </div>
                                 </div>
 
@@ -82,7 +70,7 @@
                                 <div class="row">
                                     {# 필드명 #}
                                     <div class="col-sm-12 field-title">
-                                        <h5 class="semi-bold">연락처</h5>
+                                        <h5 class="semi-bold"><input type="checkbox" >&nbsp;&nbsp;연락처</h5>
                                     </div>
                                 </div>
                                 {# 필드내용 #}
@@ -110,7 +98,7 @@
                                 <div class="row">
                                     {# 필드명 #}
                                     <div class="col-sm-12 field-title">
-                                        <h5 class="semi-bold">주소</h5>
+                                        <h5 class="semi-bold"><input type="checkbox" >&nbsp;&nbsp;주소</h5>
                                     </div>
                                 </div>
                                 {# 필드내용 #}
@@ -140,7 +128,7 @@
                                 <div class="row">
                                     {# 필드명 #}
                                     <div class="col-sm-12 field-title">
-                                        <h5 class="semi-bold">사용언어</h5>
+                                        <h5 class="semi-bold"><input type="checkbox" >&nbsp;&nbsp;사용언어</h5>
                                     </div>
                                 </div>
 
@@ -166,7 +154,7 @@
                                 <div class="row">
                                     {# 필드명 #}
                                     <div class="col-sm-12 field-title">
-                                        <h5 class="semi-bold">웹사이트</h5>
+                                        <h5 class="semi-bold"><input type="checkbox" >&nbsp;&nbsp;웹사이트</h5>
                                     </div>
                                 </div>
                                 {# 필드내용 #}
@@ -196,16 +184,97 @@
 
                         </div>
 
+            <div class="clearfix"></div>
 
 
+{#        #}
 
-                        </div>
+        {% for tab in portfolio.get_all_tabs %}
+              <div class="inner" style="transform: translateY(0px); opacity: 1;">
+                <h5 class="semi-bold">{{ tab.title }}</h5>
+              </div>
 
+                <div class="row">
+                    {# 액티비티 #}
+                    {% for activity in tab.get_public_activities %}
+                            <div class="col-xl-6 col-lg-6">
 
-                    </div>
+                                    <div class="card card-default link">
+                              <div class="card-header ">
+                                <div class="card-title">
+                                    <input type="checkbox" name="activity-{{ activity.id }}">
+                                </div>
+                                <div class="card-controls">
+                                  <ul>
+                                    <li>
+                                        <a data-toggle="close" href="#"><i class="fa fa-edit"></i></a>
+                                    </li>
+                            {#                                <li>#}
+                            {#                                    <a data-toggle="close" href="#"><i class="fa fa-globe"></i></a>#}
+                            {#                                </li>#}
+                                      <li>
+                                          <div class="dropdown">
+                                          <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">
+                                            <i class="fa fa-globe"></i>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                                            <a href="#" class="dropdown-item">전체공개</a>
+                                            <a href="#" class="dropdown-item">나만보기</a>
+                                          </div>
+                                        </div>
+                                      </li>
 
-                  </div>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class="card-block">
+                                <div class="scroll-wrapper scrollable" style="position: relative;"><div class="scrollable scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 168px;">
+                                  <div class="demo-card-scrollable">
+                                    <h3><span class="semi-bold line-1">{{ activity.title }}</span></h3>
+                                    <p>
+                                        {{ activity.summary }}
+                                    </p>
+                                  </div>
+                                </div>
+                                    <div class="scroll-element scroll-x" style="">
+                                    <div class="scroll-element_outer">
+                                        <div class="scroll-element_size">
+                                        </div><div class="scroll-element_track">
+
+                                    </div>
+                                        <div class="scroll-bar" style="width: 96px;">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="scroll-element scroll-y" style="">
+                                        <div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 96px; top: 0px;"></div></div></div></div>
+                              </div>
+                            </div>
+
+                            </div>
+
+                    {% endfor %}
+
                 </div>
+            <hr>
+        {% endfor %}
 
+
+
+
+
+{#        #}
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+<button class="btn btn-primary btn-cons m-b-10 btn-floating" type="submit"><i class="pg-form"></i> <span class="bold">이력서 생성하기</span> </button>
+</form>
 
 {% endblock %}
