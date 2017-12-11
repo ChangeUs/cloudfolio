@@ -23,9 +23,9 @@
                                 {# TODO: profile뷰이기때문에 profile.name으로 접근필요 #}
                                 <p class="name no-margin p-t-5 bold">{{ portfolio.account }}</p>
 
-                                <p class="datetime no-margin">{{ profile.occupation.occupation }}</p>
-                                <p class="datetime no-margin">{{ profile.introduction.introduction }}</p>
-                                <p class="datetime m-t-15">
+                                <p class="no-margin">{{ profile.occupation.occupation }}</p>
+                                <p class="no-margin">{{ profile.introduction.introduction }}</p>
+                                <p class="m-t-15">
                                     {% for keyword_content in profile.interest_keyword %}
                                         <span class="tag">#&nbsp;{{ keyword_content.interest_keyword }}</span>
                                     {% endfor %}
@@ -40,12 +40,6 @@
                     <div class="email-content-body m-t-20">
 
 
-                    <div class="row">
-                        <div class="col-sm-12 title">
-                                <h4 class="semi-bold">선택된 프로필</h4>
-                        </div>
-                    </div>
-
                         <div class="fields-body">
                             {# 교육사항 #}
                             <div class="field">
@@ -59,23 +53,24 @@
                                 {# 필드내용 #}
                                 {% for each in profile.education %}
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             {{ each.school }}
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-3">
                                             {{ each.degree }}
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3 text-right">
                                             {{ each.major }}
                                         </div>
-                                        {% if each.start_date %}
-                                        <div class="col-sm-3 text-right">
+{#                                        {% if each.start_date %}#}
+{#                                        <div class="col-sm-3 text-right">#}
                                             {# TODO: end_date 병합필요 #}
-                                            {{ each.start_date }}
-                                        </div>
-                                        {% endif %}
+{#                                            {{ each.start_date }}#}
+{#                                        </div>#}
+{#                                        {% endif %}#}
                                 </div>
                                 {% endfor %}
+                                <hr>
                             </div>
 
 
@@ -93,21 +88,22 @@
                                 {# 필드내용 #}
 
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             전화번호
                                         </div>
-                                        <div class="col-sm-4 text-right">
+                                        <div class="col-sm-6 text-right">
                                             {{ profile.contact.phone_number }}
                                         </div>
                                 </div>
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             모바일
                                         </div>
-                                        <div class="col-sm-4 text-right">
+                                        <div class="col-sm-6 text-right">
                                             {{ profile.contact.mobile_phone_number }}
                                         </div>
                                 </div>
+                                <hr>
                             </div>
                             {# 주소 #}
                             <div class="field">
@@ -119,23 +115,24 @@
                                 </div>
                                 {# 필드내용 #}
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             실주소
                                         </div>
-                                        <div class="col-sm-4 text-right">
+                                        <div class="col-sm-6 text-right">
                                             {{ profile.address.residence }}
                                         </div>
 
                                 </div>
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             활동주소
                                         </div>
-                                        <div class="col-sm-4 text-right">
+                                        <div class="col-sm-6 text-right">
                                             {{ profile.address.active_area }}
                                         </div>
 
                                 </div>
+                                <hr>
                             </div>
 
                         {# 언어 #}
@@ -150,17 +147,18 @@
                                 {# 필드내용 #}
                                 {% for each in profile.language %}
                                 <div class="row field-content div-narrow">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             {{ each.language_name }}
                                         </div>
 
-                                        <div class="col-sm-4 text-right">
+                                        <div class="col-sm-6 text-right">
                                             {# TODO: end_date 병합필요 #}
                                             {{ each.level }}
                                         </div>
 
                                 </div>
                                 {% endfor %}
+                                <hr>
                             </div>
 
                             {# 웹사이트 #}
@@ -189,7 +187,7 @@
                                             {{ profile.homepage.blog_page }}
                                         </div>
                                 </div>
-
+                                <hr>
                             </div>
 
 

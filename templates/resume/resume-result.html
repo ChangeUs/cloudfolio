@@ -3,7 +3,6 @@
 
 
 {% block content-wrapper %}
-    d
 <!-- json 형태로 프로필 전부 가져오기 -->
 {#{{ profile }}#}
 
@@ -63,7 +62,7 @@
                             <p class="">{{ profile.occupation.occupation }}</p>
                             <p class="no-margin">{{ profile.introduction.introduction }}</p>
                         </div>
-                        <hr>
+                        <hr class="hr-more">
                     </div>
                 </div>
             <div class="each-content">
@@ -82,7 +81,7 @@
                                         </div>
                                 </div>
                                 {% endfor %}
-                        <hr>
+                        <hr class="hr-more">
                     </div>
                 </div>
 
@@ -104,7 +103,7 @@
                             {% endfor %}
                         {% endfor %}
                     </div>
-                <hr>
+                <hr class="hr-more">
                 </div>
                 {% endfor %}
 

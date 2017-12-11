@@ -56,30 +56,32 @@
 
           <li class="m-t-30">
             <a href="{% url 'portfolios:profile' %}" class="detailed">
-              <span class="title">에디터</span>
-              <span class="details">3 activities</span>
+              <span class="title">포트폴리오</span>
+              <span class="details">활동이력을 작성하세요</span>
             </a>
             <span class="icon-thumbnail "><i data-feather="shield"></i></span>
           </li>
 
 
           <li class="">
-            <a href="{% url 'main:showbox' %}">
-              <span class="title">쇼박스</span>
+            <a href="{% url 'main:showbox' %}" class="detailed">
+              <span class="title">브랜딩</span>
+            <span class="details">나만의 웹 사이트 브랜딩</span>
             </a>
             <span class="icon-thumbnail "><i data-feather="list"></i></span>
           </li>
 
-          <li class="">
-            <a href="#">
-              <span class="title">내 포트폴리오</span>
-            </a>
-            <span class="icon-thumbnail ">pt</span>
-          </li>
+{#          <li class="">#}
+{#            <a href="#">#}
+{#              <span class="title">내 포트폴리오</span>#}
+{#            </a>#}
+{#            <span class="icon-thumbnail ">pt</span>#}
+{#          </li>#}
 
           <li class="">
-            <a href="#">
-              <span class="title">내 이력서</span>
+            <a href="{% url 'portfolios:Resume' %}" class="detailed">
+              <span class="title">이력서 생성</span>
+                <span class="details">원하는 양식의 이력서 생성</span>
             </a>
             <span class="icon-thumbnail ">re</span>
           </li>
