@@ -458,3 +458,57 @@ light.css의 [20. Email App]부분을 Activity App으로 바꿈.
   font-weight: 700;
     margin-bottom: 4px;
 }
+
+
+
+
+/*------------------------------------------------------------------
+resume base
+------------------------------------------------------------------ */
+body.resume {
+  background-color: white !important;
+}
+
+.resume nav.page-sidebar {
+  border-right: 1px solid rgb(230,230,230);
+}
+
+.resume .page-container .page-content-wrapper .content {
+  padding-top: 0px !important;
+  margin-top:40px;
+}
+
+.top-content {
+  margin-top: 15px;
+}
+
+.resume .content-left {
+  left: 15px;
+}
+
+.content-li {
+  padding-left: 15px;
+  font-size: 15px;
+}
+.resume, .resume p{
+  font-size: 15px;
+}
+
+.resume h2, .resume h3 {
+  font-weight: 600;
+}
+
+.resume h4 {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+.resume-image img {
+  width: 100px;
+  height: : 100px;
+  border-radius: 42px;
+}
+
+.urls {
+  font-size: 14px;
+}
