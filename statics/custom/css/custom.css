@@ -34,6 +34,9 @@ pages.css 수정항목
 .split-view .split-list .list-view-fake-header, .split-view .split-list .list-view-group-header {
     font-size: 13px !important;
     font-weight: bold;
+    color: rgb(100,100,100);
+    background: rgb(239,240,242);
+    border-bottom: 1px solid rgba(225, 227, 230, 0.9);
 }
 /* 리스트뷰 - 탭 보조 아이콘(액티비티 쓰기) */
 
@@ -544,4 +547,13 @@ h5.semi-bold {
 .hr-more {
   margin-top: 30px !important;
   margin-bottom: 50px !important;
+}
+.split-view .split-list .item {
+  border-bottom: 1px solid rgba(225, 227, 230, 0.7);
+}
+.split-view .split-list .item .body {
+  opacity: .9;
+}
+body.fixed-header .header {
+  border-bottom: 1px solid rgba(225, 227, 230, 0.7) !important;
 }
